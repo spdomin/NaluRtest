@@ -64,7 +64,6 @@ determine_pass_fail() {
 
 # test the difference
 	    if [ $(echo " $absDiff > $tolerance" | bc) -eq 1 ]; then
-		echo "yep, I am here"
 		diffAnywhere=1
 	    fi
 	done
