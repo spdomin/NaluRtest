@@ -8,8 +8,8 @@ if [ -f $CWD/PASS ]; then
     # already ran this test
     didSimulationDiffAnywhere=0
 else
-    mpiexec --np 4 ../../naluX -i concentricRad.i -o concentricRad.log
-    determine_pass_fail $testTol "concentricRad.log" "concentricRad.norm" "concentricRad.norm.gold"
+    mpiexec --np 8 ../../naluX -i edgeFluidsPmrPeriodic.i -o edgeFluidsPmrPeriodic.log
+    determine_pass_fail $testTol "edgeFluidsPmrPeriodic.log" "edgeFluidsPmrPeriodic.norm" "edgeFluidsPmrPeriodic.norm.gold"
     didSimulationDiffAnywhere="$?"
 fi
 

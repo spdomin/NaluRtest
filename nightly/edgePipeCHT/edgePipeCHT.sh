@@ -1,64 +1,16 @@
 #!/bin/bash
+. ../../../NaluRtest/pass_fail.sh
+
 CWD=$(pwd)
-tolerance=0.0000000000000001
 didSimulationDiffAnywhere=0
+testTol=0.0000000000000001
 if [ -f $CWD/PASS ]; then
+    # already ran this test
     didSimulationDiffAnywhere=0
 else
     mpiexec --np 4 ../../naluX -i edgePipeCHT.i -o edgePipeCHT.log
-
-    grep "Mean System Norm:" edgePipeCHT.log  | awk '{print $4 " " $5 " " $6 }' > edgePipeCHT.norm
-
-# check for files...
-
-# read in gold norm values
-    goldCount=1
-    goldFileContent=( `cat "edgePipeCHT.norm.gold"`)
-    for gfc in "${goldFileContent[@]}"
-    do
-	goldNorm[goldCount]=$gfc
-	((goldCount++))
-    done
-
-# read in local norm values
-    localCount=1
-    localFileContent=( `cat "edgePipeCHT.norm"`)
-    for lfc in "${localFileContent[@]}"
-    do
-	localNorm[localCount]=$lfc
-	((localCount++))
-    done
-
-    if [ $(echo " $goldCount - $localCount" | bc) -eq 0 ]; then
-
-# the lengths the same... proceed
-
-	for ((i=0;i<$goldCount;++i)); do
-	    modLocalNorm=$(printf "%1.32f" ${localNorm[i]})
-	    modGoldNorm=$(printf "%1.32f" ${goldNorm[i]})
-# compute the difference
-	    diff=$(echo $modLocalNorm - $modGoldNorm | bc)
-
-# make sure diff is positive.. abs anyone?
-	    zero=0.0
-	    minusOne=-1.0
-	    if [ $(echo " $diff < $zero" | bc) -eq 1 ]; then
-		absDiff=$(echo $diff*$minusOne | bc)
-	    else
-		absDiff=$diff
-	    fi
-
-# test the difference
-	    if [ $(echo " $absDiff > $tolerance" | bc) -eq 1 ]; then
-		didSimulationDiffAnywhere=1
-	    fi
-	done
-
-    else
-# length was not the same; fail
-	didSimulationDiffAnywhere=1
-    fi
-
+    determine_pass_fail $testTol "edgePipeCHT.log" "edgePipeCHT.norm" "edgePipeCHT.norm.gold"
+    didSimulationDiffAnywhere="$?"
 fi
 
 # write the file based on final status
@@ -66,7 +18,7 @@ if [ "$didSimulationDiffAnywhere" -gt 0 ]; then
     PASS_STATUS=0
 else
     PASS_STATUS=1
-    echo $diff > PASS
+    echo $PASS_STATUS > PASS
 fi
 
 exit $PASS_STATUS
