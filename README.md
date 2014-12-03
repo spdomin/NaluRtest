@@ -19,3 +19,15 @@ The pass/diff is based on a single integrated norm at the end of the simulation 
 
 re-running the run_test.sh script will check if directories are already in existance. If a previous test voucher is a PASS, the test will not be run again. 
 
+## Sample Output
+
+	Rtest Begin
+	..concentricRad............... PASSED
+	..edgeContact3D............... PASSED
+	..edgeFluidsPmrPeriodic....... PASSED
+	..edgePipeCHT................. PASSED
+	..elemBackStepLRSST........... FAILED
+	..heliumPlumeEdge............. PASSED
+	Rtest End
+
+
