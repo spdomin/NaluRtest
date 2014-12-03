@@ -1,19 +1,33 @@
 #!/bin/bash
-CWD=$(pwd)
-tolerance=0.0000000000000001
-didSimulationDiffAnywhere=0
-if [ -f $CWD/PASS ]; then
-    didSimulationDiffAnywhere=0
-else
-    mpiexec --np 4 ../../naluX -i concentricRad.i -o concentricRad.log
 
-    grep "Mean System Norm:" concentricRad.log  | awk '{print $4 " " $5 " " $6 }' > concentricRad.norm
+determine_pass_fail() {
 
-# check for files...
+    diffAnywhere=0
+    tolerance=$1
+    logFileName=$2
+    localNormFileName=$3
+    goldNormFileName=$4
 
+    # check for required files: log file and gold
+    if [ ! -f "$logFileName" ]; then
+	diffAnywhere=1
+    fi
+
+    # check for gold norm file
+    if [ ! -f "$goldNormFileName" ]; then
+	diffAnywhere=1
+    fi
+
+    grep "Mean System Norm:" "$logFileName"  | awk '{print $4 " " $5 " " $6 }' > "$localNormFileName"
+
+    # make sure the grep  worked
+    if [ ! -f "$localNormFileName" ]; then
+	diffAnywhere=1
+    fi
+    
 # read in gold norm values
     goldCount=1
-    goldFileContent=( `cat "concentricRad.norm.gold"`)
+    goldFileContent=( `cat "$goldNormFileName"`)
     for gfc in "${goldFileContent[@]}"
     do
 	goldNorm[goldCount]=$gfc
@@ -22,7 +36,7 @@ else
 
 # read in local norm values
     localCount=1
-    localFileContent=( `cat "concentricRad.norm"`)
+    localFileContent=( `cat "$localNormFileName"`)
     for lfc in "${localFileContent[@]}"
     do
 	localNorm[localCount]=$lfc
@@ -50,15 +64,29 @@ else
 
 # test the difference
 	    if [ $(echo " $absDiff > $tolerance" | bc) -eq 1 ]; then
-		didSimulationDiffAnywhere=1
+		echo "yep, I am here"
+		diffAnywhere=1
 	    fi
 	done
 
     else
 # length was not the same; fail
-	didSimulationDiffAnywhere=1
+	diffAnywhere=1
     fi
 
+    return $diffAnywhere
+}
+
+CWD=$(pwd)
+didSimulationDiffAnywhere=0
+testTol=0.0000000000000001
+if [ -f $CWD/PASS ]; then
+    # already ran this test
+    didSimulationDiffAnywhere=0
+else
+    mpiexec --np 4 ../../naluX -i concentricRad.i -o concentricRad.log
+    determine_pass_fail $testTol "concentricRad.log" "concentricRad.norm" "concentricRad.norm.gold"
+    didSimulationDiffAnywhere="$?"
 fi
 
 # write the file based on final status
@@ -66,7 +94,7 @@ if [ "$didSimulationDiffAnywhere" -gt 0 ]; then
     PASS_STATUS=0
 else
     PASS_STATUS=1
-    echo $diff > PASS
+    echo $PASS_STATUS > PASS
 fi
 
 exit $PASS_STATUS
