@@ -15,9 +15,10 @@ will result in a temporary directory called runNaluRtest created in the ../ loca
 
 Executing the script will provide the set of pass/diff. Code that results in a diff is not to be pushed unless the diffs are understood.
 
-The pass/diff is based on a single integrated norm at the end of the simulation (WIP)
+The pass/diff is based on a set of integrated norms, time step and time step count at the end of time step. Simulations will report
+a diff if any single time step has a set of results that are off by the test tolerance.
 
-re-running the run_test.sh script will check if directories are already in existance. If a previous test voucher is a PASS, the test will not be run again. 
+Re-running the run_test.sh script will check if directories are already in existance. If a previous test voucher is a PASS, the test will not be run again. 
 
 ## Sample Output
 
