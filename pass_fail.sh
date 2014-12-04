@@ -25,7 +25,7 @@ determine_pass_fail() {
 	diffAnywhere=1
     fi
     
-# read in gold norm values
+    # read in gold norm values
     goldCount=1
     goldFileContent=( `cat "$goldNormFileName"`)
     for gfc in "${goldFileContent[@]}"
@@ -34,7 +34,7 @@ determine_pass_fail() {
 	((goldCount++))
     done
 
-# read in local norm values
+    # read in local norm values
     localCount=1
     localFileContent=( `cat "$localNormFileName"`)
     for lfc in "${localFileContent[@]}"
@@ -44,16 +44,13 @@ determine_pass_fail() {
     done
 
     if [ $(echo " $goldCount - $localCount" | bc) -eq 0 ]; then
-
-# the lengths the same... proceed
-
+        # the lengths the same... proceed
 	for ((i=0;i<$goldCount;++i)); do
 	    modLocalNorm=$(printf "%1.32f" ${localNorm[i]})
 	    modGoldNorm=$(printf "%1.32f" ${goldNorm[i]})
-# compute the difference
+            # compute the difference
 	    diff=$(echo $modLocalNorm - $modGoldNorm | bc)
-
-# make sure diff is positive.. abs anyone?
+            # make sure diff is positive.. abs anyone?
 	    zero=0.0
 	    minusOne=-1.0
 	    if [ $(echo " $diff < $zero" | bc) -eq 1 ]; then
@@ -61,15 +58,14 @@ determine_pass_fail() {
 	    else
 		absDiff=$diff
 	    fi
-
-# test the difference
+            # test the difference
 	    if [ $(echo " $absDiff > $tolerance" | bc) -eq 1 ]; then
 		diffAnywhere=1
 	    fi
 	done
 
     else
-# length was not the same; fail
+        # length was not the same; fail
 	diffAnywhere=1
     fi
 

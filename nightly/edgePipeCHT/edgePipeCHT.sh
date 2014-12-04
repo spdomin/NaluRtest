@@ -3,7 +3,14 @@
 
 CWD=$(pwd)
 didSimulationDiffAnywhere=0
-testTol=0.0000000000000001
+
+# determine tolerance
+testTol=0.000000000001
+platform=`uname`
+if [ "$platform" == 'Linux' ]; then
+    testTol=0.0000000000000001
+fi
+
 if [ -f $CWD/PASS ]; then
     # already ran this test
     didSimulationDiffAnywhere=0

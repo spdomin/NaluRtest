@@ -1,8 +1,8 @@
 #!/bin/bash
 
-grn='\e[0;32m'
-red='\e[0;31m'
-NC='\e[0m'
+grn='\033[0;32m'
+red='\033[0;31m'
+NC='\033[00m'
 
 echo "Rtest Begin"
 
