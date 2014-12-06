@@ -21,12 +21,11 @@ Within the `NaluRtest` directory is a file by the name of run_tests.sh. Executin
 	
 will result in a temporary directory called runNaluRtest created in the ../ location.
 
-Executing the script will provide the set of pass/diff. Code that results in a diff is not to be pushed unless the diffs are understood.
+Executing the script will provide the set of individual test PASSED/FAILED status. Code changes that result in any FAILED status is not to be pushed unless the formal reason for a fail are understood. At this point, the test gold copy norm file can be "re-blessed".
 
-The pass/diff is based on a set of integrated norms, time step and time step count at the end of time step. Simulations will report
-a diff if any single time step has a set of results that are off by the test tolerance.
+The PASSED/FAILED status is based on a set of integrated norms, time step and time step count at the end of time step. Simulations will report a FAILED status if any single time step has a set of results that are off by the test tolerance. Test tolerances are specified in the particular test `theTest.sh` file.
 
-Re-running the run_test.sh script will check if directories are already in existance. If a previous test voucher is a PASS, the test will not be run again. 
+Re-running the run_test.sh script will check if directories are already in existance. If a previous test voucher provides a PASSED status, the successful test will not be run again. 
 
 ## Sample Output
 
@@ -38,5 +37,3 @@ Re-running the run_test.sh script will check if directories are already in exist
 	..elemBackStepLRSST........... FAILED
 	..heliumPlumeEdge............. PASSED
 	Rtest End
-
-
