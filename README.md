@@ -3,6 +3,14 @@ NaluRtest
 
 Regression test suite for Nalu
 
+## Preliminary building tasks
+
+Please proceed with following the build instructions under [Nalu.wiki](https://github.com/spdomin/Nalu/wiki/Build_instructions)
+
+The NaluRtest repository is cloned via,
+
+	git clone https://github.com/spdomin/NaluRtest.git
+	
 ## Directions
 
 Thus far, both the Nalu and NaluRtest git repository should have been cloned. Moreover, the build process has been completed with a `naluX` executable created in the `Nalu/build` location.
