@@ -32,7 +32,7 @@ Re-running the run_test.sh script will check if directories are already in exist
 	Rtest Begin
 	..concentricRad............... PASSED
 	..edgeContact3D............... PASSED
-	..edgeFluidsPmrPeriodic....... PASSED
+	..fluidsPmrChtPeriodic........ PASSED
 	..edgePipeCHT................. PASSED
 	..elemBackStepLRSST........... FAILED
 	..heliumPlumeEdge............. PASSED

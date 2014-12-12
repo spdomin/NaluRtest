@@ -25,23 +25,57 @@ linear_solvers:
 
 transfers:
 
-  - name: xfer_fluid_pmr_vol
+# Fluid to ....
+
+  - name: xfer_fluid_pmr
     type: geometric
-    realm_pair: [realm_2, realm_1]
+    realm_pair: [fluidRealm, pmrRealm]
     mesh_part_pair: [block_1, block_1]
     transfer_variables:
       - [temperature, temperature]
+
+  - name: xfer_fluid_thermal
+    type: geometric
+    realm_pair: [fluidRealm, thermalRealm]
+    mesh_part_pair: [surface_3, surface_2]
+    coupling_physics: fluids_cht
+
+# PMR to ....
      
   - name: xfer_pmr_fluid
     type: geometric
-    realm_pair: [realm_1, realm_2]
+    realm_pair: [pmrRealm, fluidRealm]
     mesh_part_pair: [block_1, block_1]
     transfer_variables:
       - [div_radiative_heat_flux, div_radiative_heat_flux]
-     
+
+  - name: xfer_pmr_thermal
+    type: geometric
+    realm_pair: [pmrRealm, thermalRealm]
+    mesh_part_pair: [surface_3, surface_2]
+    transfer_variables:
+      - [irradiation, irradiation]
+          
+# Thermal to ....
+
+  - name: xfer_thermal_fluid
+    type: geometric
+    realm_pair: [thermalRealm, fluidRealm]
+    mesh_part_pair: [surface_2, surface_3]
+    transfer_variables:
+      - [temperature, temperature_bc]
+      - [temperature, temperature]
+
+  - name: xfer_thermal_pmr
+    type: geometric
+    realm_pair: [thermalRealm, pmrRealm]
+    mesh_part_pair: [surface_2, surface_3]
+    transfer_variables:
+      - [temperature, wall_temperature]
+
 realms:
 
-  - name: realm_1
+  - name: pmrRealm
     mesh: pmrA_mks.g
     use_edges: yes 
     solve_frequency: 10
@@ -71,9 +105,10 @@ realms:
     - wall_boundary_condition: bc_3
       target_name: surface_3
       wall_user_data:
-        temperature: 400.0
+        temperature: 300.0
         transmissivity: 0.0
-        emissivity: 1.0 
+        emissivity: 0.8 
+        interface: yes
 
     - wall_boundary_condition: bc_4
       target_name: surface_4
@@ -104,7 +139,7 @@ realms:
 
     output:
       output_data_base_name: pmr.e
-      output_frequency: 2
+      output_frequency: 5
       output_node_set: no
       output_variables:
        - temperature
@@ -115,13 +150,13 @@ realms:
        - div_radiative_heat_flux
        - irradiation
 
-  - name: realm_2
+  - name: fluidRealm
     mesh: pmrA_mks_R1.g
     use_edges: yes 
 
     equation_systems:
       name: theEqSys
-      max_iterations: 1
+      max_iterations: 2
 
       solver_system_specification:
         velocity: solve_scalar
@@ -193,7 +228,8 @@ realms:
       target_name: surface_3
       wall_user_data:
         velocity: [0,0,0]
-        temperature: 400.0
+        temperature: 300.0
+        interface: yes
 
     - wall_boundary_condition: bc_outer
       target_name: surface_4
@@ -216,7 +252,7 @@ realms:
 
         - source_terms:
             momentum: buoyancy
-            continuity: density_time_derivative
+#            continuity: density_time_derivative
             enthalpy: participating_media_radiation
 
         - user_constants:
@@ -235,25 +271,117 @@ realms:
       output_variables:
        - velocity
        - temperature
+       - temperature_bc
        - div_radiative_heat_flux
        - enthalpy
+       - heat_transfer_coefficient
+       - reference_temperature
+
+  - name: thermalRealm
+    mesh: jacket_s2.g
+    use_edges: no
+   
+    boundary_conditions:
+
+    - wall_boundary_condition: bc_inner
+      target_name: surface_1
+      wall_user_data:
+        temperature: 500.0
+
+    - wall_boundary_condition: bc_outer_pmr
+      target_name: surface_2
+      wall_user_data:
+        emissivity: 0.8
+        irradiation: 459.0
+        interface: yes
+
+    - wall_boundary_condition: bc_outer_cht
+      target_name: surface_2
+      wall_user_data:
+        reference_temperature: 300
+        heat_transfer_coefficient: 0.0
+        interface: yes
+
+    - periodic_boundary_condition: bc_left_right
+      target_name: [surface_3, surface_4]
+      periodic_user_data:
+        search_tolerance: 1.e-5
+        search_method: boost_rtree
+
+    solution_options:
+      name: myOptionsHC
+      options:
+        - projected_nodal_gradient:
+            temperature: element
+        - user_constants:
+            stefan_boltzmann: 5.6704e-8
+                
+    initial_conditions:
+
+      - constant: ic_1
+        target_name: block_1
+        value:
+          temperature: 300
+
+    material_properties:
+      target_name: block_1
+      specifications:
+        - name: density
+          type: constant
+          value: 8960.0
+        - name: specific_heat
+          type: constant
+          value: 3860.0
+        - name: thermal_conductivity
+          type: constant
+          value: 167.0
+
+    equation_systems:
+      name: theEqSys
+      max_iterations: 1
+
+      solver_system_specification:
+        temperature: solve_scalar 
+
+      systems:
+        - HeatConduction:
+            name: myHC
+            max_iterations: 1 
+            convergence_tolerance: 1.e-5
+
+    output:
+      output_data_base_name: thermal.e
+      output_frequency: 5
+      output_node_set: no 
+      output_variables:
+       - temperature
+       - dtdx
+       - density
+       - thermal_conductivity
+       - specific_heat
+       - irradiation
+       - heat_transfer_coefficient
+       - reference_temperature
 
 Time_Integrators:
   - StandardTimeIntegrator:
       name: ti_1
       start_time: 0
-      termination_time: 0.21
-      time_step: 0.01
-      time_stepping_type: fixed
+      termination_step_count: 21 
+      time_step: 1.0e-1
+      time_stepping_type: adaptive
       time_step_count: 0
       nonlinear_iterations: 1 
 
       realms:
-        - realm_1
-        - realm_2
+        - pmrRealm
+        - fluidRealm
+        - thermalRealm
 
       transfers:
-        - xfer_fluid_pmr_vol
-        - xfer_fluid_pmr_surf1
-        - xfer_fluid_pmr_surf2
+        - xfer_fluid_pmr
+        - xfer_fluid_thermal
         - xfer_pmr_fluid
+        - xfer_pmr_thermal
+        - xfer_thermal_fluid
+        - xfer_thermal_pmr

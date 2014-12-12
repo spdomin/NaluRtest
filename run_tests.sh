@@ -66,25 +66,25 @@ else
 fi
 
 #=============================================================================
-# edgeFluidsPmrPeriodic test
+# fluidsPmrChtPeriodic test
 #=============================================================================
-if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/edgeFluidsPmrPeriodic" ]; then
-    mkdir $baseGitHubCWD/runNaluRtest/nightly/edgeFluidsPmrPeriodic
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic
 fi
 
-cd $baseGitHubCWD/runNaluRtest/nightly/edgeFluidsPmrPeriodic
-cp $NaluRtestCWD/nightly/edgeFluidsPmrPeriodic/edgeFluidsPmrPeriodic.i $baseGitHubCWD/runNaluRtest/nightly/edgeFluidsPmrPeriodic
-cp $NaluRtestCWD/nightly/edgeFluidsPmrPeriodic/*.g.* $baseGitHubCWD/runNaluRtest/nightly/edgeFluidsPmrPeriodic
-cp $NaluRtestCWD/nightly/edgeFluidsPmrPeriodic/edgeFluidsPmrPeriodic.sh $baseGitHubCWD/runNaluRtest/nightly/edgeFluidsPmrPeriodic
-cp $NaluRtestCWD/nightly/edgeFluidsPmrPeriodic/edgeFluidsPmrPeriodic.norm.gold $baseGitHubCWD/runNaluRtest/nightly/edgeFluidsPmrPeriodic
+cd $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic
+cp $NaluRtestCWD/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.i $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic
+cp $NaluRtestCWD/nightly/fluidsPmrChtPeriodic/*.g.* $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic
+cp $NaluRtestCWD/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.sh $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic
+cp $NaluRtestCWD/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.norm.gold $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic
 # run it...  
-./edgeFluidsPmrPeriodic.sh
+./fluidsPmrChtPeriodic.sh
 # report it; 30 spaces
 passStatusConcentricRad="$?"
 if [ $passStatusConcentricRad -ne 1 ]; then
-    echo -e "${red}..edgeFluidsPmrPeriodic....... FAILED${NC}"
+    echo -e "${red}..fluidsPmrChtPeriodic........ FAILED${NC}"
 else
-    echo -e "${grn}..edgeFluidsPmrPeriodic....... PASSED${NC}"
+    echo -e "${grn}..fluidsPmrChtPeriodic........ PASSED${NC}"
 fi
 
 #=============================================================================
