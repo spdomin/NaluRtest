@@ -44,6 +44,72 @@ else
 fi
 
 #=============================================================================
+# elemBackStepLRSST test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
+cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.i $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
+cp $NaluRtestCWD/nightly/elemBackStepLRSST/*.g.* $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
+cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.sh $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
+cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
+# run it...  
+./elemBackStepLRSST.sh
+# report it; 30 spaces
+passStatusEdgePipeCHT="$?"
+if [ $passStatusEdgePipeCHT -ne 1 ]; then
+    echo -e "${red}..elemBackStepLRSST........... FAILED${NC}"
+else
+    echo -e "${grn}..elemBackStepLRSST........... PASSED${NC}"
+fi
+
+#=============================================================================
+# edgePipeCHT test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
+cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.i $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
+cp $NaluRtestCWD/nightly/edgePipeCHT/*.g.* $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
+cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.sh $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
+cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.norm.gold $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
+# run it...  
+./edgePipeCHT.sh
+# report it; 30 spaces
+passStatusEdgePipeCHT="$?"
+if [ $passStatusEdgePipeCHT -ne 1 ]; then
+    echo -e "${red}..edgePipeCHT................. FAILED${NC}"
+else
+    echo -e "${grn}..edgePipeCHT................. PASSED${NC}"
+fi
+
+#=============================================================================
+# heliumPlumeEdge test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.i $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+cp $NaluRtestCWD/nightly/heliumPlumeEdge/*.g.* $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.sh $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+# run it...  
+./heliumPlumeEdge.sh
+# report it; 30 spaces
+passStatusEdgePipeCHT="$?"
+if [ $passStatusEdgePipeCHT -ne 1 ]; then
+    echo -e "${red}..heliumPlumeEdge............. FAILED${NC}"
+else
+    echo -e "${grn}..heliumPlumeEdge............. PASSED${NC}"
+fi
+
+#=============================================================================
 # edgeContact3D test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/edgeContact3D" ]; then
@@ -85,72 +151,6 @@ if [ $passStatusConcentricRad -ne 1 ]; then
     echo -e "${red}..fluidsPmrChtPeriodic........ FAILED${NC}"
 else
     echo -e "${grn}..fluidsPmrChtPeriodic........ PASSED${NC}"
-fi
-
-#=============================================================================
-# edgePipeCHT test
-#=============================================================================
-if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT" ]; then
-    mkdir $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
-fi
-
-cd $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
-cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.i $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
-cp $NaluRtestCWD/nightly/edgePipeCHT/*.g.* $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
-cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.sh $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
-cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.norm.gold $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
-# run it...  
-./edgePipeCHT.sh
-# report it; 30 spaces
-passStatusEdgePipeCHT="$?"
-if [ $passStatusEdgePipeCHT -ne 1 ]; then
-    echo -e "${red}..edgePipeCHT................. FAILED${NC}"
-else
-    echo -e "${grn}..edgePipeCHT................. PASSED${NC}"
-fi
-
-#=============================================================================
-# elemBackStepLRSST test
-#=============================================================================
-if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST" ]; then
-    mkdir $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
-fi
-
-cd $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
-cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.i $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
-cp $NaluRtestCWD/nightly/elemBackStepLRSST/*.g.* $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
-cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.sh $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
-cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
-# run it...  
-./elemBackStepLRSST.sh
-# report it; 30 spaces
-passStatusEdgePipeCHT="$?"
-if [ $passStatusEdgePipeCHT -ne 1 ]; then
-    echo -e "${red}..elemBackStepLRSST........... FAILED${NC}"
-else
-    echo -e "${grn}..elemBackStepLRSST........... PASSED${NC}"
-fi
-
-#=============================================================================
-# heliumPlumeEdge test
-#=============================================================================
-if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge" ]; then
-    mkdir $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-fi
-
-cd $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.i $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-cp $NaluRtestCWD/nightly/heliumPlumeEdge/*.g.* $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.sh $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-# run it...  
-./heliumPlumeEdge.sh
-# report it; 30 spaces
-passStatusEdgePipeCHT="$?"
-if [ $passStatusEdgePipeCHT -ne 1 ]; then
-    echo -e "${red}..heliumPlumeEdge............. FAILED${NC}"
-else
-    echo -e "${grn}..heliumPlumeEdge............. PASSED${NC}"
 fi
 
 echo "Rtest End"
