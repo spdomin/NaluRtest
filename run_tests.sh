@@ -18,8 +18,18 @@ if [ ! -d "$baseGitHubCWD/runNaluRtest" ]; then
     mkdir $baseGitHubCWD/runNaluRtest/performance
 fi
 
-# copy executable for all tests to use
-cp $baseGitHubCWD/Nalu/build/naluX $baseGitHubCWD/runNaluRtest
+# look for file that defines the path to naluX
+if [ ! -f $NaluRtestCWD/NaluProjectPath.txt ]; then
+    # copy executable for all tests to use
+    cp $baseGitHubCWD/Nalu/build/naluX $baseGitHubCWD/runNaluRtest
+else
+    NaluProjectPathFile="$NaluRtestCWD/NaluProjectPath.txt"
+    projectPathName=$(cat $NaluProjectPathFile)
+    cp $projectPathName/build/naluX $baseGitHubCWD/runNaluRtest
+fi
+
+# copy pass_fail script
+cp $NaluRtestCWD/pass_fail.sh $baseGitHubCWD/runNaluRtest
 
 #=============================================================================
 # concentricRad test

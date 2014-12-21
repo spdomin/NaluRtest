@@ -21,6 +21,8 @@ Within the `NaluRtest` directory is a file by the name of run_tests.sh. Executin
 	
 will result in a temporary directory called runNaluRtest created in the ../ location.
 
+The script also searches for a `NaluProjectPath.txt` file that specifies the specific location in which the Nalu cloned repository resides should the default name of `Nalu` not be in use.
+
 Executing the script will provide the set of individual test PASSED/FAILED status. Code changes that result in any FAILED status is not to be pushed unless the formal reason for a fail are understood. At this point, the test gold copy norm file can be "re-blessed".
 
 The PASSED/FAILED status is based on a set of integrated norms, time step and time step count at the end of time step. Simulations will report a FAILED status if any single time step has a set of results that are off by the test tolerance. Test tolerances are specified in the particular test `theTest.sh` file.
