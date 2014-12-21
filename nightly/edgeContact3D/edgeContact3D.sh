@@ -1,5 +1,5 @@
 #!/bin/bash
-. ..//../pass_fail.sh
+. ../../pass_fail.sh
 
 CWD=$(pwd)
 didSimulationDiffAnywhere=0
