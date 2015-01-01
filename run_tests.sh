@@ -54,6 +54,29 @@ else
 fi
 
 #=============================================================================
+# movingCylinder test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/movingCylinder" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/movingCylinder
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/movingCylinder
+cp $NaluRtestCWD/nightly/movingCylinder/movingCylinder.i $baseGitHubCWD/runNaluRtest/nightly/movingCylinder
+cp $NaluRtestCWD/nightly/movingCylinder/*.g.* $baseGitHubCWD/runNaluRtest/nightly/movingCylinder
+cp $NaluRtestCWD/nightly/movingCylinder/movingCylinder.sh $baseGitHubCWD/runNaluRtest/nightly/movingCylinder
+cp $NaluRtestCWD/nightly/movingCylinder/movingCylinder.norm.gold $baseGitHubCWD/runNaluRtest/nightly/movingCylinder
+# run it...  
+./movingCylinder.sh
+# report it; 30 spaces
+passStatusMovingCylinder="$?"
+if [ $passStatusMovingCylinder -ne 1 ]; then
+    echo -e "${red}..movingCylinder.............. FAILED${NC}"
+else
+    echo -e "${grn}..movingCylinder.............. PASSED${NC}"
+fi
+
+
+#=============================================================================
 # elemBackStepLRSST test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST" ]; then
@@ -68,8 +91,8 @@ cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.norm.gold $baseGitH
 # run it...  
 ./elemBackStepLRSST.sh
 # report it; 30 spaces
-passStatusEdgePipeCHT="$?"
-if [ $passStatusEdgePipeCHT -ne 1 ]; then
+passStatusElemBackStep="$?"
+if [ $passStatusElemBackStep -ne 1 ]; then
     echo -e "${red}..elemBackStepLRSST........... FAILED${NC}"
 else
     echo -e "${grn}..elemBackStepLRSST........... PASSED${NC}"
@@ -112,8 +135,8 @@ cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.norm.gold $baseGitHubCW
 # run it...  
 ./heliumPlumeEdge.sh
 # report it; 30 spaces
-passStatusEdgePipeCHT="$?"
-if [ $passStatusEdgePipeCHT -ne 1 ]; then
+passStatusHeliumPlume="$?"
+if [ $passStatusHeliumPlume -ne 1 ]; then
     echo -e "${red}..heliumPlumeEdge............. FAILED${NC}"
 else
     echo -e "${grn}..heliumPlumeEdge............. PASSED${NC}"
@@ -134,8 +157,8 @@ cp $NaluRtestCWD/nightly/edgeContact3D/edgeContact3D.norm.gold $baseGitHubCWD/ru
 # run it...  
 ./edgeContact3D.sh
 # report it; 30 spaces
-passStatusConcentricRad="$?"
-if [ $passStatusConcentricRad -ne 1 ]; then
+passStatusEdgeContact="$?"
+if [ $passStatusEdgeContact -ne 1 ]; then
     echo -e "${red}..edgeContact3D............... FAILED${NC}"
 else
     echo -e "${grn}..edgeContact3D............... PASSED${NC}"
@@ -156,8 +179,8 @@ cp $NaluRtestCWD/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.norm.gold $ba
 # run it...  
 ./fluidsPmrChtPeriodic.sh
 # report it; 30 spaces
-passStatusConcentricRad="$?"
-if [ $passStatusConcentricRad -ne 1 ]; then
+passStatusFluidsPmrCht="$?"
+if [ $passStatusFluidsPmrCht -ne 1 ]; then
     echo -e "${red}..fluidsPmrChtPeriodic........ FAILED${NC}"
 else
     echo -e "${grn}..fluidsPmrChtPeriodic........ PASSED${NC}"
@@ -178,8 +201,8 @@ cp $NaluRtestCWD/nightly/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.norm.
 # run it...  
 ./waleElemXflowMixFrac3.5m.sh
 # report it; 30 spaces
-passStatusConcentricRad="$?"
-if [ $passStatusConcentricRad -ne 1 ]; then
+passStatusWaleElemXflow="$?"
+if [ $passStatusWaleElemXflow -ne 1 ]; then
     echo -e "${red}..waleElemXflowMixFrac3.5m.... FAILED${NC}"
 else
     echo -e "${grn}..waleElemXflowMixFrac3.5m.... PASSED${NC}"
