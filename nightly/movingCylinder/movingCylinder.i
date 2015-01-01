@@ -63,7 +63,7 @@ realms:
             max_iterations: 1 
             convergence_tolerance: 1.e-3
             activate_mass: yes
-            defrom_wrt_model_coordinates: yes
+            deform_wrt_model_coordinates: yes
 
     boundary_conditions:
 
@@ -94,7 +94,7 @@ realms:
         user_function_name:
          mesh_displacement: sinusoidal
         user_function_parameters:
-         mesh_displacement: [0.075]
+         mesh_displacement: [0.20]
 
 
     solution_options:
@@ -238,7 +238,7 @@ Time_Integrators:
       name: ti_1
       start_time: 0
       termination_step_count: 20
-      time_step: 0.002
+      time_step: 0.004
       time_stepping_type: fixed
       time_step_count: 0
       nonlinear_iterations: 1
