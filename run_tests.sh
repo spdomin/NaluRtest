@@ -1,9 +1,5 @@
 #!/bin/bash
 
-grn='\033[0;32m'
-red='\033[0;31m'
-NC='\033[00m'
-
 echo "Rtest Begin"
 
 NaluRtestCWD=$(pwd)
@@ -48,9 +44,9 @@ cp $NaluRtestCWD/nightly/concentricRad/concentricRad.norm.gold $baseGitHubCWD/ru
 # report it; 30 spaces
 passStatusConcentricRad="$?"
 if [ $passStatusConcentricRad -ne 1 ]; then
-    echo -e "${red}..concentricRad............... FAILED${NC}"
+    echo -e "..concentricRad............... FAILED"
 else
-    echo -e "${grn}..concentricRad............... PASSED${NC}"
+    echo -e "..concentricRad............... PASSED"
 fi
 
 #=============================================================================
@@ -70,9 +66,9 @@ cp $NaluRtestCWD/nightly/movingCylinder/movingCylinder.norm.gold $baseGitHubCWD/
 # report it; 30 spaces
 passStatusMovingCylinder="$?"
 if [ $passStatusMovingCylinder -ne 1 ]; then
-    echo -e "${red}..movingCylinder.............. FAILED${NC}"
+    echo -e "..movingCylinder.............. FAILED"
 else
-    echo -e "${grn}..movingCylinder.............. PASSED${NC}"
+    echo -e "..movingCylinder.............. PASSED"
 fi
 
 
@@ -93,9 +89,9 @@ cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.norm.gold $baseGitH
 # report it; 30 spaces
 passStatusElemBackStep="$?"
 if [ $passStatusElemBackStep -ne 1 ]; then
-    echo -e "${red}..elemBackStepLRSST........... FAILED${NC}"
+    echo -e "..elemBackStepLRSST........... FAILED"
 else
-    echo -e "${grn}..elemBackStepLRSST........... PASSED${NC}"
+    echo -e "..elemBackStepLRSST........... PASSED"
 fi
 
 #=============================================================================
@@ -115,9 +111,9 @@ cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.norm.gold $baseGitHubCWD/runNal
 # report it; 30 spaces
 passStatusEdgePipeCHT="$?"
 if [ $passStatusEdgePipeCHT -ne 1 ]; then
-    echo -e "${red}..edgePipeCHT................. FAILED${NC}"
+    echo -e "..edgePipeCHT................. FAILED"
 else
-    echo -e "${grn}..edgePipeCHT................. PASSED${NC}"
+    echo -e "..edgePipeCHT................. PASSED"
 fi
 
 #=============================================================================
@@ -137,9 +133,9 @@ cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.norm.gold $baseGitHubCW
 # report it; 30 spaces
 passStatusHeliumPlume="$?"
 if [ $passStatusHeliumPlume -ne 1 ]; then
-    echo -e "${red}..heliumPlumeEdge............. FAILED${NC}"
+    echo -e "..heliumPlumeEdge............. FAILED"
 else
-    echo -e "${grn}..heliumPlumeEdge............. PASSED${NC}"
+    echo -e "..heliumPlumeEdge............. PASSED"
 fi
 
 #=============================================================================
@@ -159,9 +155,9 @@ cp $NaluRtestCWD/nightly/edgeContact3D/edgeContact3D.norm.gold $baseGitHubCWD/ru
 # report it; 30 spaces
 passStatusEdgeContact="$?"
 if [ $passStatusEdgeContact -ne 1 ]; then
-    echo -e "${red}..edgeContact3D............... FAILED${NC}"
+    echo -e "..edgeContact3D............... FAILED"
 else
-    echo -e "${grn}..edgeContact3D............... PASSED${NC}"
+    echo -e "..edgeContact3D............... PASSED"
 fi
 
 #=============================================================================
@@ -181,9 +177,9 @@ cp $NaluRtestCWD/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.norm.gold $ba
 # report it; 30 spaces
 passStatusFluidsPmrCht="$?"
 if [ $passStatusFluidsPmrCht -ne 1 ]; then
-    echo -e "${red}..fluidsPmrChtPeriodic........ FAILED${NC}"
+    echo -e "..fluidsPmrChtPeriodic........ FAILED"
 else
-    echo -e "${grn}..fluidsPmrChtPeriodic........ PASSED${NC}"
+    echo -e "..fluidsPmrChtPeriodic........ PASSED"
 fi
 
 #=============================================================================
@@ -203,9 +199,9 @@ cp $NaluRtestCWD/nightly/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.norm.
 # report it; 30 spaces
 passStatusWaleElemXflow="$?"
 if [ $passStatusWaleElemXflow -ne 1 ]; then
-    echo -e "${red}..waleElemXflowMixFrac3.5m.... FAILED${NC}"
+    echo -e "..waleElemXflowMixFrac3.5m.... FAILED"
 else
-    echo -e "${grn}..waleElemXflowMixFrac3.5m.... PASSED${NC}"
+    echo -e "..waleElemXflowMixFrac3.5m.... PASSED"
 fi
 
 echo "Rtest End"
