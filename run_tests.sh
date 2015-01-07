@@ -182,26 +182,4 @@ else
     echo -e "..fluidsPmrChtPeriodic........ PASSED"
 fi
 
-#=============================================================================
-# waleElemXflowMixFrac3.5m test
-#=============================================================================
-if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/waleElemXflowMixFrac3.5m" ]; then
-    mkdir $baseGitHubCWD/runNaluRtest/nightly/waleElemXflowMixFrac3.5m
-fi
-
-cd $baseGitHubCWD/runNaluRtest/nightly/waleElemXflowMixFrac3.5m
-cp $NaluRtestCWD/nightly/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.i $baseGitHubCWD/runNaluRtest/nightly/waleElemXflowMixFrac3.5m
-cp $NaluRtestCWD/nightly/waleElemXflowMixFrac3.5m/*.g.* $baseGitHubCWD/runNaluRtest/nightly/waleElemXflowMixFrac3.5m
-cp $NaluRtestCWD/nightly/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.sh $baseGitHubCWD/runNaluRtest/nightly/waleElemXflowMixFrac3.5m
-cp $NaluRtestCWD/nightly/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.norm.gold $baseGitHubCWD/runNaluRtest/nightly/waleElemXflowMixFrac3.5m
-# run it...  
-./waleElemXflowMixFrac3.5m.sh
-# report it; 30 spaces
-passStatusWaleElemXflow="$?"
-if [ $passStatusWaleElemXflow -ne 1 ]; then
-    echo -e "..waleElemXflowMixFrac3.5m.... FAILED"
-else
-    echo -e "..waleElemXflowMixFrac3.5m.... PASSED"
-fi
-
 echo "Rtest End"
