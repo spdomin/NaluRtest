@@ -135,7 +135,7 @@ realms:
 
   - name: fluidRealm
     mesh: waterChannel_cgs.g
-    use_edges: yes 
+    use_edges: no 
 
     equation_systems:
       name: theEqSys
