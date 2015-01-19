@@ -147,6 +147,7 @@ fi
 
 cd $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D
 cp $NaluRtestCWD/nightly/edgeContact3D/edgeContact3D.i $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D
+cp $NaluRtestCWD/nightly/edgeContact3D/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D
 cp $NaluRtestCWD/nightly/edgeContact3D/*.exo.* $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D
 cp $NaluRtestCWD/nightly/edgeContact3D/edgeContact3D.sh $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D
 cp $NaluRtestCWD/nightly/edgeContact3D/edgeContact3D.norm.gold $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D
