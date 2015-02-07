@@ -22,6 +22,7 @@ linear_solvers:
     max_iterations: 50
     kspace: 50
     output_level: 0
+    muelu_xml_file_name: muelu_sliding.xml
 
 realms:
 
