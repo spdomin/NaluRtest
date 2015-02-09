@@ -23,6 +23,7 @@ linear_solvers:
     kspace: 50
     output_level: 0
     muelu_xml_file_name: muelu_sliding.xml
+    summarize_muelu_timer: yes
 
 realms:
 
