@@ -38,7 +38,7 @@ cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.i
 cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/*.xml $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
 cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/*.g.* $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
 cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.sh $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
-cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.norm.gold $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
+cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.norm.gold* $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
 # run it...  
 ./waleElemXflowMixFrac3.5m.sh
 # report it; 30 spaces

@@ -6,17 +6,21 @@ didSimulationDiffAnywhere=0
 
 # determine tolerance
 testTol=0.000000000001
+theGoldNorm=waleElemXflowMixFrac3.5m.norm.gold.remote
 platform=`uname`
 if [ "$platform" == 'Linux' ]; then
     testTol=0.0000000000000001
+    theGoldNorm=waleElemXflowMixFrac3.5m.norm.gold
 fi
+
+echo "$theGoldNorm"
 
 if [ -f $CWD/PASS ]; then
     # already ran this test
     didSimulationDiffAnywhere=0
 else
     mpiexec --np 8 ../../naluX -i waleElemXflowMixFrac3.5m.i -o waleElemXflowMixFrac3.5m.log
-    determine_pass_fail $testTol "waleElemXflowMixFrac3.5m.log" "waleElemXflowMixFrac3.5m.norm" "waleElemXflowMixFrac3.5m.norm.gold"
+    determine_pass_fail $testTol "waleElemXflowMixFrac3.5m.log" "waleElemXflowMixFrac3.5m.norm" "$theGoldNorm"
     didSimulationDiffAnywhere="$?"
 fi
 
