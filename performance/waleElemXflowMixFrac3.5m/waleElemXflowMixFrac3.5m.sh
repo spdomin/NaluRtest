@@ -13,8 +13,6 @@ if [ "$platform" == 'Linux' ]; then
     theGoldNorm=waleElemXflowMixFrac3.5m.norm.gold
 fi
 
-echo "$theGoldNorm"
-
 if [ -f $CWD/PASS ]; then
     # already ran this test
     didSimulationDiffAnywhere=0
