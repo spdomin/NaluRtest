@@ -252,7 +252,6 @@ realms:
 
         - source_terms:
             momentum: buoyancy
-#            continuity: density_time_derivative
             enthalpy: participating_media_radiation
 
         - user_constants:

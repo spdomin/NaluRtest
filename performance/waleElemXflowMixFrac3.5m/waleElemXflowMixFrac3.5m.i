@@ -19,8 +19,8 @@ linear_solvers:
     method: gmres
     preconditioner: muelu 
     tolerance: 1e-5
-    max_iterations: 75
-    kspace: 75
+    max_iterations: 100 
+    kspace: 100 
     output_level: 0
     recompute_preconditioner: false
 
@@ -100,13 +100,12 @@ realms:
       wall_user_data:
         velocity: [0,0,0] 
 
-    - symmetry_boundary_condition: bc_left
-      target_name: leftWall
-      symmetry_user_data:
 
-    - symmetry_boundary_condition: bc_right
-      target_name: rightWall
-      symmetry_user_data:
+    - periodic_boundary_condition: bc_left_right
+      target_name: [leftWall, rightWall]
+      periodic_user_data:
+        search_tolerance: 1.e-5
+        search_method: boost_rtree
 
     - symmetry_boundary_condition: bc_top
       target_name: topWall
