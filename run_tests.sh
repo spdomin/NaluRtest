@@ -28,6 +28,28 @@ fi
 cp $NaluRtestCWD/pass_fail.sh $baseGitHubCWD/runNaluRtest
 
 #=============================================================================
+# dgNonConformal test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/dgNonConformal" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
+cp $NaluRtestCWD/nightly/dgNonConformal/dgNonConformal.i $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
+cp $NaluRtestCWD/nightly/dgNonConformal/*.g* $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
+cp $NaluRtestCWD/nightly/dgNonConformal/dgNonConformal.sh $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
+cp $NaluRtestCWD/nightly/dgNonConformal/dgNonConformal.norm.gold $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
+# run it...  
+./dgNonConformal.sh
+# report it; 30 spaces
+passStatusDgNonConformal="$?"
+if [ $passStatusDgNonConformal -ne 1 ]; then
+    echo -e "..dgNonConformal.............. FAILED"
+else
+    echo -e "..dgNonConformal.............. PASSED"
+fi
+
+#=============================================================================
 # concentricRad test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/concentricRad" ]; then
