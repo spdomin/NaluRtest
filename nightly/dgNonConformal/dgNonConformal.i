@@ -103,7 +103,6 @@ realms:
 
     solution_options:
       name: myOptions
-      extrusion_correction_factor: 0.0
 
       options:
         - source_terms:
@@ -111,6 +110,10 @@ realms:
 
         - projected_nodal_gradient:
             temperature: element 
+
+        - non_conformal:
+            gauss_labatto_quadrature: yes
+            algorithm_type: dg
 
     output:
       output_data_base_name: dgNonConformal.e
@@ -120,7 +123,7 @@ realms:
        - dual_nodal_volume
        - temperature
        - dtdx
-       - nc_heat_flux
+       - nc_t_normal_flux
        - nc_t_penalty
        - nc_t_assembled_area
 
