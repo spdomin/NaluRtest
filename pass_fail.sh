@@ -7,7 +7,7 @@ determine_pass_fail() {
     logFileName=$2
     localNormFileName=$3
     goldNormFileName=$4
-
+    
     # check for required files: log file and gold
     if [ ! -f "$logFileName" ]; then
 	diffAnywhere=1
@@ -69,5 +69,6 @@ determine_pass_fail() {
 	diffAnywhere=1
     fi
 
+    # extract simulation time
     return $diffAnywhere
 }

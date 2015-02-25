@@ -43,10 +43,11 @@ cp $NaluRtestCWD/nightly/dgNonConformal/dgNonConformal.norm.gold $baseGitHubCWD/
 ./dgNonConformal.sh
 # report it; 30 spaces
 passStatusDgNonConformal="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal/dgNonConformal.log  | awk '{print $4}'`
 if [ $passStatusDgNonConformal -ne 1 ]; then
-    echo -e "..dgNonConformal.............. FAILED"
+    echo -e "..dgNonConformal.............. FAILED":" " $GlobalPerformanceTime " s" 
 else
-    echo -e "..dgNonConformal.............. PASSED"
+    echo -e "..dgNonConformal.............. PASSED":" " $GlobalPerformanceTime " s"
 fi
 
 #=============================================================================
@@ -65,10 +66,11 @@ cp $NaluRtestCWD/nightly/concentricRad/concentricRad.norm.gold $baseGitHubCWD/ru
 ./concentricRad.sh
 # report it; 30 spaces
 passStatusConcentricRad="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/concentricRad/concentricRad.log  | awk '{print $4}'`
 if [ $passStatusConcentricRad -ne 1 ]; then
-    echo -e "..concentricRad............... FAILED"
+    echo -e "..concentricRad............... FAILED":" " $GlobalPerformanceTime " s"
 else
-    echo -e "..concentricRad............... PASSED"
+    echo -e "..concentricRad............... PASSED":" " $GlobalPerformanceTime " s" 
 fi
 
 #=============================================================================
@@ -87,10 +89,11 @@ cp $NaluRtestCWD/nightly/movingCylinder/movingCylinder.norm.gold $baseGitHubCWD/
 ./movingCylinder.sh
 # report it; 30 spaces
 passStatusMovingCylinder="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/movingCylinder/movingCylinder.log  | awk '{print $4}'`
 if [ $passStatusMovingCylinder -ne 1 ]; then
-    echo -e "..movingCylinder.............. FAILED"
+    echo -e "..movingCylinder.............. FAILED":" " $GlobalPerformanceTime " s"
 else
-    echo -e "..movingCylinder.............. PASSED"
+    echo -e "..movingCylinder.............. PASSED":" " $GlobalPerformanceTime " s"
 fi
 
 
@@ -108,12 +111,14 @@ cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.sh $baseGitHubCWD/r
 cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
 # run it...  
 ./elemBackStepLRSST.sh
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST/elemBackStepLRSST.log  | awk '{print $4}'`
 # report it; 30 spaces
 passStatusElemBackStep="$?"
 if [ $passStatusElemBackStep -ne 1 ]; then
-    echo -e "..elemBackStepLRSST........... FAILED"
+    echo -e "..elemBackStepLRSST........... FAILED":" " $GlobalPerformanceTime " s"
+
 else
-    echo -e "..elemBackStepLRSST........... PASSED"
+    echo -e "..elemBackStepLRSST........... PASSED":" " $GlobalPerformanceTime " s"
 fi
 
 #=============================================================================
@@ -132,10 +137,11 @@ cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.norm.gold $baseGitHubCWD/runNal
 ./edgePipeCHT.sh
 # report it; 30 spaces
 passStatusEdgePipeCHT="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT/edgePipeCHT.log  | awk '{print $4}'`
 if [ $passStatusEdgePipeCHT -ne 1 ]; then
-    echo -e "..edgePipeCHT................. FAILED"
+    echo -e "..edgePipeCHT................. FAILED":" " $GlobalPerformanceTime " s"
 else
-    echo -e "..edgePipeCHT................. PASSED"
+    echo -e "..edgePipeCHT................. PASSED":" " $GlobalPerformanceTime " s"
 fi
 
 #=============================================================================
@@ -152,12 +158,13 @@ cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.sh $baseGitHubCWD/runNa
 cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
 # run it...  
 ./heliumPlumeEdge.sh
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge/heliumPlumeEdge.log  | awk '{print $4}'`
 # report it; 30 spaces
 passStatusHeliumPlume="$?"
 if [ $passStatusHeliumPlume -ne 1 ]; then
-    echo -e "..heliumPlumeEdge............. FAILED"
+    echo -e "..heliumPlumeEdge............. FAILED":" " $GlobalPerformanceTime " s"
 else
-    echo -e "..heliumPlumeEdge............. PASSED"
+    echo -e "..heliumPlumeEdge............. PASSED":" " $GlobalPerformanceTime " s"
 fi
 
 #=============================================================================
@@ -175,12 +182,13 @@ cp $NaluRtestCWD/nightly/edgeContact3D/edgeContact3D.sh $baseGitHubCWD/runNaluRt
 cp $NaluRtestCWD/nightly/edgeContact3D/edgeContact3D.norm.gold $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D
 # run it...  
 ./edgeContact3D.sh
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D/edgeContact3D.log  | awk '{print $4}'`
 # report it; 30 spaces
 passStatusEdgeContact="$?"
 if [ $passStatusEdgeContact -ne 1 ]; then
-    echo -e "..edgeContact3D............... FAILED"
+    echo -e "..edgeContact3D............... FAILED":" " $GlobalPerformanceTime " s"
 else
-    echo -e "..edgeContact3D............... PASSED"
+    echo -e "..edgeContact3D............... PASSED":" " $GlobalPerformanceTime " s"
 fi
 
 #=============================================================================
@@ -197,12 +205,13 @@ cp $NaluRtestCWD/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.sh $baseGitHu
 cp $NaluRtestCWD/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.norm.gold $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic
 # run it...  
 ./fluidsPmrChtPeriodic.sh
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.log  | awk '{print $4}'`
 # report it; 30 spaces
 passStatusFluidsPmrCht="$?"
 if [ $passStatusFluidsPmrCht -ne 1 ]; then
-    echo -e "..fluidsPmrChtPeriodic........ FAILED"
+    echo -e "..fluidsPmrChtPeriodic........ FAILED":" " $GlobalPerformanceTime " s"
 else
-    echo -e "..fluidsPmrChtPeriodic........ PASSED"
+    echo -e "..fluidsPmrChtPeriodic........ PASSED":" " $GlobalPerformanceTime " s"
 fi
 
 echo "Rtest End"

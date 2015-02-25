@@ -1,5 +1,7 @@
 #!/bin/bash
 
+globalPerformanceTime=-1
+
 echo "Performance Rtest Begin"
 
 NaluRtestCWD=$(pwd)
@@ -43,10 +45,11 @@ cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.n
 ./waleElemXflowMixFrac3.5m.sh
 # report it; 30 spaces
 passStatusWaleElemXflow="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.log  | awk '{print $4}'`
 if [ $passStatusWaleElemXflow -ne 1 ]; then
-    echo -e "..waleElemXflowMixFrac3.5m.... FAILED"
+    echo -e "..waleElemXflowMixFrac3.5m.... FAILED":" " $GlobalPerformanceTime " s"
 else
-    echo -e "..waleElemXflowMixFrac3.5m.... PASSED"
+    echo -e "..waleElemXflowMixFrac3.5m.... PASSED":" " $GlobalPerformanceTime " s"
 fi
 
 echo "Performance Rtest End"
