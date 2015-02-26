@@ -111,9 +111,9 @@ cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.sh $baseGitHubCWD/r
 cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
 # run it...  
 ./elemBackStepLRSST.sh
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST/elemBackStepLRSST.log  | awk '{print $4}'`
 # report it; 30 spaces
 passStatusElemBackStep="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST/elemBackStepLRSST.log  | awk '{print $4}'`
 if [ $passStatusElemBackStep -ne 1 ]; then
     echo -e "..elemBackStepLRSST........... FAILED":" " $GlobalPerformanceTime " s"
 
@@ -158,9 +158,9 @@ cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.sh $baseGitHubCWD/runNa
 cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
 # run it...  
 ./heliumPlumeEdge.sh
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge/heliumPlumeEdge.log  | awk '{print $4}'`
 # report it; 30 spaces
 passStatusHeliumPlume="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge/heliumPlumeEdge.log  | awk '{print $4}'`
 if [ $passStatusHeliumPlume -ne 1 ]; then
     echo -e "..heliumPlumeEdge............. FAILED":" " $GlobalPerformanceTime " s"
 else
@@ -182,9 +182,9 @@ cp $NaluRtestCWD/nightly/edgeContact3D/edgeContact3D.sh $baseGitHubCWD/runNaluRt
 cp $NaluRtestCWD/nightly/edgeContact3D/edgeContact3D.norm.gold $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D
 # run it...  
 ./edgeContact3D.sh
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D/edgeContact3D.log  | awk '{print $4}'`
 # report it; 30 spaces
 passStatusEdgeContact="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D/edgeContact3D.log  | awk '{print $4}'`
 if [ $passStatusEdgeContact -ne 1 ]; then
     echo -e "..edgeContact3D............... FAILED":" " $GlobalPerformanceTime " s"
 else
@@ -205,9 +205,9 @@ cp $NaluRtestCWD/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.sh $baseGitHu
 cp $NaluRtestCWD/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.norm.gold $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic
 # run it...  
 ./fluidsPmrChtPeriodic.sh
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.log  | awk '{print $4}'`
 # report it; 30 spaces
 passStatusFluidsPmrCht="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.log  | awk '{print $4}'`
 if [ $passStatusFluidsPmrCht -ne 1 ]; then
     echo -e "..fluidsPmrChtPeriodic........ FAILED":" " $GlobalPerformanceTime " s"
 else
