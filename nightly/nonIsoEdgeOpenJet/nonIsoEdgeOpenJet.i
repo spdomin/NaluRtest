@@ -164,7 +164,7 @@ realms:
             enthalpy: yes 
 
     output:
-      output_data_base_name: nonIsoElemOpenJet.e
+      output_data_base_name: nonIsoEdgeOpenJet.e
       output_frequency: 5
       output_node_set: no
       output_variables:

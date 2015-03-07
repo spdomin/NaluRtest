@@ -5,7 +5,7 @@ typeOfTesting=$1
 
 globalPerformanceTime=-1
 
-echo "Performance Rtest Begin"
+echo "Performance Rtest Begin: " $typeOfTesting
 
 NaluRtestCWD=$(pwd)
 
