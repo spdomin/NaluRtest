@@ -21,17 +21,17 @@ fi
 # look for file that defines the path to naluX
 if [ ! -f $NaluRtestCWD/NaluProjectPath.txt ]; then
     if [ "$typeOfTesting" == "DEBUG" ]; then
-        cp $baseGitHubCWD/Nalu/build/naluXd $baseGitHubCWD/runNaluRtest
+        cp $baseGitHubCWD/Nalu/build/naluXd $baseGitHubCWD/runNaluRtest/naluX
     else
-        cp $baseGitHubCWD/Nalu/build/naluX $baseGitHubCWD/runNaluRtest
+        cp $baseGitHubCWD/Nalu/build/naluX $baseGitHubCWD/runNaluRtest/naluX
     fi
 else
     NaluProjectPathFile="$NaluRtestCWD/NaluProjectPath.txt"
     projectPathName=$(cat $NaluProjectPathFile)
     if [ "$typeOfTesting" == "DEBUG" ]; then
-        cp $projectPathName/build/naluXd $baseGitHubCWD/runNaluRtest
+        cp $projectPathName/build/naluXd $baseGitHubCWD/runNaluRtest/naluX
     else
-        cp $projectPathName/build/naluX $baseGitHubCWD/runNaluRtest
+        cp $projectPathName/build/naluX $baseGitHubCWD/runNaluRtest/naluX
     fi
 fi
 
