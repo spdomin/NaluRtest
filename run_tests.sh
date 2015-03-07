@@ -1,6 +1,9 @@
 #!/bin/bash
 
-echo "Rtest Begin"
+# possible flag passed in
+typeOfTesting=$1
+
+echo "Rtest Begin: " $typeOfTesting
 
 NaluRtestCWD=$(pwd)
 
@@ -17,11 +20,19 @@ fi
 # look for file that defines the path to naluX
 if [ ! -f $NaluRtestCWD/NaluProjectPath.txt ]; then
     # copy executable for all tests to use
-    cp $baseGitHubCWD/Nalu/build/naluX $baseGitHubCWD/runNaluRtest
+    if [ "$typeOfTesting" == "DEBUG" ]; then
+        cp $baseGitHubCWD/Nalu/build/naluXd $baseGitHubCWD/runNaluRtest
+    else
+        cp $baseGitHubCWD/Nalu/build/naluX $baseGitHubCWD/runNaluRtest
+    fi
 else
     NaluProjectPathFile="$NaluRtestCWD/NaluProjectPath.txt"
     projectPathName=$(cat $NaluProjectPathFile)
-    cp $projectPathName/build/naluX $baseGitHubCWD/runNaluRtest
+    if [ "$typeOfTesting" == "DEBUG" ]; then
+        cp $projectPathName/build/naluXd $baseGitHubCWD/runNaluRtest
+    else
+        cp $projectPathName/build/naluX $baseGitHubCWD/runNaluRtest
+    fi
 fi
 
 # copy pass_fail script
@@ -95,7 +106,6 @@ if [ $passStatusMovingCylinder -ne 1 ]; then
 else
     echo -e "..movingCylinder.............. PASSED":" " $GlobalPerformanceTime " s"
 fi
-
 
 #=============================================================================
 # elemBackStepLRSST test
@@ -212,6 +222,144 @@ if [ $passStatusFluidsPmrCht -ne 1 ]; then
     echo -e "..fluidsPmrChtPeriodic........ FAILED":" " $GlobalPerformanceTime " s"
 else
     echo -e "..fluidsPmrChtPeriodic........ PASSED":" " $GlobalPerformanceTime " s"
+fi
+
+#=============================================================================
+# nonIsoElemOpenJet test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/nonIsoElemOpenJet" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/nonIsoElemOpenJet
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/nonIsoElemOpenJet
+cp $NaluRtestCWD/nightly/nonIsoElemOpenJet/nonIsoElemOpenJet.i $baseGitHubCWD/runNaluRtest/nightly/nonIsoElemOpenJet
+cp $NaluRtestCWD/mesh/2cm_ped_35K_mks.g* $baseGitHubCWD/runNaluRtest/nightly/nonIsoElemOpenJet
+cp $NaluRtestCWD/nightly/nonIsoElemOpenJet/nonIsoElemOpenJet.sh $baseGitHubCWD/runNaluRtest/nightly/nonIsoElemOpenJet
+cp $NaluRtestCWD/nightly/nonIsoElemOpenJet/nonIsoElemOpenJet.norm.gold $baseGitHubCWD/runNaluRtest/nightly/nonIsoElemOpenJet
+# run it...  
+./nonIsoElemOpenJet.sh
+# report it; 30 spaces
+passStatusNonIsoElemOpenJet="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/nonIsoElemOpenJet/nonIsoElemOpenJet.log  | awk '{print $4}'`
+if [ $passStatusNonIsoElemOpenJet -ne 1 ]; then
+    echo -e "..nonIsoElemOpenJet........... FAILED":" " $GlobalPerformanceTime " s"
+else
+    echo -e "..nonIsoElemOpenJet........... PASSED":" " $GlobalPerformanceTime " s"
+fi
+
+#=============================================================================
+# nonIsoEdgeOpenJet test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/nonIsoEdgeOpenJet" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/nonIsoEdgeOpenJet
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/nonIsoEdgeOpenJet
+cp $NaluRtestCWD/nightly/nonIsoEdgeOpenJet/nonIsoEdgeOpenJet.i $baseGitHubCWD/runNaluRtest/nightly/nonIsoEdgeOpenJet
+cp $NaluRtestCWD/mesh/2cm_ped_35K_mks.g* $baseGitHubCWD/runNaluRtest/nightly/nonIsoEdgeOpenJet
+cp $NaluRtestCWD/nightly/nonIsoEdgeOpenJet/nonIsoEdgeOpenJet.sh $baseGitHubCWD/runNaluRtest/nightly/nonIsoEdgeOpenJet
+cp $NaluRtestCWD/nightly/nonIsoEdgeOpenJet/nonIsoEdgeOpenJet.norm.gold $baseGitHubCWD/runNaluRtest/nightly/nonIsoEdgeOpenJet
+# run it...  
+./nonIsoEdgeOpenJet.sh
+# report it; 30 spaces
+passStatusNonIsoEdgeOpenJet="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/nonIsoEdgeOpenJet/nonIsoEdgeOpenJet.log  | awk '{print $4}'`
+if [ $passStatusNonIsoEdgeOpenJet -ne 1 ]; then
+    echo -e "..nonIsoEdgeOpenJet........... FAILED":" " $GlobalPerformanceTime " s"
+else
+    echo -e "..nonIsoEdgeOpenJet........... PASSED":" " $GlobalPerformanceTime " s"
+fi
+
+#=============================================================================
+# elemHybridFluids test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/elemHybridFluids" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluids
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluids
+cp $NaluRtestCWD/nightly/elemHybridFluids/elemHybridFluids.i $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluids
+cp $NaluRtestCWD/mesh/hybrid.g* $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluids
+cp $NaluRtestCWD/nightly/elemHybridFluids/elemHybridFluids.sh $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluids
+cp $NaluRtestCWD/nightly/elemHybridFluids/elemHybridFluids.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluids
+# run it...  
+./elemHybridFluids.sh
+# report it; 30 spaces
+passStatusElemHybrid="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluids/elemHybridFluids.log  | awk '{print $4}'`
+if [ $passStatusElemHybrid -ne 1 ]; then
+    echo -e "..elemHybridFluids............ FAILED":" " $GlobalPerformanceTime " s"
+else
+    echo -e "..elemHybridFluids............ PASSED":" " $GlobalPerformanceTime " s"
+fi
+
+#=============================================================================
+# edgeHybridFluids test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/edgeHybridFluids" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/edgeHybridFluids
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/edgeHybridFluids
+cp $NaluRtestCWD/nightly/edgeHybridFluids/edgeHybridFluids.i $baseGitHubCWD/runNaluRtest/nightly/edgeHybridFluids
+cp $NaluRtestCWD/mesh/hybrid.g* $baseGitHubCWD/runNaluRtest/nightly/edgeHybridFluids
+cp $NaluRtestCWD/nightly/edgeHybridFluids/edgeHybridFluids.sh $baseGitHubCWD/runNaluRtest/nightly/edgeHybridFluids
+cp $NaluRtestCWD/nightly/edgeHybridFluids/edgeHybridFluids.norm.gold $baseGitHubCWD/runNaluRtest/nightly/edgeHybridFluids
+# run it...  
+./edgeHybridFluids.sh
+# report it; 30 spaces
+passStatusEdgeHybrid="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/edgeHybridFluids/edgeHybridFluids.log  | awk '{print $4}'`
+if [ $passStatusEdgeHybrid -ne 1 ]; then
+    echo -e "..edgeHybridFluids............ FAILED":" " $GlobalPerformanceTime " s"
+else
+    echo -e "..edgeHybridFluids............ PASSED":" " $GlobalPerformanceTime " s"
+fi
+
+#=============================================================================
+# elemClosedDomain test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/elemClosedDomain" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/elemClosedDomain
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/elemClosedDomain
+cp $NaluRtestCWD/nightly/elemClosedDomain/elemClosedDomain.i $baseGitHubCWD/runNaluRtest/nightly/elemClosedDomain
+cp $NaluRtestCWD/nightly/elemClosedDomain/*.g.* $baseGitHubCWD/runNaluRtest/nightly/elemClosedDomain
+cp $NaluRtestCWD/nightly/elemClosedDomain/elemClosedDomain.sh $baseGitHubCWD/runNaluRtest/nightly/elemClosedDomain
+cp $NaluRtestCWD/nightly/elemClosedDomain/elemClosedDomain.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemClosedDomain
+# run it...  
+./elemClosedDomain.sh
+# report it; 30 spaces
+passStatusElemClosed="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/elemClosedDomain/elemClosedDomain.log  | awk '{print $4}'`
+if [ $passStatusElemClosed -ne 1 ]; then
+    echo -e "..elemClosedDomain............ FAILED":" " $GlobalPerformanceTime " s"
+else
+    echo -e "..elemClosedDomain............ PASSED":" " $GlobalPerformanceTime " s"
+fi
+
+#=============================================================================
+# mixedTetPipe test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/mixedTetPipe" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/mixedTetPipe
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/mixedTetPipe
+cp $NaluRtestCWD/nightly/mixedTetPipe/mixedTetPipe.i $baseGitHubCWD/runNaluRtest/nightly/mixedTetPipe
+cp $NaluRtestCWD/mesh/pipeTet.g* $baseGitHubCWD/runNaluRtest/nightly/mixedTetPipe
+cp $NaluRtestCWD/nightly/mixedTetPipe/mixedTetPipe.sh $baseGitHubCWD/runNaluRtest/nightly/mixedTetPipe
+cp $NaluRtestCWD/nightly/mixedTetPipe/mixedTetPipe.norm.gold $baseGitHubCWD/runNaluRtest/nightly/mixedTetPipe
+# run it...  
+./mixedTetPipe.sh
+# report it; 30 spaces
+passStatusMixedTet="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/mixedTetPipe/mixedTetPipe.log  | awk '{print $4}'`
+if [ $passStatusMixedTet -ne 1 ]; then
+    echo -e "..mixedTetPipe................ FAILED":" " $GlobalPerformanceTime " s"
+else
+    echo -e "..mixedTetPipe................ PASSED":" " $GlobalPerformanceTime " s"
 fi
 
 echo "Rtest End"
