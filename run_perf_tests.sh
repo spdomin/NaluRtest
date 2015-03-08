@@ -1,8 +1,11 @@
 #!/bin/bash
 
+# possible flag passed in
+typeOfTesting=$1
+
 globalPerformanceTime=-1
 
-echo "Performance Rtest Begin"
+echo "Performance Rtest Begin: " $typeOfTesting
 
 NaluRtestCWD=$(pwd)
 
@@ -17,12 +20,19 @@ fi
 
 # look for file that defines the path to naluX
 if [ ! -f $NaluRtestCWD/NaluProjectPath.txt ]; then
-    # copy executable for all tests to use
-    cp $baseGitHubCWD/Nalu/build/naluX $baseGitHubCWD/runNaluRtest
+    if [ "$typeOfTesting" == "DEBUG" ]; then
+        cp $baseGitHubCWD/Nalu/build/naluXd $baseGitHubCWD/runNaluRtest/naluX
+    else
+        cp $baseGitHubCWD/Nalu/build/naluX $baseGitHubCWD/runNaluRtest/naluX
+    fi
 else
     NaluProjectPathFile="$NaluRtestCWD/NaluProjectPath.txt"
     projectPathName=$(cat $NaluProjectPathFile)
-    cp $projectPathName/build/naluX $baseGitHubCWD/runNaluRtest
+    if [ "$typeOfTesting" == "DEBUG" ]; then
+        cp $projectPathName/build/naluXd $baseGitHubCWD/runNaluRtest/naluX
+    else
+        cp $projectPathName/build/naluX $baseGitHubCWD/runNaluRtest/naluX
+    fi
 fi
 
 # copy pass_fail script
