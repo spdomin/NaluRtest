@@ -62,4 +62,28 @@ else
     echo -e "..waleElemXflowMixFrac3.5m.... PASSED":" " $GlobalPerformanceTime " s"
 fi
 
+#=============================================================================
+# uqSlidingMesh test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
+fi
+
+cd $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
+cp $NaluRtestCWD/performance/uqSlidingMesh/uqSlidingMesh.i $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
+cp $NaluRtestCWD/performance/uqSlidingMesh/*.xml $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
+cp $NaluRtestCWD/mesh/uqvawt_corrected.exo.* $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
+cp $NaluRtestCWD/performance/uqSlidingMesh/uqSlidingMesh.sh $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
+cp $NaluRtestCWD/performance/uqSlidingMesh/uqSlidingMesh.norm.gold* $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
+# run it...  
+./uqSlidingMesh.sh
+# report it; 30 spaces
+passStatusUqSliding="$?"
+GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh/uqSlidingMesh.log  | awk '{print $4}'`
+if [ $passStatusUqSliding -ne 1 ]; then
+    echo -e "..uqSlidingMesh............... FAILED":" " $GlobalPerformanceTime " s"
+else
+    echo -e "..uqSlidingMesh............... PASSED":" " $GlobalPerformanceTime " s"
+fi
+
 echo "Performance Rtest End"
