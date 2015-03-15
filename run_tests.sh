@@ -52,14 +52,6 @@ cp $NaluRtestCWD/nightly/dgNonConformal/dgNonConformal.sh $baseGitHubCWD/runNalu
 cp $NaluRtestCWD/nightly/dgNonConformal/dgNonConformal.norm.gold $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
 # run it...  
 ./dgNonConformal.sh
-# report it; 30 spaces
-passStatusDgNonConformal="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal/dgNonConformal.log  | awk '{print $4}'`
-if [ $passStatusDgNonConformal -ne 1 ]; then
-    echo -e "..dgNonConformal.............. FAILED":" " $GlobalPerformanceTime " s" 
-else
-    echo -e "..dgNonConformal.............. PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # concentricRad test
@@ -75,14 +67,6 @@ cp $NaluRtestCWD/nightly/concentricRad/concentricRad.sh $baseGitHubCWD/runNaluRt
 cp $NaluRtestCWD/nightly/concentricRad/concentricRad.norm.gold $baseGitHubCWD/runNaluRtest/nightly/concentricRad
 # run it...  
 ./concentricRad.sh
-# report it; 30 spaces
-passStatusConcentricRad="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/concentricRad/concentricRad.log  | awk '{print $4}'`
-if [ $passStatusConcentricRad -ne 1 ]; then
-    echo -e "..concentricRad............... FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..concentricRad............... PASSED":" " $GlobalPerformanceTime " s" 
-fi
 
 #=============================================================================
 # movingCylinder test
@@ -98,14 +82,6 @@ cp $NaluRtestCWD/nightly/movingCylinder/movingCylinder.sh $baseGitHubCWD/runNalu
 cp $NaluRtestCWD/nightly/movingCylinder/movingCylinder.norm.gold $baseGitHubCWD/runNaluRtest/nightly/movingCylinder
 # run it...  
 ./movingCylinder.sh
-# report it; 30 spaces
-passStatusMovingCylinder="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/movingCylinder/movingCylinder.log  | awk '{print $4}'`
-if [ $passStatusMovingCylinder -ne 1 ]; then
-    echo -e "..movingCylinder.............. FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..movingCylinder.............. PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # elemBackStepLRSST test
@@ -121,15 +97,6 @@ cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.sh $baseGitHubCWD/r
 cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
 # run it...  
 ./elemBackStepLRSST.sh
-# report it; 30 spaces
-passStatusElemBackStep="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST/elemBackStepLRSST.log  | awk '{print $4}'`
-if [ $passStatusElemBackStep -ne 1 ]; then
-    echo -e "..elemBackStepLRSST........... FAILED":" " $GlobalPerformanceTime " s"
-
-else
-    echo -e "..elemBackStepLRSST........... PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # edgePipeCHT test
@@ -145,14 +112,6 @@ cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.sh $baseGitHubCWD/runNaluRtest/
 cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.norm.gold $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
 # run it...  
 ./edgePipeCHT.sh
-# report it; 30 spaces
-passStatusEdgePipeCHT="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT/edgePipeCHT.log  | awk '{print $4}'`
-if [ $passStatusEdgePipeCHT -ne 1 ]; then
-    echo -e "..edgePipeCHT................. FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..edgePipeCHT................. PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # heliumPlumeEdge test
@@ -168,14 +127,6 @@ cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.sh $baseGitHubCWD/runNa
 cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
 # run it...  
 ./heliumPlumeEdge.sh
-# report it; 30 spaces
-passStatusHeliumPlume="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge/heliumPlumeEdge.log  | awk '{print $4}'`
-if [ $passStatusHeliumPlume -ne 1 ]; then
-    echo -e "..heliumPlumeEdge............. FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..heliumPlumeEdge............. PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # edgeContact3D test
@@ -192,14 +143,6 @@ cp $NaluRtestCWD/nightly/edgeContact3D/edgeContact3D.sh $baseGitHubCWD/runNaluRt
 cp $NaluRtestCWD/nightly/edgeContact3D/edgeContact3D.norm.gold $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D
 # run it...  
 ./edgeContact3D.sh
-# report it; 30 spaces
-passStatusEdgeContact="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/edgeContact3D/edgeContact3D.log  | awk '{print $4}'`
-if [ $passStatusEdgeContact -ne 1 ]; then
-    echo -e "..edgeContact3D............... FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..edgeContact3D............... PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # fluidsPmrChtPeriodic test
@@ -215,14 +158,6 @@ cp $NaluRtestCWD/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.sh $baseGitHu
 cp $NaluRtestCWD/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.norm.gold $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic
 # run it...  
 ./fluidsPmrChtPeriodic.sh
-# report it; 30 spaces
-passStatusFluidsPmrCht="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/fluidsPmrChtPeriodic/fluidsPmrChtPeriodic.log  | awk '{print $4}'`
-if [ $passStatusFluidsPmrCht -ne 1 ]; then
-    echo -e "..fluidsPmrChtPeriodic........ FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..fluidsPmrChtPeriodic........ PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # nonIsoElemOpenJet test
@@ -238,14 +173,6 @@ cp $NaluRtestCWD/nightly/nonIsoElemOpenJet/nonIsoElemOpenJet.sh $baseGitHubCWD/r
 cp $NaluRtestCWD/nightly/nonIsoElemOpenJet/nonIsoElemOpenJet.norm.gold $baseGitHubCWD/runNaluRtest/nightly/nonIsoElemOpenJet
 # run it...  
 ./nonIsoElemOpenJet.sh
-# report it; 30 spaces
-passStatusNonIsoElemOpenJet="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/nonIsoElemOpenJet/nonIsoElemOpenJet.log  | awk '{print $4}'`
-if [ $passStatusNonIsoElemOpenJet -ne 1 ]; then
-    echo -e "..nonIsoElemOpenJet........... FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..nonIsoElemOpenJet........... PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # nonIsoEdgeOpenJet test
@@ -261,14 +188,6 @@ cp $NaluRtestCWD/nightly/nonIsoEdgeOpenJet/nonIsoEdgeOpenJet.sh $baseGitHubCWD/r
 cp $NaluRtestCWD/nightly/nonIsoEdgeOpenJet/nonIsoEdgeOpenJet.norm.gold $baseGitHubCWD/runNaluRtest/nightly/nonIsoEdgeOpenJet
 # run it...  
 ./nonIsoEdgeOpenJet.sh
-# report it; 30 spaces
-passStatusNonIsoEdgeOpenJet="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/nonIsoEdgeOpenJet/nonIsoEdgeOpenJet.log  | awk '{print $4}'`
-if [ $passStatusNonIsoEdgeOpenJet -ne 1 ]; then
-    echo -e "..nonIsoEdgeOpenJet........... FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..nonIsoEdgeOpenJet........... PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # elemHybridFluids test
@@ -284,14 +203,6 @@ cp $NaluRtestCWD/nightly/elemHybridFluids/elemHybridFluids.sh $baseGitHubCWD/run
 cp $NaluRtestCWD/nightly/elemHybridFluids/elemHybridFluids.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluids
 # run it...  
 ./elemHybridFluids.sh
-# report it; 30 spaces
-passStatusElemHybrid="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluids/elemHybridFluids.log  | awk '{print $4}'`
-if [ $passStatusElemHybrid -ne 1 ]; then
-    echo -e "..elemHybridFluids............ FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..elemHybridFluids............ PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # edgeHybridFluids test
@@ -307,14 +218,6 @@ cp $NaluRtestCWD/nightly/edgeHybridFluids/edgeHybridFluids.sh $baseGitHubCWD/run
 cp $NaluRtestCWD/nightly/edgeHybridFluids/edgeHybridFluids.norm.gold $baseGitHubCWD/runNaluRtest/nightly/edgeHybridFluids
 # run it...  
 ./edgeHybridFluids.sh
-# report it; 30 spaces
-passStatusEdgeHybrid="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/edgeHybridFluids/edgeHybridFluids.log  | awk '{print $4}'`
-if [ $passStatusEdgeHybrid -ne 1 ]; then
-    echo -e "..edgeHybridFluids............ FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..edgeHybridFluids............ PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # elemClosedDomain test
@@ -330,14 +233,6 @@ cp $NaluRtestCWD/nightly/elemClosedDomain/elemClosedDomain.sh $baseGitHubCWD/run
 cp $NaluRtestCWD/nightly/elemClosedDomain/elemClosedDomain.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemClosedDomain
 # run it...  
 ./elemClosedDomain.sh
-# report it; 30 spaces
-passStatusElemClosed="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/elemClosedDomain/elemClosedDomain.log  | awk '{print $4}'`
-if [ $passStatusElemClosed -ne 1 ]; then
-    echo -e "..elemClosedDomain............ FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..elemClosedDomain............ PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # mixedTetPipe test
@@ -353,13 +248,20 @@ cp $NaluRtestCWD/nightly/mixedTetPipe/mixedTetPipe.sh $baseGitHubCWD/runNaluRtes
 cp $NaluRtestCWD/nightly/mixedTetPipe/mixedTetPipe.norm.gold $baseGitHubCWD/runNaluRtest/nightly/mixedTetPipe
 # run it...  
 ./mixedTetPipe.sh
-# report it; 30 spaces
-passStatusMixedTet="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/nightly/mixedTetPipe/mixedTetPipe.log  | awk '{print $4}'`
-if [ $passStatusMixedTet -ne 1 ]; then
-    echo -e "..mixedTetPipe................ FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..mixedTetPipe................ PASSED":" " $GlobalPerformanceTime " s"
+
+#=============================================================================
+# inputFireEdgeUpwind test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind
 fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind
+cp $NaluRtestCWD/nightly/inputFireEdgeUpwind/inputFireEdgeUpwind.i $baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind
+cp $NaluRtestCWD/nightly/inputFireEdgeUpwind/*.e.* $baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind
+cp $NaluRtestCWD/nightly/inputFireEdgeUpwind/inputFireEdgeUpwind.sh $baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind
+cp $NaluRtestCWD/nightly/inputFireEdgeUpwind/inputFireEdgeUpwind.norm.gold $baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind
+# run it...  
+./inputFireEdgeUpwind.sh
 
 echo "Rtest End"

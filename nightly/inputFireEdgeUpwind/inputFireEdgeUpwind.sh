@@ -5,7 +5,7 @@ CWD=$(pwd)
 didSimulationDiffAnywhere=0
 
 # determine tolerance
-testTol=0.0000001
+testTol=0.000000000000001
 platform=`uname`
 if [ "$platform" == 'Linux' ]; then
     testTol=0.0000000000000001
@@ -18,8 +18,8 @@ if [ -f $CWD/PASS ]; then
     # already ran this test
     didSimulationDiffAnywhere=0
 else
-    mpiexec --np 2 ../../naluX -i elemClosedDomain.i -o elemClosedDomain.log
-    determine_pass_fail $testTol "elemClosedDomain.log" "elemClosedDomain.norm" "elemClosedDomain.norm.gold"
+    mpiexec --np 4 ../../naluX -i inputFireEdgeUpwind.i -o inputFireEdgeUpwind.log
+    determine_pass_fail $testTol "inputFireEdgeUpwind.log" "inputFireEdgeUpwind.norm" "inputFireEdgeUpwind.norm.gold"
     didSimulationDiffAnywhere="$?"
 fi
 
@@ -32,11 +32,11 @@ else
 fi
 
 # report it; 30 spaces
-GlobalPerformanceTime=`grep "STKPERF: Total Time" elemClosedDomain.log  | awk '{print $4}'`
+GlobalPerformanceTime=`grep "STKPERF: Total Time" inputFireEdgeUpwind.log  | awk '{print $4}'`
 if [ $PASS_STATUS -ne 1 ]; then
-    echo -e "..elemClosedDomain............ FAILED":" " $GlobalPerformanceTime " s" " max diff: " $GlobalMaxSolutionDiff
+    echo -e "..inputFireEdgeUpwind......... FAILED":" " $GlobalPerformanceTime " s" " max diff: " $GlobalMaxSolutionDiff
 else
-    echo -e "..elemClosedDomain............ PASSED":" " $GlobalPerformanceTime " s"
+    echo -e "..inputFireEdgeUpwind......... PASSED":" " $GlobalPerformanceTime " s"
 fi
 
-exit
+exit $PASS

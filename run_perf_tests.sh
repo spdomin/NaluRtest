@@ -53,14 +53,6 @@ cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.s
 cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.norm.gold* $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
 # run it...  
 ./waleElemXflowMixFrac3.5m.sh
-# report it; 30 spaces
-passStatusWaleElemXflow="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.log  | awk '{print $4}'`
-if [ $passStatusWaleElemXflow -ne 1 ]; then
-    echo -e "..waleElemXflowMixFrac3.5m.... FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..waleElemXflowMixFrac3.5m.... PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 #=============================================================================
 # uqSlidingMesh test
@@ -77,13 +69,5 @@ cp $NaluRtestCWD/performance/uqSlidingMesh/uqSlidingMesh.sh $baseGitHubCWD/runNa
 cp $NaluRtestCWD/performance/uqSlidingMesh/uqSlidingMesh.norm.gold* $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
 # run it...  
 ./uqSlidingMesh.sh
-# report it; 30 spaces
-passStatusUqSliding="$?"
-GlobalPerformanceTime=`grep "STKPERF: Total Time" $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh/uqSlidingMesh.log  | awk '{print $4}'`
-if [ $passStatusUqSliding -ne 1 ]; then
-    echo -e "..uqSlidingMesh............... FAILED":" " $GlobalPerformanceTime " s"
-else
-    echo -e "..uqSlidingMesh............... PASSED":" " $GlobalPerformanceTime " s"
-fi
 
 echo "Performance Rtest End"
