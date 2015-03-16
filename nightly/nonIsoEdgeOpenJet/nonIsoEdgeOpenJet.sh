@@ -11,6 +11,9 @@ if [ "$platform" == 'Linux' ]; then
     testTol=0.0000000000000001
 fi
 
+# set the global diff
+GlobalMaxSolutionDiff=-1000000000.0
+
 if [ -f $CWD/PASS ]; then
     # already ran this test
     didSimulationDiffAnywhere=0
@@ -28,4 +31,12 @@ else
     echo $PASS_STATUS > PASS
 fi
 
-exit $PASS_STATUS
+# report it; 30 spaces
+GlobalPerformanceTime=`grep "STKPERF: Total Time" nonIsoEdgeOpenJet.log  | awk '{print $4}'`
+if [ $PASS_STATUS -ne 1 ]; then
+    echo -e "..nonIsoEdgeOpenJet........... FAILED":" " $GlobalPerformanceTime " s" " max diff: " $GlobalMaxSolutionDiff
+else
+    echo -e "..nonIsoEdgeOpenJet........... PASSED":" " $GlobalPerformanceTime " s"
+fi
+
+exit

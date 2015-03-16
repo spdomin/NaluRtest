@@ -11,6 +11,9 @@ if [ "$platform" == 'Linux' ]; then
     testTol=0.000000000001
 fi
 
+# set the global diff
+GlobalMaxSolutionDiff=-1000000000.0
+
 if [ -f $CWD/PASS ]; then
     # already ran this test
     didSimulationDiffAnywhere=0
@@ -28,4 +31,13 @@ else
     echo $PASS_STATUS > PASS
 fi
 
-exit $PASS_STATUS
+# report it; 30 spaces
+GlobalPerformanceTime=`grep "STKPERF: Total Time" elemBackStepLRSST.log  | awk '{print $4}'`
+if [ $PASS_STATUS -ne 1 ]; then
+    echo -e "..elemBackStepLRSST........... FAILED":" " $GlobalPerformanceTime " s" " max diff: " $GlobalMaxSolutionDiff
+
+else
+    echo -e "..elemBackStepLRSST........... PASSED":" " $GlobalPerformanceTime " s"
+fi
+
+exit

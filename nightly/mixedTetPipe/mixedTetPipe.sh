@@ -11,6 +11,9 @@ if [ "$platform" == 'Linux' ]; then
     testTol=0.0000000000000001
 fi
 
+# set the global diff
+GlobalMaxSolutionDiff=-1000000000.0
+
 if [ -f $CWD/PASS ]; then
     # already ran this test
     didSimulationDiffAnywhere=0
@@ -26,6 +29,14 @@ if [ "$didSimulationDiffAnywhere" -gt 0 ]; then
 else
     PASS_STATUS=1
     echo $PASS_STATUS > PASS
+fi
+
+# report it; 30 spaces
+GlobalPerformanceTime=`grep "STKPERF: Total Time" mixedTetPipe.log  | awk '{print $4}'`
+if [ $PASS_STATUS -ne 1 ]; then
+    echo -e "..mixedTetPipe................ FAILED":" " $GlobalPerformanceTime " s" " max diff: " $GlobalMaxSolutionDiff
+else
+    echo -e "..mixedTetPipe................ PASSED":" " $GlobalPerformanceTime " s"
 fi
 
 exit $PASS_STATUS

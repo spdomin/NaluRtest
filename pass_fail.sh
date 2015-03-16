@@ -7,7 +7,7 @@ determine_pass_fail() {
     logFileName=$2
     localNormFileName=$3
     goldNormFileName=$4
-    
+
     # check for required files: log file and gold
     if [ ! -f "$logFileName" ]; then
 	diffAnywhere=1
@@ -62,6 +62,12 @@ determine_pass_fail() {
 	    if [ $(echo " $absDiff > $tolerance" | bc) -eq 1 ]; then
 		diffAnywhere=1
 	    fi
+
+            # find the max
+            if [ $(echo " $absDiff > $GlobalMaxSolutionDiff " | bc) -eq 1 ]; then
+                GlobalMaxSolutionDiff=$absDiff
+            fi
+
 	done
 
     else
@@ -70,5 +76,6 @@ determine_pass_fail() {
     fi
 
     # extract simulation time
-    return $diffAnywhere
+    return $diffAnywhere  
+
 }
