@@ -67,11 +67,9 @@ realms:
       reference_quantities:
         - species_name: aN2
           mw: 28.0
-          mass_fraction: 0.767
 
         - species_name: bO2
           mw: 32.0
-          mass_fraction: 0.233
 
       specifications:
  
