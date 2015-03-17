@@ -264,4 +264,34 @@ cp $NaluRtestCWD/nightly/inputFireEdgeUpwind/inputFireEdgeUpwind.norm.gold $base
 # run it...  
 ./inputFireEdgeUpwind.sh
 
+#=============================================================================
+# nonIsoNonUniformEdgeOpenJet test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformElemOpenJet" ]; then
+mkdir $baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformElemOpenJet
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformElemOpenJet
+cp $NaluRtestCWD/nightly/nonIsoNonUniformElemOpenJet/nonIsoNonUniformElemOpenJet.i $baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformElemOpenJet
+cp $NaluRtestCWD/mesh/2cm_ped_35K_mks.g* $baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformElemOpenJet
+cp $NaluRtestCWD/nightly/nonIsoNonUniformElemOpenJet/nonIsoNonUniformElemOpenJet.sh $baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformElemOpenJet
+cp $NaluRtestCWD/nightly/nonIsoNonUniformElemOpenJet/nonIsoNonUniformElemOpenJet.norm.gold $baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformElemOpenJet
+# run it...
+./nonIsoNonUniformElemOpenJet.sh
+
+#=============================================================================
+# nonIsoNonUniformEdgeOpenJet test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformEdgeOpenJet" ]; then
+mkdir $baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformEdgeOpenJet
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformEdgeOpenJet
+cp $NaluRtestCWD/nightly/nonIsoNonUniformEdgeOpenJet/nonIsoNonUniformEdgeOpenJet.i $baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformEdgeOpenJet
+cp $NaluRtestCWD/mesh/2cm_ped_35K_mks.g* $baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformEdgeOpenJet
+cp $NaluRtestCWD/nightly/nonIsoNonUniformEdgeOpenJet/nonIsoNonUniformEdgeOpenJet.sh $baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformEdgeOpenJet
+cp $NaluRtestCWD/nightly/nonIsoNonUniformEdgeOpenJet/nonIsoNonUniformEdgeOpenJet.norm.gold $baseGitHubCWD/runNaluRtest/nightly/nonIsoNonUniformEdgeOpenJet
+# run it...
+./nonIsoNonUniformEdgeOpenJet.sh
+
 echo "Rtest End"
