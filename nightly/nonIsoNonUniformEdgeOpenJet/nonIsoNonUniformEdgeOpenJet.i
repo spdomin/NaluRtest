@@ -65,11 +65,11 @@ realms:
        reference_pressure: 101325.0
 
       reference_quantities:
-        - species_name: N2
-          mw: 14.0
+        - species_name: aN2
+          mw: 28.0
           mass_fraction: 0.767
 
-        - species_name: O2
+        - species_name: bO2
           mw: 32.0
           mass_fraction: 0.233
 
@@ -124,7 +124,7 @@ realms:
     - inflow_boundary_condition: bc_inflow
       target_name: surface_2
       inflow_user_data:
-        velocity: [0,0,0.50]
+        velocity: [0,0,10.0]
         temperature: 800.0
         mass_fraction: [ 0.85, 0.15]
 
@@ -151,6 +151,7 @@ realms:
 
     solution_options:
       name: myOptions
+      turbulence_model: wale
 
       interp_rhou_together_for_mdot: no
 
@@ -182,7 +183,7 @@ realms:
             mass_fraction: yes
 
     output:
-      output_data_base_name: nonIsoEdgeOpenJet.e
+      output_data_base_name: nonIsoNonUniformEdgeOpenJet.e
       output_frequency: 5
       output_node_set: no
       output_variables:
@@ -196,8 +197,8 @@ Time_Integrators:
   - StandardTimeIntegrator:
       name: ti_1
       start_time: 0
-      termination_time: 0.20
-      time_step: 0.01
+      termination_time: 0.01
+      time_step: 0.001
       time_stepping_type: adaptive 
       time_step_count: 0
 
