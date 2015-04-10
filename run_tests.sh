@@ -294,4 +294,20 @@ cp $NaluRtestCWD/nightly/nonIsoNonUniformEdgeOpenJet/nonIsoNonUniformEdgeOpenJet
 # run it...
 ./nonIsoNonUniformEdgeOpenJet.sh
 
+#=============================================================================
+# milestoneRun test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/milestoneRun" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/milestoneRun
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/milestoneRun
+cp $NaluRtestCWD/nightly/milestoneRun/milestoneRun.i $baseGitHubCWD/runNaluRtest/nightly/milestoneRun
+cp $NaluRtestCWD/nightly/milestoneRun/*.xml $baseGitHubCWD/runNaluRtest/nightly/milestoneRun
+cp $NaluRtestCWD/mesh/1cm_ped_35K.g $baseGitHubCWD/runNaluRtest/nightly/milestoneRun
+cp $NaluRtestCWD/nightly/milestoneRun/milestoneRun.sh $baseGitHubCWD/runNaluRtest/nightly/milestoneRun
+cp $NaluRtestCWD/nightly/milestoneRun/milestoneRun.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/milestoneRun
+# run it...  
+./milestoneRun.sh
+
 echo "Rtest End"
