@@ -87,7 +87,7 @@ realms:
     - inflow_boundary_condition: bc_inflow
       target_name: surface_2
       inflow_user_data:
-        velocity: [0,0,500.0]
+        velocity: [0,0,1000.0]
         turbulent_ke: 150.0 
         mixture_fraction: 1.0
 
@@ -119,7 +119,7 @@ realms:
 
       options:
         - hybrid_factor:
-            velocity: 1.0 
+            velocity: 0.0 
             turbulent_ke: 1.0
             mixture_fraction: 1.0
 
@@ -135,6 +135,11 @@ realms:
         - turbulent_schmidt:
             turbulent_ke: 1.0
             mixture_fraction: 1.0
+
+        - limiter:
+            velocity: no
+            turbulent_ke: yes
+            mixture_fraction: yes
                 
     output:
       output_data_base_name: milestoneRun.e
@@ -156,8 +161,8 @@ Time_Integrators:
   - StandardTimeIntegrator:
       name: ti_1
       start_time: 0
-      termination_time: 100.0e-4
-      time_step: 2.0e-4
+      termination_step_count: 50 
+      time_step: 1.0e-4
       time_stepping_type: fixed 
       time_step_count: 0
       second_order_accuracy: no
