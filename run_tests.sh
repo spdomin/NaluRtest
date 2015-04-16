@@ -47,11 +47,26 @@ fi
 
 cd $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
 cp $NaluRtestCWD/nightly/dgNonConformal/dgNonConformal.i $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
-cp $NaluRtestCWD/nightly/dgNonConformal/*.g* $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
+cp $NaluRtestCWD/mesh/2DTwoBlock_R0_rev.g.* $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
 cp $NaluRtestCWD/nightly/dgNonConformal/dgNonConformal.sh $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
 cp $NaluRtestCWD/nightly/dgNonConformal/dgNonConformal.norm.gold $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
 # run it...  
 ./dgNonConformal.sh
+
+#=============================================================================
+# dgNonConformalEdge test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
+cp $NaluRtestCWD/nightly/dgNonConformalEdge/dgNonConformalEdge.i $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
+cp $NaluRtestCWD/mesh/2DTwoBlock_R0_rev.g.* $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
+cp $NaluRtestCWD/nightly/dgNonConformalEdge/dgNonConformalEdge.sh $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
+cp $NaluRtestCWD/nightly/dgNonConformalEdge/dgNonConformalEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
+# run it...  
+./dgNonConformalEdge.sh
 
 #=============================================================================
 # concentricRad test
