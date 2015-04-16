@@ -114,7 +114,7 @@ cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.norm.gold $baseGitHubCWD/runNal
 ./edgePipeCHT.sh
 
 #=============================================================================
-# heliumPlumeEdge test
+# heliumPlumeEdge test (with restart)
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge" ]; then
     mkdir $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
@@ -122,9 +122,13 @@ fi
 
 cd $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
 cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.i $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge_rst.i $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
 cp $NaluRtestCWD/nightly/heliumPlumeEdge/*.g.* $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+cp $NaluRtestCWD/nightly/heliumPlumeEdge/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
 cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.sh $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
 cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge_rst.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+
 # run it...  
 ./heliumPlumeEdge.sh
 

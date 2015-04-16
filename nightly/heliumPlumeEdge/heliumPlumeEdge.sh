@@ -3,6 +3,10 @@
 
 CWD=$(pwd)
 didSimulationDiffAnywhere=0
+didSimulationDiffAnywhereFirst=0
+didSimulationDiffAnywhereSecond=0
+localDiffOne=0.0;
+localDiffTwo=0.0;
 
 # determine tolerance
 testTol=0.000000000001
@@ -12,15 +16,37 @@ if [ "$platform" == 'Linux' ]; then
 fi
 
 # set the global diff
-GlobalMaxSolutionDiff=-1000000000.0
+GlobalMaxSolutionDiff=-1000000.0
 
 if [ -f $CWD/PASS ]; then
     # already ran this test
     didSimulationDiffAnywhere=0
 else
+    # run the first case
     mpiexec --np 8 ../../naluX -i heliumPlumeEdge.i -o heliumPlumeEdge.log
     determine_pass_fail $testTol "heliumPlumeEdge.log" "heliumPlumeEdge.norm" "heliumPlumeEdge.norm.gold"
-    didSimulationDiffAnywhere="$?"
+    didSimulationDiffAnywhereFirst="$?"
+    localDiffOne=$GlobalMaxSolutionDiff
+    if [ "$didSimulationDiffAnywhereFirst" -gt 0 ]; then
+        didSimulationDiffAnywhere=1
+    fi
+
+    # run the second case
+    mpiexec --np 8 ../../naluX -i heliumPlumeEdge_rst.i -o heliumPlumeEdge_rst.log
+    determine_pass_fail $testTol "heliumPlumeEdge_rst.log" "heliumPlumeEdge_rst.norm" "heliumPlumeEdge_rst.norm.gold"
+    didSimulationDiffAnywhereSecond="$?"
+    localDiffTwo=$GlobalMaxSolutionDiff
+    if [ "$didSimulationDiffAnywhereSecond" -gt 0 ]; then
+        didSimulationDiffAnywhere=1
+    fi
+
+    # check who is greater
+    if [ $(echo " $localDiffOne > $localDiffTwo " | bc) -eq 1 ]; then
+        GlobalMaxSolutionDiff=$localDiffOne
+    else
+        GlobalMaxSolutionDiff=$localDiffTwo
+    fi
+   
 fi
 
 # write the file based on final status
@@ -32,11 +58,13 @@ else
 fi
 
 # report it; 30 spaces
-GlobalPerformanceTime=`grep "STKPERF: Total Time" heliumPlumeEdge.log  | awk '{print $4}'`
+GlobalPerformanceTimeFirst=`grep "STKPERF: Total Time" heliumPlumeEdge.log  | awk '{print $4}'`
+GlobalPerformanceTimeSecond=`grep "STKPERF: Total Time" heliumPlumeEdge_rst.log  | awk '{print $4}'`
+totalPerfTime=`echo "$GlobalPerformanceTimeFirst + $GlobalPerformanceTimeSecond" | bc `
 if [ $PASS_STATUS -ne 1 ]; then
-    echo -e "..heliumPlumeEdge............. FAILED":" " $GlobalPerformanceTime " s" " max diff: " $GlobalMaxSolutionDiff
+    echo -e "..heliumPlumeEdge............. FAILED":" " $totalPerfTime " s" " max diff: " $GlobalMaxSolutionDiff
 else
-    echo -e "..heliumPlumeEdge............. PASSED":" " $GlobalPerformanceTime " s"
+    echo -e "..heliumPlumeEdge............. PASSED":" " $totalPerfTime " s"
 fi
 
 exit
