@@ -73,6 +73,7 @@ determine_pass_fail() {
     else
         # length was not the same; fail
 	diffAnywhere=1
+        GlobalMaxSolutionDiff=1000000.0
     fi
 
     # extract simulation time

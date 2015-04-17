@@ -5,7 +5,7 @@ CWD=$(pwd)
 didSimulationDiffAnywhere=0
 
 # determine tolerance
-testTol=0.000000098
+testTol=0.000000000001
 platform=`uname`
 if [ "$platform" == 'Linux' ]; then
     testTol=0.0000000000000001
@@ -18,8 +18,8 @@ if [ -f $CWD/PASS ]; then
     # already ran this test
     didSimulationDiffAnywhere=0
 else
-    mpiexec --np 4 ../../naluX -i milestoneRun.i -o milestoneRun.log
-    determine_pass_fail $testTol "milestoneRun.log" "milestoneRun.norm" "milestoneRun.norm.gold"
+    mpiexec --np 4 ../../naluX -i dgNonConformalEdge.i -o dgNonConformalEdge.log
+    determine_pass_fail $testTol "dgNonConformalEdge.log" "dgNonConformalEdge.norm" "dgNonConformalEdge.norm.gold"
     didSimulationDiffAnywhere="$?"
 fi
 
@@ -32,11 +32,11 @@ else
 fi
 
 # report it; 30 spaces
-GlobalPerformanceTime=`grep "STKPERF: Total Time" milestoneRun.log  | awk '{print $4}'`
+GlobalPerformanceTime=`grep "STKPERF: Total Time" dgNonConformalEdge.log  | awk '{print $4}'`
 if [ $PASS_STATUS -ne 1 ]; then
-    echo -e "..milestoneRun................ FAILED":" " $GlobalPerformanceTime " s" " max diff: " $GlobalMaxSolutionDiff
+    echo -e "..dgNonConformalEdge.......... FAILED":" " $GlobalPerformanceTime " s " " max diff: " $GlobalMaxSolutionDiff
 else
-    echo -e "..milestoneRun................ PASSED":" " $GlobalPerformanceTime " s"
+    echo -e "..dgNonConformalEdge.......... PASSED":" " $GlobalPerformanceTime " s " 
 fi
 
 exit

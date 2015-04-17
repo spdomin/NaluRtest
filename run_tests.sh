@@ -47,11 +47,26 @@ fi
 
 cd $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
 cp $NaluRtestCWD/nightly/dgNonConformal/dgNonConformal.i $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
-cp $NaluRtestCWD/nightly/dgNonConformal/*.g* $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
+cp $NaluRtestCWD/mesh/2DTwoBlock_R0_rev.g.* $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
 cp $NaluRtestCWD/nightly/dgNonConformal/dgNonConformal.sh $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
 cp $NaluRtestCWD/nightly/dgNonConformal/dgNonConformal.norm.gold $baseGitHubCWD/runNaluRtest/nightly/dgNonConformal
 # run it...  
 ./dgNonConformal.sh
+
+#=============================================================================
+# dgNonConformalEdge test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
+cp $NaluRtestCWD/nightly/dgNonConformalEdge/dgNonConformalEdge.i $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
+cp $NaluRtestCWD/mesh/2DTwoBlock_R0_rev.g.* $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
+cp $NaluRtestCWD/nightly/dgNonConformalEdge/dgNonConformalEdge.sh $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
+cp $NaluRtestCWD/nightly/dgNonConformalEdge/dgNonConformalEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
+# run it...  
+./dgNonConformalEdge.sh
 
 #=============================================================================
 # concentricRad test
@@ -114,7 +129,7 @@ cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.norm.gold $baseGitHubCWD/runNal
 ./edgePipeCHT.sh
 
 #=============================================================================
-# heliumPlumeEdge test
+# heliumPlumeEdge test (with restart)
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge" ]; then
     mkdir $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
@@ -122,9 +137,13 @@ fi
 
 cd $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
 cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.i $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge_rst.i $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
 cp $NaluRtestCWD/nightly/heliumPlumeEdge/*.g.* $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+cp $NaluRtestCWD/nightly/heliumPlumeEdge/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
 cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.sh $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
 cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge_rst.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+
 # run it...  
 ./heliumPlumeEdge.sh
 
