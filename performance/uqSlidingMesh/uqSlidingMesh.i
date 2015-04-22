@@ -28,6 +28,7 @@ realms:
   - name: realm_1
     mesh: uqvawt_corrected.exo
     use_edges: yes       
+    activate_aura: no 
 
     time_step_control:
      target_courant: 20.0

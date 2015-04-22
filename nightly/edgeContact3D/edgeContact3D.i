@@ -32,6 +32,7 @@ realms:
     use_edges: yes
     provide_entity_count: yes 
     check_for_missing_bcs: no
+    activate_aura: yes
 
     time_step_control:
      target_courant: 5.0
