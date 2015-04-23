@@ -122,11 +122,28 @@ fi
 
 cd $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
 cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.i $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
-cp $NaluRtestCWD/nightly/edgePipeCHT/*.g.* $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
+cp $NaluRtestCWD/mesh/elbow.g.* $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
+cp $NaluRtestCWD/mesh/horseshoe.g.* $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
 cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.sh $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
 cp $NaluRtestCWD/nightly/edgePipeCHT/edgePipeCHT.norm.gold $baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT
 # run it...  
 ./edgePipeCHT.sh
+
+#=============================================================================
+# elemPipeCHT test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/elemPipeCHT" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/elemPipeCHT
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/elemPipeCHT
+cp $NaluRtestCWD/nightly/elemPipeCHT/elemPipeCHT.i $baseGitHubCWD/runNaluRtest/nightly/elemPipeCHT
+cp $NaluRtestCWD/mesh/elbow.g.* $baseGitHubCWD/runNaluRtest/nightly/elemPipeCHT
+cp $NaluRtestCWD/mesh/horseshoe.g.* $baseGitHubCWD/runNaluRtest/nightly/elemPipeCHT
+cp $NaluRtestCWD/nightly/elemPipeCHT/elemPipeCHT.sh $baseGitHubCWD/runNaluRtest/nightly/elemPipeCHT
+cp $NaluRtestCWD/nightly/elemPipeCHT/elemPipeCHT.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemPipeCHT
+# run it...  
+./elemPipeCHT.sh
 
 #=============================================================================
 # heliumPlumeEdge test (with restart)
