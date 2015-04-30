@@ -121,6 +121,9 @@ realms:
     solution_options:
       name: myOptions
       turbulence_model: wale
+      shift_cvfem_mdot: yes
+      shift_cvfem_poisson: yes
+
       options:
 
         - projected_nodal_gradient:
