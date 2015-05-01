@@ -241,6 +241,21 @@ cp $NaluRtestCWD/nightly/elemHybridFluids/elemHybridFluids.norm.gold $baseGitHub
 ./elemHybridFluids.sh
 
 #=============================================================================
+# elemHybridFluidsShift test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/elemHybridFluidsShift" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluidsShift
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluidsShift
+cp $NaluRtestCWD/nightly/elemHybridFluidsShift/elemHybridFluidsShift.i $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluidsShift
+cp $NaluRtestCWD/mesh/hybrid.g* $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluidsShift
+cp $NaluRtestCWD/nightly/elemHybridFluidsShift/elemHybridFluidsShift.sh $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluidsShift
+cp $NaluRtestCWD/nightly/elemHybridFluidsShift/elemHybridFluidsShift.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemHybridFluidsShift
+# run it...  
+./elemHybridFluidsShift.sh
+
+#=============================================================================
 # edgeHybridFluids test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/edgeHybridFluids" ]; then
