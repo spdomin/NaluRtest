@@ -160,7 +160,7 @@ realms:
        - mixture_fraction
 
     output:
-      output_data_base_name: edgeWaleJetXflowML_A.e
+      output_data_base_name: edgeWaleJetXflow.e
       output_frequency: 50 
       output_node_set: no 
       output_variables:
@@ -172,7 +172,7 @@ realms:
        - density_ra
 
     restart:
-      restart_data_base_name: edgeWaleJetXflowML_A.rst
+      restart_data_base_name: edgeWaleJetXflow.rst
       output_frequency: 2000
 
 Time_Integrators:
