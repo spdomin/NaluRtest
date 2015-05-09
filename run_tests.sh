@@ -114,6 +114,23 @@ cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.norm.gold $baseGitH
 ./elemBackStepLRSST.sh
 
 #=============================================================================
+# heatedBackStep test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/heatedBackStep" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/heatedBackStep
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/heatedBackStep
+cp $NaluRtestCWD/nightly/heatedBackStep/heatedBackStep.i $baseGitHubCWD/runNaluRtest/nightly/heatedBackStep
+cp $NaluRtestCWD/nightly/heatedBackStep/*.g.* $baseGitHubCWD/runNaluRtest/nightly/heatedBackStep
+cp $NaluRtestCWD/nightly/heatedBackStep/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/heatedBackStep
+cp $NaluRtestCWD/nightly/heatedBackStep/heatedBackStep.sh $baseGitHubCWD/runNaluRtest/nightly/heatedBackStep
+cp $NaluRtestCWD/nightly/heatedBackStep/heatedBackStep.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heatedBackStep
+# run it...
+./heatedBackStep.sh
+
+
+#=============================================================================
 # edgePipeCHT test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/edgePipeCHT" ]; then
