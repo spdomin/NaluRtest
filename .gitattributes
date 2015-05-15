@@ -6,3 +6,4 @@
 *.g.* binary
 *.exo binary
 *.exo.* binary
+*.h5 binary

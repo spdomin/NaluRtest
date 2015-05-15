@@ -21,7 +21,7 @@ fi
 if [ ! -f $NaluRtestCWD/NaluProjectPath.txt ]; then
     # copy executable for all tests to use
     if [ "$typeOfTesting" == "DEBUG" ]; then
-        cp $baseGitHubCWD/Nalu/build/naluXd $baseGitHubCWD/runNaluRtest/naluX
+        cp $baseGitHubCWD/Nalu/build_debug/naluXd $baseGitHubCWD/runNaluRtest/naluX
     else
         cp $baseGitHubCWD/Nalu/build/naluX $baseGitHubCWD/runNaluRtest/naluX
     fi
@@ -29,7 +29,7 @@ else
     NaluProjectPathFile="$NaluRtestCWD/NaluProjectPath.txt"
     projectPathName=$(cat $NaluProjectPathFile)
     if [ "$typeOfTesting" == "DEBUG" ]; then
-        cp $projectPathName/build/naluXd $baseGitHubCWD/runNaluRtest/naluX
+        cp $projectPathName/build_debug/naluXd $baseGitHubCWD/runNaluRtest/naluX
     else
         cp $projectPathName/build/naluX $baseGitHubCWD/runNaluRtest/naluX
     fi
@@ -67,6 +67,22 @@ cp $NaluRtestCWD/nightly/dgNonConformalEdge/dgNonConformalEdge.sh $baseGitHubCWD
 cp $NaluRtestCWD/nightly/dgNonConformalEdge/dgNonConformalEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalEdge
 # run it...  
 ./dgNonConformalEdge.sh
+
+#=============================================================================
+# dgNonConformalFluids test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluids" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluids
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluids
+cp $NaluRtestCWD/nightly/dgNonConformalFluids/dgNonConformalFluids.i $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluids
+cp $NaluRtestCWD/mesh/NACA.g.* $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluids
+cp $NaluRtestCWD/nightly/dgNonConformalFluids/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluids
+cp $NaluRtestCWD/nightly/dgNonConformalFluids/dgNonConformalFluids.sh $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluids
+cp $NaluRtestCWD/nightly/dgNonConformalFluids/dgNonConformalFluids.norm.gold $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluids
+# run it...  
+./dgNonConformalFluids.sh
 
 #=============================================================================
 # concentricRad test
@@ -241,6 +257,23 @@ cp $NaluRtestCWD/nightly/nonIsoEdgeOpenJet/nonIsoEdgeOpenJet.sh $baseGitHubCWD/r
 cp $NaluRtestCWD/nightly/nonIsoEdgeOpenJet/nonIsoEdgeOpenJet.norm.gold $baseGitHubCWD/runNaluRtest/nightly/nonIsoEdgeOpenJet
 # run it...  
 ./nonIsoEdgeOpenJet.sh
+
+#=============================================================================
+# hdf5VarZChi test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/hdf5VarZChi" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/hdf5VarZChi
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/hdf5VarZChi
+cp $NaluRtestCWD/nightly/hdf5VarZChi/hdf5VarZChi.i $baseGitHubCWD/runNaluRtest/nightly/hdf5VarZChi
+cp $NaluRtestCWD/nightly/hdf5VarZChi/*.h5 $baseGitHubCWD/runNaluRtest/nightly/hdf5VarZChi
+cp $NaluRtestCWD/mesh/2cm_ped_35K_mks.g* $baseGitHubCWD/runNaluRtest/nightly/hdf5VarZChi
+cp $NaluRtestCWD/nightly/hdf5VarZChi/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/hdf5VarZChi
+cp $NaluRtestCWD/nightly/hdf5VarZChi/hdf5VarZChi.sh $baseGitHubCWD/runNaluRtest/nightly/hdf5VarZChi
+cp $NaluRtestCWD/nightly/hdf5VarZChi/hdf5VarZChi.norm.gold $baseGitHubCWD/runNaluRtest/nightly/hdf5VarZChi
+# run it...  
+#./hdf5VarZChi.sh
 
 #=============================================================================
 # elemHybridFluids test
