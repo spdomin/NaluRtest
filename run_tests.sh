@@ -85,6 +85,22 @@ cp $NaluRtestCWD/nightly/dgNonConformalFluids/dgNonConformalFluids.norm.gold $ba
 ./dgNonConformalFluids.sh
 
 #=============================================================================
+# dgNonConformalFluidsEdge test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluidsEdge" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluidsEdge
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluidsEdge
+cp $NaluRtestCWD/nightly/dgNonConformalFluidsEdge/dgNonConformalFluidsEdge.i $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluidsEdge
+cp $NaluRtestCWD/mesh/NACA.g.* $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluidsEdge
+cp $NaluRtestCWD/nightly/dgNonConformalFluidsEdge/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluidsEdge
+cp $NaluRtestCWD/nightly/dgNonConformalFluidsEdge/dgNonConformalFluidsEdge.sh $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluidsEdge
+cp $NaluRtestCWD/nightly/dgNonConformalFluidsEdge/dgNonConformalFluidsEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalFluidsEdge
+# run it...  
+./dgNonConformalFluidsEdge.sh
+
+#=============================================================================
 # concentricRad test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/concentricRad" ]; then

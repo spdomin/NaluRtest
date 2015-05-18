@@ -27,8 +27,8 @@ realms:
 
   - name: realm_1
     mesh: NACA.g
-    use_edges: no  
-    check_for_missing_bcs: yes     
+    use_edges: yes  
+    check_for_missing_bcs: no     
 
     equation_systems:
       name: theEqSys
