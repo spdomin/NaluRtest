@@ -150,6 +150,9 @@ realms:
     solution_options:
       name: myOptions
       turbulence_model: wale
+      shift_cvfem_mdot: no
+      shift_cvfem_poisson: no
+      reduced_sens_cvfem_poisson: yes 
 
       interp_rhou_together_for_mdot: no
 
