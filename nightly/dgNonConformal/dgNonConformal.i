@@ -123,9 +123,6 @@ realms:
        - dual_nodal_volume
        - temperature
        - dtdx
-       - nc_t_normal_flux
-       - nc_t_penalty
-       - nc_t_assembled_area
 
 Time_Integrators:
   - StandardTimeIntegrator:
