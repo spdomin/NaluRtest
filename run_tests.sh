@@ -39,6 +39,21 @@ fi
 cp $NaluRtestCWD/pass_fail.sh $baseGitHubCWD/runNaluRtest
 
 #=============================================================================
+# quad9HC test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/quad9HC" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/quad9HC
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/quad9HC
+cp $NaluRtestCWD/nightly/quad9HC/quad9HC.i $baseGitHubCWD/runNaluRtest/nightly/quad9HC
+cp $NaluRtestCWD/mesh/100x50_P2n.g.* $baseGitHubCWD/runNaluRtest/nightly/quad9HC
+cp $NaluRtestCWD/nightly/quad9HC/quad9HC.sh $baseGitHubCWD/runNaluRtest/nightly/quad9HC
+cp $NaluRtestCWD/nightly/quad9HC/quad9HC.norm.gold $baseGitHubCWD/runNaluRtest/nightly/quad9HC
+# run it...  
+./quad9HC.sh
+
+#=============================================================================
 # dgNonConformal test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/dgNonConformal" ]; then
