@@ -26,6 +26,7 @@ realms:
   
       solver_system_specification:
         temperature: solve_scalar
+        dqdxCMM: solve_scalar
    
       systems:
         - HeatConduction:
