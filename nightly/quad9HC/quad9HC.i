@@ -32,6 +32,7 @@ realms:
             name: myHC
             max_iterations: 1
             convergence_tolerance: 1e-5
+            manage_png: yes
 
     initial_conditions:
 
@@ -85,6 +86,7 @@ realms:
        - dual_nodal_volume
        - temperature
        - dtdx
+       - dqdxCMM
 
 Time_Integrators:
   - StandardTimeIntegrator:
