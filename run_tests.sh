@@ -54,6 +54,21 @@ cp $NaluRtestCWD/nightly/quad9HC/quad9HC.norm.gold $baseGitHubCWD/runNaluRtest/n
 ./quad9HC.sh
 
 #=============================================================================
+# hoVortex test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/hoVortex" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/hoVortex
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/hoVortex
+cp $NaluRtestCWD/nightly/hoVortex/hoVortex.i $baseGitHubCWD/runNaluRtest/nightly/hoVortex
+cp $NaluRtestCWD/mesh/100x50_P2n.g.* $baseGitHubCWD/runNaluRtest/nightly/hoVortex
+cp $NaluRtestCWD/nightly/hoVortex/hoVortex.sh $baseGitHubCWD/runNaluRtest/nightly/hoVortex
+cp $NaluRtestCWD/nightly/hoVortex/hoVortex.norm.gold $baseGitHubCWD/runNaluRtest/nightly/hoVortex
+# run it...  
+./hoVortex.sh
+
+#=============================================================================
 # dgNonConformal test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/dgNonConformal" ]; then
