@@ -67,7 +67,7 @@ linear_solvers:
     type: tpetra
     method: gmres
     preconditioner: sgs
-    tolerance: 1e-5
+    tolerance: 1e-4
     max_iterations: 50
     kspace: 50
     output_level: 0
@@ -84,7 +84,6 @@ realms:
 
       solver_system_specification:
         velocity: solve_mom
-        turbulent_ke: solve_other
         mixture_fraction: solve_other
         pressure: solve_cont
 
@@ -93,11 +92,6 @@ realms:
             name: myLowMach
             max_iterations: 1
             convergence_tolerance: 1e-2
-
-        - TurbKineticEnergy:
-            name: myTke
-            max_iterations: 1
-            convergence_tolerance: 1.e-2
 
         - MixtureFraction:
             name: myZ
@@ -110,7 +104,6 @@ realms:
         value:
           pressure: 0
           velocity: [0,0,0]
-          turbulent_ke: 0.0
           mixture_fraction: 0.0
 
     material_properties:
@@ -134,21 +127,18 @@ realms:
       target_name: surface_1
       inflow_user_data:
         velocity: [0.0,34.0,0.0]
-        turbulent_ke: 0.17
         mixture_fraction: 1.0
 
     - wall_boundary_condition: bc_bottom
       target_name: surface_2
       wall_user_data:
         velocity: [0,0,0]
-        turbulent_ke: 0.0
 
     - open_boundary_condition: bc_side
       target_name: surface_3
       open_user_data:
         velocity: [0,0,0]
         pressure: 0.0
-        turbulent_ke: 1.0e-16
         mixture_fraction: 0.0
 
     - open_boundary_condition: bc_top
@@ -156,32 +146,27 @@ realms:
       open_user_data:
         velocity: [0,0,0]
         pressure: 0.0
-        turbulent_ke: 1.0e-16
         mixture_fraction: 0.0
 
     solution_options:
       name: myOptions
-      turbulence_model: ksgs
+      turbulence_model: smagorinsky
 
       divU_stress_scaling: 1.0
 
       options:
         - hybrid_factor:
             velocity: 0.0
-            turbulent_ke: 1.0
             mixture_fraction: 1.0
 
         - alpha_upw:
             velocity: 1.0
-            turbulent_ke: 1.0
             mixture_fraction: 1.0
 
         - laminar_schmidt:
-            turbulent_ke: 1.0
             mixture_fraction: 0.9
 
         - turbulent_schmidt:
-            turbulent_ke: 1.0
             mixture_fraction: 1.0
 
         - source_terms:
@@ -207,7 +192,6 @@ realms:
       output_variables:
        - velocity
        - pressure
-       - turbulent_ke
        - mixture_fraction
        - density
        - mixture_fraction_fa
@@ -225,7 +209,7 @@ Time_Integrators:
       time_step: 1.0e-3
       time_stepping_type: adaptive
       time_step_count: 0
-      second_order_accuracy: yes
+      second_order_accuracy: no
 
       realms:
         - realm_1
