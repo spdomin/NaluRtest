@@ -133,6 +133,21 @@ cp $NaluRtestCWD/nightly/dgNonConformal3dFluidsHexTet/dgNonConformal3dFluidsHexT
 ./dgNonConformal3dFluidsHexTet.sh
 
 #=============================================================================
+# overset test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/overset" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/overset
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/overset
+cp $NaluRtestCWD/nightly/overset/overset.i $baseGitHubCWD/runNaluRtest/nightly/overset
+cp $NaluRtestCWD/mesh/oversetMeshAligned.g* $baseGitHubCWD/runNaluRtest/nightly/overset
+cp $NaluRtestCWD/nightly/overset/overset.sh $baseGitHubCWD/runNaluRtest/nightly/overset
+cp $NaluRtestCWD/nightly/overset/overset.norm.gold $baseGitHubCWD/runNaluRtest/nightly/overset
+# run it...  
+#./overset.sh
+
+#=============================================================================
 # concentricRad test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/concentricRad" ]; then
