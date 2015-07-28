@@ -105,14 +105,14 @@ realms:
        - dual_nodal_volume
        - temperature
        - dtdx
-       - intersected_elements
+       - intersected_element
 
 Time_Integrators:
   - StandardTimeIntegrator:
       name: ti_1
       start_time: 0
-      termination_step_count: 100 
-      time_step: 10.0
+      termination_step_count: 20
+      time_step: 0.5
       time_stepping_type: fixed
       time_step_count: 0
       second_order_accuracy: no

@@ -145,7 +145,7 @@ cp $NaluRtestCWD/mesh/oversetMeshAligned.g* $baseGitHubCWD/runNaluRtest/nightly/
 cp $NaluRtestCWD/nightly/overset/overset.sh $baseGitHubCWD/runNaluRtest/nightly/overset
 cp $NaluRtestCWD/nightly/overset/overset.norm.gold $baseGitHubCWD/runNaluRtest/nightly/overset
 # run it...  
-#./overset.sh
+./overset.sh
 
 #=============================================================================
 # concentricRad test
