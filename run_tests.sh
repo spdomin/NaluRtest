@@ -148,6 +148,22 @@ cp $NaluRtestCWD/nightly/overset/overset.norm.gold $baseGitHubCWD/runNaluRtest/n
 ./overset.sh
 
 #=============================================================================
+# oversetFluids test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/oversetFluids" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/oversetFluids
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/oversetFluids
+cp $NaluRtestCWD/nightly/oversetFluids/oversetFluids.i $baseGitHubCWD/runNaluRtest/nightly/oversetFluids
+cp $NaluRtestCWD/mesh/oversetMeshAligned.g* $baseGitHubCWD/runNaluRtest/nightly/oversetFluids
+cp $NaluRtestCWD/mesh/general.xml $baseGitHubCWD/runNaluRtest/nightly/oversetFluids
+cp $NaluRtestCWD/nightly/oversetFluids/oversetFluids.sh $baseGitHubCWD/runNaluRtest/nightly/oversetFluids
+cp $NaluRtestCWD/nightly/oversetFluids/oversetFluids.norm.gold $baseGitHubCWD/runNaluRtest/nightly/oversetFluids
+# run it...  
+./oversetFluids.sh
+
+#=============================================================================
 # concentricRad test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/concentricRad" ]; then
