@@ -19,6 +19,7 @@ realms:
   - name: realm_1
     mesh: oversetMeshAligned.g
     use_edges: no
+    automatic_decomposition_type: rcb
 
     equation_systems:
       name: theEqSys

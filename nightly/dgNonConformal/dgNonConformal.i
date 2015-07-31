@@ -105,6 +105,7 @@ realms:
       name: myOptions
 
       options:
+
         - source_terms:
             temperature: steady_2d_thermal
 
