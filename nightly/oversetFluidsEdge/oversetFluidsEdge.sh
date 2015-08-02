@@ -32,7 +32,7 @@ else
 fi
 
 # report it; 30 spaces
-GlobalPerformanceTime=`grep "STKPERF: Total Time" oversetFluids.log  | awk '{print $4}'`
+GlobalPerformanceTime=`grep "STKPERF: Total Time" oversetFluidsEdge.log  | awk '{print $4}'`
 if [ $PASS_STATUS -ne 1 ]; then
     echo -e "..oversetFluidsEdge........... FAILED":" " $GlobalPerformanceTime " s " " max diff: " $GlobalMaxSolutionDiff
 else
