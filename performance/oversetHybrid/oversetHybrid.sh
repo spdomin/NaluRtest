@@ -5,8 +5,8 @@ CWD=$(pwd)
 didSimulationDiffAnywhere=0
 
 # determine tolerance
-testTol=0.000000000001
-theGoldNorm=oversetHybrid.norm.gold.remote
+testTol=0.000009
+theGoldNorm=oversetHybrid.norm.gold
 platform=`uname`
 if [ "$platform" == 'Linux' ]; then
     testTol=0.0000000000000001
