@@ -54,6 +54,21 @@ cp $NaluRtestCWD/nightly/quad9HC/quad9HC.norm.gold $baseGitHubCWD/runNaluRtest/n
 ./quad9HC.sh
 
 #=============================================================================
+# steadyTaylorVortex test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex
+cp $NaluRtestCWD/nightly/steadyTaylorVortex/steadyTaylorVortex.i $baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex
+cp $NaluRtestCWD/nightly/steadyTaylorVortex/*.g.* $baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex
+cp $NaluRtestCWD/nightly/steadyTaylorVortex/steadyTaylorVortex.sh $baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex
+cp $NaluRtestCWD/nightly/steadyTaylorVortex/steadyTaylorVortex.norm.gold $baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex
+# run it...  
+./steadyTaylorVortex.sh
+
+#=============================================================================
 # hoVortex test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/hoVortex" ]; then
