@@ -84,6 +84,22 @@ cp $NaluRtestCWD/nightly/hoVortex/hoVortex.norm.gold $baseGitHubCWD/runNaluRtest
 ./hoVortex.sh
 
 #=============================================================================
+# hoHelium test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/hoHelium" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+cp $NaluRtestCWD/nightly/hoHelium/hoHelium.i $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+cp $NaluRtestCWD/nightly/hoHelium/*.g.* $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+cp $NaluRtestCWD/nightly/hoHelium/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+cp $NaluRtestCWD/nightly/hoHelium/hoHelium.sh $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+cp $NaluRtestCWD/nightly/hoHelium/hoHelium.norm.gold $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+# run it...  
+./hoHelium.sh
+
+#=============================================================================
 # dgNonConformal test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/dgNonConformal" ]; then
