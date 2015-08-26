@@ -71,7 +71,7 @@ transfers:
     realm_pair: [thermalRealm, pmrRealm]
     mesh_part_pair: [surface_2, surface_3]
     transfer_variables:
-      - [temperature, wall_temperature]
+      - [temperature, temperature_bc]
 
 realms:
 
@@ -143,7 +143,7 @@ realms:
       output_node_set: no
       output_variables:
        - temperature
-       - wall_temperature
+       - temperature_bc
        - absorption_coefficient
        - scalar_flux
        - radiative_heat_flux
