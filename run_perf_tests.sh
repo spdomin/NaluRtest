@@ -70,4 +70,20 @@ cp $NaluRtestCWD/performance/uqSlidingMesh/uqSlidingMesh.norm.gold* $baseGitHubC
 # run it...  
 ./uqSlidingMesh.sh
 
+#=============================================================================
+# oversetHybrid test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/performance/oversetHybrid" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
+fi
+
+cd $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
+cp $NaluRtestCWD/performance/oversetHybrid/oversetHybrid.i $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
+cp $NaluRtestCWD/mesh/general.xml $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
+cp $NaluRtestCWD/performance/oversetHybrid/hybrid_sphere.g.* $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
+cp $NaluRtestCWD/performance/oversetHybrid/oversetHybrid.sh $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
+cp $NaluRtestCWD/performance/oversetHybrid/oversetHybrid.norm.gold* $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
+# run it...  
+./oversetHybrid.sh
+
 echo "Performance Rtest End"

@@ -9,7 +9,7 @@ localDiffOne=0.0;
 localDiffTwo=0.0;
 
 # determine tolerance
-testTol=0.00000001
+testTol=0.0000005
 platform=`uname`
 if [ "$platform" == 'Linux' ]; then
     testTol=0.0000000000000001

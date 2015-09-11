@@ -21,14 +21,14 @@ transfers:
     realm_pair: [realmThermal, realmRte]
     mesh_part_pair: [surface_2, surface_1]
     transfer_variables:
-      - [temperature, wall_temperature]
+      - [temperature, temperature_bc]
 
   - name: xfer_thermal_rte_outer
     type: geometric
     realm_pair: [realmThermal, realmRte]
     mesh_part_pair: [surface_3, surface_2]
     transfer_variables:
-      - [temperature, wall_temperature]
+      - [temperature, temperature_bc]
 
   - name: xfer_rte_thermal_inner
     type: geometric

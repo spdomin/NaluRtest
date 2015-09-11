@@ -16,7 +16,7 @@ linear_solvers:
 
   - name: solve_cont
     type: tpetra
-    method: gmres
+    method: cg 
     preconditioner: muelu
     tolerance: 1e-5
     max_iterations: 75
@@ -38,6 +38,7 @@ realms:
   - name: realm_1
     mesh:  heliumPlumeEdge.rst
     use_edges: yes 
+    support_inconsistent_multi_state_restart: yes
 
     equation_systems:
       name: theEqSys
@@ -147,7 +148,7 @@ realms:
 
         - source_terms:
             momentum: buoyancy
-#            continuity: density_time_derivative
+            continuity: density_time_derivative
 
         - user_constants:
             gravity: [0.0,-981.0,0.0]

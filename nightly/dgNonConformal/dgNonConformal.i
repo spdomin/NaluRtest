@@ -7,7 +7,7 @@ linear_solvers:
 
   - name: solve_scalar
     type: tpetra
-    method: gmres 
+    method: biCgStab 
     preconditioner: sgs 
     tolerance: 1e-3
     max_iterations: 75 
@@ -105,6 +105,7 @@ realms:
       name: myOptions
 
       options:
+
         - source_terms:
             temperature: steady_2d_thermal
 
