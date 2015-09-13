@@ -16,7 +16,7 @@ linear_solvers:
 
   - name: solve_cont
     type: tpetra
-    method: gmres
+    method: cg 
     preconditioner: muelu
     tolerance: 1e-5
     max_iterations: 75

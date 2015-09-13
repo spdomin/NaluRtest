@@ -7,7 +7,7 @@ linear_solvers:
 
   - name: solve_scalar
     type: tpetra
-    method: gmres 
+    method: biCgStab 
     preconditioner: sgs 
     tolerance: 1e-3
     max_iterations: 75 
@@ -123,7 +123,17 @@ realms:
       output_variables:
        - dual_nodal_volume
        - temperature
+       - temperature_exact
        - dtdx
+
+    solution_norm:
+      output_frequency: 10
+      file_name: theNorm.dat
+      spacing: 12
+      percision: 6
+      target_name: [block_1, block_2]
+      dof_user_function_pair:
+       - [temperature, steady_2d_thermal]
 
 Time_Integrators:
   - StandardTimeIntegrator:

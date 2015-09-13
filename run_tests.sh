@@ -39,6 +39,67 @@ fi
 cp $NaluRtestCWD/pass_fail.sh $baseGitHubCWD/runNaluRtest
 
 #=============================================================================
+# quad9HC test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/quad9HC" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/quad9HC
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/quad9HC
+cp $NaluRtestCWD/nightly/quad9HC/quad9HC.i $baseGitHubCWD/runNaluRtest/nightly/quad9HC
+cp $NaluRtestCWD/mesh/100x50_P2n.g.* $baseGitHubCWD/runNaluRtest/nightly/quad9HC
+cp $NaluRtestCWD/nightly/quad9HC/quad9HC.sh $baseGitHubCWD/runNaluRtest/nightly/quad9HC
+cp $NaluRtestCWD/nightly/quad9HC/quad9HC.norm.gold $baseGitHubCWD/runNaluRtest/nightly/quad9HC
+# run it...  
+./quad9HC.sh
+
+#=============================================================================
+# steadyTaylorVortex test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex
+cp $NaluRtestCWD/nightly/steadyTaylorVortex/steadyTaylorVortex.i $baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex
+cp $NaluRtestCWD/nightly/steadyTaylorVortex/*.g.* $baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex
+cp $NaluRtestCWD/nightly/steadyTaylorVortex/steadyTaylorVortex.sh $baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex
+cp $NaluRtestCWD/nightly/steadyTaylorVortex/steadyTaylorVortex.norm.gold $baseGitHubCWD/runNaluRtest/nightly/steadyTaylorVortex
+# run it...  
+./steadyTaylorVortex.sh
+
+#=============================================================================
+# hoVortex test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/hoVortex" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/hoVortex
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/hoVortex
+cp $NaluRtestCWD/nightly/hoVortex/hoVortex.i $baseGitHubCWD/runNaluRtest/nightly/hoVortex
+cp $NaluRtestCWD/mesh/100x50_P2n.g.* $baseGitHubCWD/runNaluRtest/nightly/hoVortex
+cp $NaluRtestCWD/nightly/hoVortex/hoVortex.sh $baseGitHubCWD/runNaluRtest/nightly/hoVortex
+cp $NaluRtestCWD/nightly/hoVortex/hoVortex.norm.gold $baseGitHubCWD/runNaluRtest/nightly/hoVortex
+# run it...  
+./hoVortex.sh
+
+#=============================================================================
+# hoHelium test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/hoHelium" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+cp $NaluRtestCWD/nightly/hoHelium/hoHelium.i $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+cp $NaluRtestCWD/nightly/hoHelium/*.g.* $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+cp $NaluRtestCWD/nightly/hoHelium/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+cp $NaluRtestCWD/nightly/hoHelium/hoHelium.sh $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+cp $NaluRtestCWD/nightly/hoHelium/hoHelium.norm.gold $baseGitHubCWD/runNaluRtest/nightly/hoHelium
+# run it...  
+./hoHelium.sh
+
+#=============================================================================
 # dgNonConformal test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/dgNonConformal" ]; then
