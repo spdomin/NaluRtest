@@ -567,4 +567,20 @@ cp $NaluRtestCWD/nightly/milestoneRun/milestoneRun.norm.gold* $baseGitHubCWD/run
 # run it...  
 ./milestoneRun.sh
 
+#=============================================================================
+# heatedWaterChannel test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
+cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannel.i $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
+cp $NaluRtestCWD/nightly/heatedWaterChannel/*.g.* $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
+cp $NaluRtestCWD/nightly/heatedWaterChannel/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
+cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannel.sh $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
+cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannel.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
+# run it...  
+./heatedWaterChannel.sh
+
 echo "Rtest End"
