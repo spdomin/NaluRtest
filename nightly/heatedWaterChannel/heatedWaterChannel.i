@@ -1,0 +1,168 @@
+Simulations:
+  - name: sim1
+    time_integrator: ti_1
+    optimizer: opt1
+
+linear_solvers:
+
+  - name: solve_scalar
+    type: tpetra
+    method: gmres
+    preconditioner: sgs
+    tolerance: 1e-5
+    max_iterations: 50
+    kspace: 50
+    output_level: 0
+
+  - name: solve_cont
+    type: tpetra
+    method: gmres
+    preconditioner: muelu
+    tolerance: 1e-5
+    max_iterations: 50
+    kspace: 50
+    output_level: 0
+
+realms:
+
+  - name: realm_1
+    mesh: waterChannel_mks.g
+    use_edges: yes
+
+    equation_systems:
+      name: theEqSys
+      max_iterations: 4
+
+      solver_system_specification:
+        velocity: solve_scalar
+        pressure: solve_cont
+        enthalpy: solve_scalar
+
+      systems:
+
+        - LowMachEOM:
+            name: myLowMach
+            max_iterations: 1
+            convergence_tolerance: 1e-5
+
+        - Enthalpy:
+            name: myEnth
+            max_iterations: 1
+            convergence_tolerance: 1e-5
+
+    material_properties:
+
+      target_name: block_10
+
+      specifications:
+ 
+        - name: density
+          type: generic
+          generic_property_evaluator_name: water_density_T
+
+        - name: viscosity
+          type: generic
+          generic_property_evaluator_name: water_viscosity_T
+
+        - name: specific_heat
+          type: generic
+          generic_property_evaluator_name: water_specific_heat_T
+
+        - name: thermal_conductivity
+          type: generic
+          generic_property_evaluator_name: water_thermal_conductivity_T
+
+    initial_conditions:
+      - constant: ic_1
+        target_name: block_10
+        value:
+          pressure: 0
+          velocity: [0,0]  
+          temperature: 283.16
+  
+    boundary_conditions:
+
+    - inflow_boundary_condition: bc_inflow
+      target_name: surface_1
+      inflow_user_data:
+        velocity: [1.148, 0.0]
+        temperature: 283.16
+
+    - open_boundary_condition: bc_open
+      target_name: surface_2
+      open_user_data:
+        velocity: [0,0]
+        pressure: 0.0
+        temperature: 283.16
+
+    - wall_boundary_condition: bc_lower
+      target_name: surface_3
+      wall_user_data:
+        velocity: [0,0]
+        temperature: 318.0
+
+    - wall_boundary_condition: bc_upper
+      target_name: surface_4
+      wall_user_data:
+        velocity: [0,0]
+
+    - wall_boundary_condition: bc_cylinder
+      target_name: surface_5
+      wall_user_data:
+        velocity: [0,0]
+        temperature: 313.0
+
+    solution_options:
+      name: myOptions
+      turbulence_model: wale
+      interp_rhou_together_for_mdot: yes
+
+      options:
+        - hybrid_factor:
+            velocity: 0.0
+            enthalpy: 1.0
+
+        - turbulent_prandtl:
+            enthalpy: 0.90
+
+        - source_terms:
+            momentum: buoyancy
+            continuity: density_time_derivative
+
+        - user_constants:
+            gravity: [0.0,-9.81]
+            reference_density: 998.4103224
+
+        - limiter:
+            pressure: no
+            velocity: no
+            enthalpy: yes 
+
+    output:
+      output_data_base_name: heatedWaterChannel.e
+      output_frequency: 5
+      output_node_set: no
+      output_variables:
+       - velocity
+       - pressure
+       - temperature
+       - specific_heat
+       - thermal_conductivity
+       - viscosity
+
+    restart:
+      restart_data_base_name: heatedWaterChannel.rst
+      output_frequency: 10
+
+Time_Integrators:
+  - StandardTimeIntegrator:
+      name: ti_1
+      start_time: 0
+      termination_step_count: 20
+      time_step: 1.0e-5
+      time_stepping_type: adaptive
+      time_step_count: 0
+      second_order_accuracy: yes
+
+      realms:
+        - realm_1
