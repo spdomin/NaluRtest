@@ -23,6 +23,7 @@ linear_solvers:
     kspace: 75
     muelu_xml_file_name: milestone.xml
     output_level: 0
+    recompute_preconditioner: no
 
 realms:
 
