@@ -138,17 +138,47 @@ realms:
             velocity: no
             enthalpy: yes 
 
+
+    turbulence_averaging:
+      time_filter_interval: 100000.0
+
+      specifications:
+
+        - name: one
+          target_name: block_10
+          reynolds_averaged_variables:
+            - velocity
+            - enthalpy
+          favre_averaged_variables:
+            - velocity
+            - enthalpy
+
+        - name: two
+          target_name: surface_5
+          reynolds_averaged_variables:
+            - normal_heat_flux
+          favre_averaged_variables:
+            - normal_heat_flux
+
     output:
       output_data_base_name: heatedWaterChannel.e
       output_frequency: 5
       output_node_set: no
       output_variables:
        - velocity
+       - velocity_ra_one
+       - velocity_fa_one
        - pressure
+       - enthalpy
+       - enthalpy_ra_one
+       - enthalpy_fa_one
        - temperature
        - specific_heat
        - thermal_conductivity
        - viscosity
+       - normal_heat_flux
+       - normal_heat_flux_ra_two
+       - normal_heat_flux_fa_two
 
     restart:
       restart_data_base_name: heatedWaterChannel.rst

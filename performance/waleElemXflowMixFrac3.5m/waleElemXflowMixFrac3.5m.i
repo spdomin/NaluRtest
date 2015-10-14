@@ -153,11 +153,16 @@ realms:
             mixture_fraction: yes
 
     turbulence_averaging:
-      current_time_filter: 0.0 
       time_filter_interval: 10.0
-      favre_averaged_variables:
-       - velocity
-       - mixture_fraction
+      specifications:
+        - name: one
+          target_name: block_1
+          reynolds_averaged_variables:
+            - velocity
+            - mixture_fraction
+          favre_averaged_variables:
+            - velocity
+            - mixture_fraction
 
     output:
       output_data_base_name: edgeWaleJetXflow.e
@@ -165,11 +170,14 @@ realms:
       output_node_set: no 
       output_variables:
        - velocity
+       - velocity_ra_one
+       - velocity_fa_one
        - pressure
        - mixture_fraction
-       - mixture_fraction_fa
-       - velocity_fa
-       - density_ra
+       - mixture_fraction_ra_one
+       - mixture_fraction_fa_one
+       - density
+       - density_ra_one
 
     restart:
       restart_data_base_name: edgeWaleJetXflow.rst

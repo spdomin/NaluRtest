@@ -182,6 +182,9 @@ realms:
        - turbulent_viscosity
        - turbulent_ke
        - mesh_displacement
+       - pressure_force_ra_one
+       - tau_wall_ra_one
+       - yplus_ra_one
 
     post_processing:
     
@@ -206,6 +209,17 @@ realms:
       parameters: [0,0]
       target_name: surface_6
 
+
+    turbulence_averaging:
+      time_filter_interval: 100000.0
+      specifications:
+        - name: one
+          target_name: [surface_4, surface_5, surface_6]
+          reynolds_averaged_variables:
+            - pressure_force
+            - tau_wall
+            - yplus
+         
 Time_Integrators:
   - StandardTimeIntegrator:
       name: ti_1
