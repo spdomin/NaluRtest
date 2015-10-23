@@ -164,20 +164,23 @@ realms:
             - velocity
             - mixture_fraction
 
+          compute_reynolds_stress: yes
+
     output:
       output_data_base_name: edgeWaleJetXflow.e
       output_frequency: 50 
       output_node_set: no 
       output_variables:
        - velocity
-       - velocity_ra_one
-       - velocity_fa_one
+       - ra_velocity_one
+       - fa_velocity_one
        - pressure
        - mixture_fraction
-       - mixture_fraction_ra_one
-       - mixture_fraction_fa_one
+       - ra_mixture_fraction_one
+       - fa_mixture_fraction_one
        - density
-       - density_ra_one
+       - ra_density_one
+       - reynolds_stress
 
     restart:
       restart_data_base_name: edgeWaleJetXflow.rst

@@ -139,8 +139,12 @@ realms:
           target_name: block_1
           reynolds_averaged_variables:
             - mixture_fraction
+            - resolved_turbulent_ke
           favre_averaged_variables:
             - mixture_fraction
+
+          compute_tke: yes 
+          compute_reynolds_stress: yes
 
     output:
       output_data_base_name: hoHelium.e
@@ -151,8 +155,10 @@ realms:
        - pressure
        - mixture_fraction
        - density
-       - mixture_fraction_fa_one
-       - mixture_fraction_ra_one
+       - fa_mixture_fraction_one
+       - ra_mixture_fraction_one
+       - ra_resolved_turbulent_ke_one
+       - reynolds_stress
 
 Time_Integrators:
   - StandardTimeIntegrator:

@@ -149,9 +149,15 @@ realms:
           reynolds_averaged_variables:
             - velocity
             - enthalpy
+            - resolved_turbulent_ke
+
           favre_averaged_variables:
             - velocity
             - enthalpy
+            - resolved_turbulent_ke
+
+          compute_tke: yes 
+          compute_reynolds_stress: yes
 
         - name: two
           target_name: surface_5
@@ -166,19 +172,22 @@ realms:
       output_node_set: no
       output_variables:
        - velocity
-       - velocity_ra_one
-       - velocity_fa_one
+       - ra_velocity_one
+       - fa_velocity_one
        - pressure
        - enthalpy
-       - enthalpy_ra_one
-       - enthalpy_fa_one
+       - ra_enthalpy_one
+       - fa_enthalpy_one
        - temperature
        - specific_heat
        - thermal_conductivity
        - viscosity
        - normal_heat_flux
-       - normal_heat_flux_ra_two
-       - normal_heat_flux_fa_two
+       - ra_normal_heat_flux_two
+       - fa_normal_heat_flux_two
+       - ra_resolved_turbulent_ke_one
+       - fa_resolved_turbulent_ke_one
+       - reynolds_stress
 
     restart:
       restart_data_base_name: heatedWaterChannel.rst
