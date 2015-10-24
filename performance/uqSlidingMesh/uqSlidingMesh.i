@@ -182,10 +182,10 @@ realms:
        - turbulent_viscosity
        - turbulent_ke
        - mesh_displacement
-       - ra_pressure_force_one
-       - ra_tau_wall_one
-       - ra_yplus_one
-       - ra_resolved_turbulent_ke_one
+       - pressure_force_ra_one
+       - tau_wall_ra_one
+       - yplus_ra_one
+       - resolved_turbulent_ke_ra_one
        - reynolds_stress
 
     post_processing:

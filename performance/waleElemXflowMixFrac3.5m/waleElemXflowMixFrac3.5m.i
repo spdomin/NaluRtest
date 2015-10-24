@@ -172,14 +172,14 @@ realms:
       output_node_set: no 
       output_variables:
        - velocity
-       - ra_velocity_one
-       - fa_velocity_one
+       - velocity_ra_one
+       - velocity_fa_one
        - pressure
        - mixture_fraction
-       - ra_mixture_fraction_one
-       - fa_mixture_fraction_one
+       - mixture_fraction_ra_one
+       - mixture_fraction_fa_one
        - density
-       - ra_density_one
+       - density_ra_one
        - reynolds_stress
 
     restart:

@@ -5,10 +5,12 @@ CWD=$(pwd)
 didSimulationDiffAnywhere=0
 
 # determine tolerance
-testTol=0.0000001
+testTol=0.000000000001
+theGoldNorm=heatedWaterChannel.norm.gold.remote
 platform=`uname`
 if [ "$platform" == 'Linux' ]; then
     testTol=0.0000000000000001
+    theGoldNorm=heatedWaterChannel.norm.gold
 fi
 
 # set the global diff
@@ -19,7 +21,7 @@ if [ -f $CWD/PASS ]; then
     didSimulationDiffAnywhere=0
 else
     mpiexec --np 4 ../../naluX -i heatedWaterChannel.i -o heatedWaterChannel.log
-    determine_pass_fail $testTol "heatedWaterChannel.log" "heatedWaterChannel.norm" "heatedWaterChannel.norm.gold"
+    determine_pass_fail $testTol "heatedWaterChannel.log" "heatedWaterChannel.norm" "$theGoldNorm"
     didSimulationDiffAnywhere="$?"
 fi
 

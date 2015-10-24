@@ -172,21 +172,21 @@ realms:
       output_node_set: no
       output_variables:
        - velocity
-       - ra_velocity_one
-       - fa_velocity_one
+       - velocity_ra_one
+       - velocity_fa_one
        - pressure
        - enthalpy
-       - ra_enthalpy_one
-       - fa_enthalpy_one
+       - enthalpy_ra_one
+       - enthalpy_fa_one
        - temperature
        - specific_heat
        - thermal_conductivity
        - viscosity
        - normal_heat_flux
-       - ra_normal_heat_flux_two
-       - fa_normal_heat_flux_two
-       - ra_resolved_turbulent_ke_one
-       - fa_resolved_turbulent_ke_one
+       - normal_heat_flux_ra_two
+       - normal_heat_flux_fa_two
+       - resolved_turbulent_ke_ra_one
+       - resolved_turbulent_ke_fa_one
        - reynolds_stress
 
     restart:

@@ -204,13 +204,13 @@ realms:
        - pressure
        - mixture_fraction
        - density
-       - ra_density
-       - ra_mixture_fraction_one
-       - fa_mixture_fraction_one
-       - fa_velocity_one
-       - ra_velocity_one
-       - ra_resolved_turbulent_ke_one
-       - fa_resolved_turbulent_ke_one
+       - density_ra
+       - mixture_fraction_ra_one
+       - mixture_fraction_fa_one
+       - velocity_ra_one
+       - velocity_fa_one
+       - resolved_turbulent_ke_ra_one
+       - resolved_turbulent_ke_fa_one
        - reynolds_stress
 
     restart:

@@ -182,12 +182,12 @@ realms:
        - mixture_fraction
        - density
        - density_ra_one
-       - ra_turbulent_ke_one
-       - fa_turbulent_ke_one
-       - fa_mixture_fraction_one
-       - ra_mixture_fraction_one
-       - fa_velocity_one
-       - ra_velocity_one
+       - turbulent_ke_ra_one
+       - turbulent_ke_fa_one
+       - mixture_fraction_ra_one
+       - mixture_fraction_fa_one
+       - velocity_ra_one
+       - velocity_fa_one
        - reynolds_stress
 
     restart:

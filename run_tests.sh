@@ -579,7 +579,7 @@ cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannel.i $baseGitHubCWD/
 cp $NaluRtestCWD/nightly/heatedWaterChannel/*.g.* $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
 cp $NaluRtestCWD/nightly/heatedWaterChannel/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
 cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannel.sh $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
-cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannel.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
+cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannel.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
 # run it...  
 ./heatedWaterChannel.sh
 

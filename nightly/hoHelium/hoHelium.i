@@ -155,9 +155,9 @@ realms:
        - pressure
        - mixture_fraction
        - density
-       - fa_mixture_fraction_one
-       - ra_mixture_fraction_one
-       - ra_resolved_turbulent_ke_one
+       - mixture_fraction_ra_one
+       - mixture_fraction_fa_one
+       - resolved_turbulent_ke_ra_one
        - reynolds_stress
 
 Time_Integrators:
