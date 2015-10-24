@@ -156,10 +156,19 @@ realms:
 
     turbulence_averaging:
       time_filter_interval: 10.0
-      reynolds_averaged_variables:
-       - mixture_fraction
-      favre_averaged_variables:
-       - mixture_fraction
+      specifications:
+        - name: one
+          target_name: block_1
+          reynolds_averaged_variables:
+            - velocity
+            - mixture_fraction
+            - turbulent_ke
+          favre_averaged_variables:
+            - velocity
+            - mixture_fraction
+            - turbulent_ke
+
+          compute_reynolds_stress: yes
 
     output:
       serialized_io_group_size: 2
@@ -172,8 +181,14 @@ realms:
        - turbulent_ke
        - mixture_fraction
        - density
-       - mixture_fraction_fa
-       - mixture_fraction_ra
+       - density_ra_one
+       - ra_turbulent_ke_one
+       - fa_turbulent_ke_one
+       - fa_mixture_fraction_one
+       - ra_mixture_fraction_one
+       - fa_velocity_one
+       - ra_velocity_one
+       - reynolds_stress
 
     restart:
       restart_data_base_name: heliumPlumeEdge_B.rst
