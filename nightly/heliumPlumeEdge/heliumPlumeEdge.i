@@ -72,9 +72,22 @@ linear_solvers:
     kspace: 50
     output_level: 0
 
+transfers:
+
+# Fluid to ....
+
+  - name: xfer_fluid_io
+    type: geometric
+    realm_pair: [fluidRealm, ioRealm]
+    mesh_part_pair: [block_1, block_1]
+    objective: input_output
+    transfer_variables:
+      - [mixture_fraction, mixture_fraction]
+      - [reynolds_stress, reynolds_stress]
+
 realms:
 
-  - name: realm_1
+  - name: fluidRealm
     mesh:  100cm_13K_S_R1.g
     use_edges: yes 
 
@@ -204,7 +217,7 @@ realms:
        - pressure
        - mixture_fraction
        - density
-       - density_ra
+       - density_ra_one
        - mixture_fraction_ra_one
        - mixture_fraction_fa_one
        - velocity_ra_one
@@ -217,6 +230,30 @@ realms:
       restart_data_base_name: heliumPlumeEdge.rst
       restart_frequency: 2 
 
+  - name: ioRealm
+    mesh:  io_mesh.g
+    type: io
+
+    field_registration:
+      specifications:
+        - field_name: mixture_fraction
+          target_name: block_1
+          field_size: 1
+          field_type: node_rank
+
+        - field_name: reynolds_stress
+          target_name: block_1
+          field_size: 6
+          field_type: node_rank
+
+    output:
+      output_data_base_name: io_results.e
+      output_frequency: 2
+      output_node_set: no
+      output_variables:
+       - mixture_fraction
+       - reynolds_stress
+
 Time_Integrators:
   - StandardTimeIntegrator:
       name: ti_1
@@ -228,4 +265,8 @@ Time_Integrators:
       second_order_accuracy: no
 
       realms:
-        - realm_1
+        - fluidRealm
+        - ioRealm
+
+      transfers:
+        - xfer_fluid_io

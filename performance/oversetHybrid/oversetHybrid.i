@@ -53,7 +53,7 @@ realms:
             convergence_tolerance: 1e-5
 
         - MixtureFraction:
-            name: myLowMach
+            name: myMixFrac
             max_iterations: 1
             convergence_tolerance: 1e-5
 
