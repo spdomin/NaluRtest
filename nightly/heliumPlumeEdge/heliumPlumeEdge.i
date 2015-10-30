@@ -232,7 +232,7 @@ realms:
 
   - name: ioRealm
     mesh:  io_mesh.g
-    type: io
+    type: input_output
 
     field_registration:
       specifications:

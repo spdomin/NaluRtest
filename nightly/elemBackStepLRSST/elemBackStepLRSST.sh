@@ -3,6 +3,10 @@
 
 CWD=$(pwd)
 didSimulationDiffAnywhere=0
+didSimulationDiffAnywhereFirst=0
+didSimulationDiffAnywhereSecond=0
+localDiffOne=0.0;
+localDiffTwo=0.0;
 
 # determine tolerance
 testTol=0.00000000001
@@ -18,9 +22,31 @@ if [ -f $CWD/PASS ]; then
     # already ran this test
     didSimulationDiffAnywhere=0
 else
+    # run the first case
     mpiexec --np 4 ../../naluX -i elemBackStepLRSST.i -o elemBackStepLRSST.log
     determine_pass_fail $testTol "elemBackStepLRSST.log" "elemBackStepLRSST.norm" "elemBackStepLRSST.norm.gold"
-    didSimulationDiffAnywhere="$?"
+    didSimulationDiffAnywhereFirst="$?"
+    localDiffOne=$GlobalMaxSolutionDiff
+    if [ "$didSimulationDiffAnywhereFirst" -gt 0 ]; then
+        didSimulationDiffAnywhere=1
+    fi
+
+    # run the second case
+    mpiexec --np 4 ../../naluX -i elemBackStepLRSST_Input.i -o elemBackStepLRSST_Input.log
+    determine_pass_fail $testTol "elemBackStepLRSST_Input.log" "elemBackStepLRSST_Input.norm" "elemBackStepLRSST_Input.norm.gold"
+    didSimulationDiffAnywhereSecond="$?"
+    localDiffTwo=$GlobalMaxSolutionDiff
+    if [ "$didSimulationDiffAnywhereSecond" -gt 0 ]; then
+        didSimulationDiffAnywhere=1
+    fi
+
+    # check who is greater
+    if [ $(echo " $localDiffOne > $localDiffTwo " | bc) -eq 1 ]; then
+        GlobalMaxSolutionDiff=$localDiffOne
+    else
+        GlobalMaxSolutionDiff=$localDiffTwo
+    fi
+
 fi
 
 # write the file based on final status
@@ -32,12 +58,13 @@ else
 fi
 
 # report it; 30 spaces
-GlobalPerformanceTime=`grep "STKPERF: Total Time" elemBackStepLRSST.log  | awk '{print $4}'`
+GlobalPerformanceTimeFirst=`grep "STKPERF: Total Time" elemBackStepLRSST.log  | awk '{print $4}'`
+GlobalPerformanceTimeSecond=`grep "STKPERF: Total Time" elemBackStepLRSST_Input.log  | awk '{print $4}'`
+totalPerfTime=`echo "$GlobalPerformanceTimeFirst + $GlobalPerformanceTimeSecond" | bc `
 if [ $PASS_STATUS -ne 1 ]; then
-    echo -e "..elemBackStepLRSST........... FAILED":" " $GlobalPerformanceTime " s" " max diff: " $GlobalMaxSolutionDiff
-
+    echo -e "..elemBackStepLRSST........... FAILED":" " $totalPerfTime " s" " max diff: " $GlobalMaxSolutionDiff
 else
-    echo -e "..elemBackStepLRSST........... PASSED":" " $GlobalPerformanceTime " s"
+    echo -e "..elemBackStepLRSST........... PASSED":" " $totalPerfTime " s"
 fi
 
 exit

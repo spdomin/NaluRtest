@@ -279,9 +279,11 @@ fi
 
 cd $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
 cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.i $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
+cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST_Input.i $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
 cp $NaluRtestCWD/nightly/elemBackStepLRSST/*.g.* $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
 cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.sh $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
 cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
+cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST_Input.norm.gold $baseGitHubCWD/runNaluRtest/nightly/elemBackStepLRSST
 # run it...  
 ./elemBackStepLRSST.sh
 
