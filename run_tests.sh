@@ -288,6 +288,24 @@ cp $NaluRtestCWD/nightly/elemBackStepLRSST/elemBackStepLRSST_Input.norm.gold $ba
 ./elemBackStepLRSST.sh
 
 #=============================================================================
+# ductWedge test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/ductWedge" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/ductWedge
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/ductWedge
+cp $NaluRtestCWD/nightly/ductWedge/ductWedge.i $baseGitHubCWD/runNaluRtest/nightly/ductWedge
+cp $NaluRtestCWD/nightly/ductWedge/ductWedge_Input.i $baseGitHubCWD/runNaluRtest/nightly/ductWedge
+cp $NaluRtestCWD/mesh/ductwedge.g.* $baseGitHubCWD/runNaluRtest/nightly/ductWedge
+cp $NaluRtestCWD/nightly/ductWedge/*.xml $baseGitHubCWD/runNaluRtest/nightly/ductWedge
+cp $NaluRtestCWD/nightly/ductWedge/ductWedge.sh $baseGitHubCWD/runNaluRtest/nightly/ductWedge
+cp $NaluRtestCWD/nightly/ductWedge/ductWedge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/ductWedge
+cp $NaluRtestCWD/nightly/ductWedge/ductWedge_Input.norm.gold $baseGitHubCWD/runNaluRtest/nightly/ductWedge
+# run it...  
+./ductWedge.sh
+
+#=============================================================================
 # heatedBackStep test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/heatedBackStep" ]; then
