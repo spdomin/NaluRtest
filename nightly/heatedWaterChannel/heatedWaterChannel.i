@@ -110,7 +110,8 @@ realms:
       target_name: surface_5
       wall_user_data:
         velocity: [0,0]
-        temperature: 313.0
+        user_function_name:
+         temperature: flow_past_cylinder
 
     solution_options:
       name: myOptions
