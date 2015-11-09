@@ -210,7 +210,7 @@ realms:
     output:
       serialized_io_group_size: 2
       output_data_base_name: heliumPlumeEdge.e
-      output_frequency: 2
+      output_frequency: 4 
       output_node_set: no
       output_variables:
        - velocity
