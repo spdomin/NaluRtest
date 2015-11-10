@@ -229,7 +229,8 @@ realms:
     restart:
       restart_data_base_name: heliumPlumeEdge.rst
       restart_frequency: 2 
-
+      restart_start: 2
+    
   - name: ioRealm
     mesh:  io_mesh.g
     type: input_output
