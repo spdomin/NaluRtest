@@ -119,9 +119,6 @@ realms:
       interp_rhou_together_for_mdot: yes
 
       options:
-        - hybrid_factor:
-            velocity: 0.0
-            enthalpy: 1.0
 
         - turbulent_prandtl:
             enthalpy: 0.90
@@ -139,6 +136,17 @@ realms:
             velocity: no
             enthalpy: yes 
 
+        - peclet_function_form:
+            velocity: tanh
+            enthalpy: tanh
+
+        - peclet_function_tanh_transition:
+            velocity: 5000.0
+            enthalpy: 2.01
+
+        - peclet_function_tanh_width:
+            velocity: 200.0
+            enthalpy: 4.02
 
     turbulence_averaging:
       time_filter_interval: 100000.0
