@@ -126,7 +126,7 @@ realms:
         - element_source_terms:
             momentum: [buoyancy, momentum_time_derivative]
             continuity: density_time_derivative
-            mixture_fraction: mixture_fraction_time_derivative
+            mixture_fraction: [mixture_fraction_time_derivative, LOCAL_DCO_4TH]
 
         - user_constants:
             gravity: [0.0,-9.81,0.0]
