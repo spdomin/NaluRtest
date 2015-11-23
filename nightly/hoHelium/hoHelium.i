@@ -39,6 +39,7 @@ realms:
         mixture_fraction: solve_adv_diff
         pressure: solve_cont
         dpdx: solve_adv_diff
+        dzdx: solve_adv_diff
 
       systems:
         - LowMachEOM:
@@ -51,6 +52,7 @@ realms:
             name: myZ
             max_iterations: 1
             convergence_tolerance: 1.e-2
+            manage_png: yes
 
     initial_conditions:
       - constant: ic_1
@@ -111,7 +113,7 @@ realms:
       options:
         - hybrid_factor:
             velocity: 0.0
-            mixture_fraction: 1.0
+            mixture_fraction: 0.0
 
         - alpha_upw:
             velocity: 1.0
