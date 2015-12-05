@@ -53,6 +53,7 @@ realms:
             max_iterations: 1
             convergence_tolerance: 1.e-2
             manage_png: yes
+            output_clipping_diagnostic: yes
 
     initial_conditions:
       - constant: ic_1
