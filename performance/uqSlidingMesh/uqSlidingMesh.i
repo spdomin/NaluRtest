@@ -187,6 +187,8 @@ realms:
        - yplus_ra_one
        - resolved_turbulent_ke_ra_one
        - reynolds_stress
+       - element_reynolds
+       - element_courant
 
     post_processing:
     

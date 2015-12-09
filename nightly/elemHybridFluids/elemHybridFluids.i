@@ -134,6 +134,8 @@ realms:
        - scalar_variance
        - scalar_dissipation
        - turbulent_viscosity
+       - element_reynolds
+       - element_courant
 
 Time_Integrators:
   - StandardTimeIntegrator:
