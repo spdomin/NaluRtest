@@ -39,6 +39,50 @@ fi
 cp $NaluRtestCWD/pass_fail.sh $baseGitHubCWD/runNaluRtest
 
 #=============================================================================
+# periodic3dElem test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/periodic3dElem" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
+cp $NaluRtestCWD/nightly/periodic3dElem/periodic3dElem.i $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
+cp $NaluRtestCWD/mesh/periodic3d.g $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
+cp $NaluRtestCWD/xml/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
+cp $NaluRtestCWD/nightly/periodic3dElem/periodic3dElemNp1.sh $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
+cp $NaluRtestCWD/nightly/periodic3dElem/periodic3dElemNp1.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
+cp $NaluRtestCWD/nightly/periodic3dElem/periodic3dElemNp4.sh $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
+cp $NaluRtestCWD/nightly/periodic3dElem/periodic3dElemNp4.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
+cp $NaluRtestCWD/nightly/periodic3dElem/periodic3dElemNp8.sh $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
+cp $NaluRtestCWD/nightly/periodic3dElem/periodic3dElemNp8.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
+# run it...  
+./periodic3dElemNp1.sh
+# currently FAILS ./periodic3dElemNp4.sh
+./periodic3dElemNp8.sh
+
+#=============================================================================
+# periodic3dEdge test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
+cp $NaluRtestCWD/nightly/periodic3dEdge/periodic3dEdge.i $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
+cp $NaluRtestCWD/mesh/periodic3d.g $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
+cp $NaluRtestCWD/xml/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
+cp $NaluRtestCWD/nightly/periodic3dEdge/periodic3dEdgeNp1.sh $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
+cp $NaluRtestCWD/nightly/periodic3dEdge/periodic3dEdgeNp1.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
+cp $NaluRtestCWD/nightly/periodic3dEdge/periodic3dEdgeNp4.sh $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
+cp $NaluRtestCWD/nightly/periodic3dEdge/periodic3dEdgeNp4.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
+cp $NaluRtestCWD/nightly/periodic3dEdge/periodic3dEdgeNp8.sh $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
+cp $NaluRtestCWD/nightly/periodic3dEdge/periodic3dEdgeNp8.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
+# run it...  
+./periodic3dEdgeNp1.sh
+# currently FAILS ./periodic3dEdgeNp4.sh
+./periodic3dEdgeNp8.sh
+
+#=============================================================================
 # quad9HC test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/quad9HC" ]; then
