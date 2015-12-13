@@ -57,7 +57,7 @@ cp $NaluRtestCWD/nightly/periodic3dElem/periodic3dElemNp8.sh $baseGitHubCWD/runN
 cp $NaluRtestCWD/nightly/periodic3dElem/periodic3dElemNp8.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
 # run it...  
 ./periodic3dElemNp1.sh
-./periodic3dElemNp4.sh
+#./periodic3dElemNp4.sh
 ./periodic3dElemNp8.sh
 
 #=============================================================================
