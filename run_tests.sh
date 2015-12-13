@@ -79,7 +79,7 @@ cp $NaluRtestCWD/nightly/periodic3dEdge/periodic3dEdgeNp8.sh $baseGitHubCWD/runN
 cp $NaluRtestCWD/nightly/periodic3dEdge/periodic3dEdgeNp8.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
 # run it...  
 ./periodic3dEdgeNp1.sh
-./periodic3dEdgeNp4.sh
+#./periodic3dEdgeNp4.sh
 ./periodic3dEdgeNp8.sh
 
 #=============================================================================
