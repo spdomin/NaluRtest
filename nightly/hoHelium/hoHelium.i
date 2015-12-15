@@ -127,9 +127,9 @@ realms:
             mixture_fraction: 1.0
 
         - element_source_terms:
-            momentum: [buoyancy, momentum_time_derivative]
+            momentum: [buoyancy, momentum_time_derivative, NSO_2ND_ALT]
             continuity: density_time_derivative
-            mixture_fraction: [mixture_fraction_time_derivative, LOCAL_DCO_4TH]
+            mixture_fraction: [mixture_fraction_time_derivative, NSO_4TH]
 
         - user_constants:
             gravity: [0.0,-9.81,0.0]
