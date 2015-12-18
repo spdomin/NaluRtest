@@ -212,6 +212,8 @@ realms:
       output_data_base_name: heliumPlumeEdge.e
       output_frequency: 4 
       output_node_set: no
+      compression_level: 9
+      compression_shuffle: yes
       output_variables:
        - velocity
        - pressure
@@ -230,6 +232,8 @@ realms:
       restart_data_base_name: heliumPlumeEdge.rst
       restart_frequency: 2 
       restart_start: 2
+      compression_level: 9
+      compression_shuffle: yes
     
   - name: ioRealm
     mesh:  io_mesh.g

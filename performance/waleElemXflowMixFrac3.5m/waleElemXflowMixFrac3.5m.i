@@ -167,9 +167,11 @@ realms:
           compute_reynolds_stress: yes
 
     output:
-      output_data_base_name: edgeWaleJetXflow.e
-      output_frequency: 50 
+      output_data_base_name: edgeWaleJetXflowC.e
+      output_frequency: 1 
       output_node_set: no 
+      compression_level: 9
+      compression_shuffle: yes
       output_variables:
        - velocity
        - velocity_ra_one
