@@ -46,13 +46,11 @@ realms:
             name: myLowMach
             max_iterations: 1
             convergence_tolerance: 1e-2
-            manage_png: yes
 
         - MixtureFraction:
             name: myZ
             max_iterations: 1
             convergence_tolerance: 1.e-2
-            manage_png: yes
             output_clipping_diagnostic: yes
 
     initial_conditions:
@@ -134,6 +132,10 @@ realms:
         - user_constants:
             gravity: [0.0,-9.81,0.0]
             reference_density: 1.18
+
+        - consistent_mass_matrix_png:
+            pressure: yes
+            mixture_fraction: yes
 
     turbulence_averaging:
       time_filter_interval: 10.0

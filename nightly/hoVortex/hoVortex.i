@@ -39,15 +39,12 @@ realms:
         pressure: solve_cont
         velocity: solve_scalar
         dpdx: solve_scalar
-        velocity_correction: solve_scalar
 
       systems:
         - LowMachEOM:
             name: myLowMach
             max_iterations: 1
             convergence_tolerance: 1e-2
-            manage_png: yes
-            manage_ucorr: yes
 
     initial_conditions:
 
@@ -106,6 +103,9 @@ realms:
         - limiter:
             pressure: no
             velocity: no
+
+        - consistent_mass_matrix_png:
+            pressure: yes
 
     output:
       output_data_base_name: hoVortex.e

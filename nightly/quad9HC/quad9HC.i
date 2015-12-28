@@ -33,7 +33,6 @@ realms:
             name: myHC
             max_iterations: 1
             convergence_tolerance: 1e-5
-            manage_png: yes
 
     initial_conditions:
 
@@ -73,11 +72,15 @@ realms:
       name: myOptions
 
       options:
+
       - element_source_terms:
           temperature: steady_2d_thermal
 
       - projected_nodal_gradient:
           temperature: element 
+
+      - consistent_mass_matrix_png:
+          temperature: yes
 
     output:
       output_data_base_name: quad9HC.e

@@ -45,7 +45,6 @@ realms:
             name: myLowMach
             max_iterations: 1
             convergence_tolerance: 1e-2
-            manage_png: yes
 
     initial_conditions:
 
@@ -95,6 +94,10 @@ realms:
 
         - element_source_terms:
             momentum: [SteadyTaylorVortex, momentum_time_derivative]
+
+        - consistent_mass_matrix_png:
+            pressure: yes
+            velocity: no
 
     solution_norm:
       output_frequency: 20
