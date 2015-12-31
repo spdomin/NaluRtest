@@ -39,6 +39,7 @@ realms:
         pressure: solve_cont
         velocity: solve_scalar
         dpdx: solve_scalar
+        duidx: solve_scalar
 
       systems:
         - LowMachEOM:
@@ -106,6 +107,10 @@ realms:
 
         - consistent_mass_matrix_png:
             pressure: yes
+            velocity: yes
+
+        - element_source_terms:
+            momentum: [momentum_time_derivative, NSO_4TH_ALT]
 
     output:
       output_data_base_name: hoVortex.e

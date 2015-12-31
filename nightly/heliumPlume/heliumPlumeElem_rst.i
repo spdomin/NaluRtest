@@ -37,7 +37,7 @@ realms:
 
   - name: realm_1
     mesh:  heliumPlumeEdge.rst
-    use_edges: yes 
+    use_edges: no
     support_inconsistent_multi_state_restart: yes
 
     equation_systems:
@@ -124,7 +124,7 @@ realms:
     solution_options:
       name: myOptions
       turbulence_model: ksgs
-
+      reduced_sens_cvfem_poisson: yes
       divU_stress_scaling: 1.0
 
       options:
@@ -150,9 +150,15 @@ realms:
             momentum: buoyancy
             continuity: density_time_derivative
 
+        - element_source_terms:
+            turbulent_ke: ksgs_buoyant
+
         - user_constants:
             gravity: [0.0,-981.0,0.0]
             reference_density: 1.18e-3
+
+        - turbulence_model_constants:
+             Cb2: 0.3501
 
     turbulence_averaging:
       time_filter_interval: 10.0
@@ -172,7 +178,7 @@ realms:
 
     output:
       serialized_io_group_size: 2
-      output_data_base_name: heliumPlumeEdge_rst.e
+      output_data_base_name: heliumPlumeElem_rst.e
       output_frequency: 2
       output_node_set: no
       output_variables:
@@ -191,7 +197,7 @@ realms:
        - reynolds_stress
 
     restart:
-      restart_data_base_name: heliumPlumeEdge_B.rst
+      restart_data_base_name: heliumPlumeElem_B.rst
       restart_frequency: 2 
       restart_time: 0.10
 

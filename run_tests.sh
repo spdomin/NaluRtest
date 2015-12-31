@@ -399,23 +399,23 @@ cp $NaluRtestCWD/nightly/elemPipeCHT/elemPipeCHT.norm.gold $baseGitHubCWD/runNal
 ./elemPipeCHT.sh
 
 #=============================================================================
-# heliumPlumeEdge test (with restart)
+# heliumPlume test (with restart; mixed edge/element)
 #=============================================================================
-if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge" ]; then
-    mkdir $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/heliumPlume" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/heliumPlume
 fi
 
-cd $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.i $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge_rst.i $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-cp $NaluRtestCWD/nightly/heliumPlumeEdge/*.g.* $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-cp $NaluRtestCWD/nightly/heliumPlumeEdge/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.sh $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
-cp $NaluRtestCWD/nightly/heliumPlumeEdge/heliumPlumeEdge_rst.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlumeEdge
+cd $baseGitHubCWD/runNaluRtest/nightly/heliumPlume
+cp $NaluRtestCWD/nightly/heliumPlume/heliumPlumeEdge.i $baseGitHubCWD/runNaluRtest/nightly/heliumPlume
+cp $NaluRtestCWD/nightly/heliumPlume/heliumPlumeElem_rst.i $baseGitHubCWD/runNaluRtest/nightly/heliumPlume
+cp $NaluRtestCWD/nightly/heliumPlume/*.g.* $baseGitHubCWD/runNaluRtest/nightly/heliumPlume
+cp $NaluRtestCWD/nightly/heliumPlume/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/heliumPlume
+cp $NaluRtestCWD/nightly/heliumPlume/heliumPlume.sh $baseGitHubCWD/runNaluRtest/nightly/heliumPlume
+cp $NaluRtestCWD/nightly/heliumPlume/heliumPlumeEdge.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlume
+cp $NaluRtestCWD/nightly/heliumPlume/heliumPlumeElem_rst.norm.gold $baseGitHubCWD/runNaluRtest/nightly/heliumPlume
 
 # run it...  
-./heliumPlumeEdge.sh
+./heliumPlume.sh
 
 #=============================================================================
 # edgeContact3D test

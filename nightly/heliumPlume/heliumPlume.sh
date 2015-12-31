@@ -32,8 +32,8 @@ else
     fi
 
     # run the second case
-    mpiexec --np 8 ../../naluX -i heliumPlumeEdge_rst.i -o heliumPlumeEdge_rst.log
-    determine_pass_fail $testTol "heliumPlumeEdge_rst.log" "heliumPlumeEdge_rst.norm" "heliumPlumeEdge_rst.norm.gold"
+    mpiexec --np 8 ../../naluX -i heliumPlumeElem_rst.i -o heliumPlumeElem_rst.log
+    determine_pass_fail $testTol "heliumPlumeElem_rst.log" "heliumPlumeElem_rst.norm" "heliumPlumeElem_rst.norm.gold"
     didSimulationDiffAnywhereSecond="$?"
     localDiffTwo=$GlobalMaxSolutionDiff
     if [ "$didSimulationDiffAnywhereSecond" -gt 0 ]; then
@@ -59,12 +59,12 @@ fi
 
 # report it; 30 spaces
 GlobalPerformanceTimeFirst=`grep "STKPERF: Total Time" heliumPlumeEdge.log  | awk '{print $4}'`
-GlobalPerformanceTimeSecond=`grep "STKPERF: Total Time" heliumPlumeEdge_rst.log  | awk '{print $4}'`
+GlobalPerformanceTimeSecond=`grep "STKPERF: Total Time" heliumPlumeElem_rst.log  | awk '{print $4}'`
 totalPerfTime=`echo "$GlobalPerformanceTimeFirst + $GlobalPerformanceTimeSecond" | bc `
 if [ $PASS_STATUS -ne 1 ]; then
-    echo -e "..heliumPlumeEdge............. FAILED":" " $totalPerfTime " s" " max diff: " $GlobalMaxSolutionDiff
+    echo -e "..heliumPlume................. FAILED":" " $totalPerfTime " s" " max diff: " $GlobalMaxSolutionDiff
 else
-    echo -e "..heliumPlumeEdge............. PASSED":" " $totalPerfTime " s"
+    echo -e "..heliumPlume................. PASSED":" " $totalPerfTime " s"
 fi
 
 exit
