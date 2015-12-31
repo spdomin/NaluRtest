@@ -232,8 +232,8 @@ realms:
       restart_data_base_name: heliumPlumeEdge.rst
       restart_frequency: 2 
       restart_start: 2
-      compression_level: 9
-      compression_shuffle: yes
+      compression_level: 0 
+      compression_shuffle: no 
     
   - name: ioRealm
     mesh:  io_mesh.g
