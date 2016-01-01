@@ -40,6 +40,7 @@ realms:
         pressure: solve_cont
         dpdx: solve_adv_diff
         dzdx: solve_adv_diff
+        duidx: solve_adv_diff
 
       systems:
         - LowMachEOM:
@@ -108,14 +109,16 @@ realms:
       turbulence_model: wale
 
       divU_stress_scaling: 1.0
+   
+      reduced_sens_cvfem_poisson: yes
+
+      use_consolidated_solver_algorithm: yes
 
       options:
         - hybrid_factor:
-            velocity: 0.0
             mixture_fraction: 0.0
 
         - alpha_upw:
-            velocity: 1.0
             mixture_fraction: 1.0
 
         - laminar_schmidt:
@@ -125,8 +128,8 @@ realms:
             mixture_fraction: 1.0
 
         - element_source_terms:
-            momentum: [buoyancy, momentum_time_derivative, NSO_2ND_ALT]
-            continuity: density_time_derivative
+            momentum: [advection_diffusion, buoyancy, momentum_time_derivative, NSO_4TH_ALT]
+            continuity: [advection, density_time_derivative]
             mixture_fraction: [mixture_fraction_time_derivative, NSO_4TH]
 
         - user_constants:
@@ -135,6 +138,7 @@ realms:
 
         - consistent_mass_matrix_png:
             pressure: yes
+            velocity: yes
             mixture_fraction: yes
 
     turbulence_averaging:
