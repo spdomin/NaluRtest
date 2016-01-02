@@ -5,7 +5,7 @@ CWD=$(pwd)
 didSimulationDiffAnywhere=0
 
 # determine tolerance
-testTol=0.000000000001
+testTol=0.0000001
 theGoldNorm=heatedWaterChannel.norm.gold.remote
 platform=`uname`
 if [ "$platform" == 'Linux' ]; then
