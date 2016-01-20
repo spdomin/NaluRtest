@@ -47,7 +47,7 @@ fi
 
 cd $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
 cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.i $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
-cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/*.xml $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
+cp $NaluRtestCWD/xml/milestone.xml $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
 cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/*.g.* $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
 cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.sh $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
 cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.norm.gold* $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
@@ -63,7 +63,7 @@ fi
 
 cd $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
 cp $NaluRtestCWD/performance/uqSlidingMesh/uqSlidingMesh.i $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
-cp $NaluRtestCWD/performance/uqSlidingMesh/*.xml $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
+cp $NaluRtestCWD/xml/milestone.xml $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
 cp $NaluRtestCWD/mesh/uqvawt_corrected.exo.* $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
 cp $NaluRtestCWD/performance/uqSlidingMesh/uqSlidingMesh.sh $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
 cp $NaluRtestCWD/performance/uqSlidingMesh/uqSlidingMesh.norm.gold* $baseGitHubCWD/runNaluRtest/performance/uqSlidingMesh
@@ -79,7 +79,7 @@ fi
 
 cd $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
 cp $NaluRtestCWD/performance/oversetHybrid/oversetHybrid.i $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
-cp $NaluRtestCWD/mesh/general.xml $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
+cp $NaluRtestCWD/xml/milestone.xml $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
 cp $NaluRtestCWD/performance/oversetHybrid/hybrid_sphere.g.* $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
 cp $NaluRtestCWD/performance/oversetHybrid/oversetHybrid.sh $baseGitHubCWD/runNaluRtest/performance/oversetHybrid
 cp $NaluRtestCWD/performance/oversetHybrid/oversetHybrid.norm.gold* $baseGitHubCWD/runNaluRtest/performance/oversetHybrid

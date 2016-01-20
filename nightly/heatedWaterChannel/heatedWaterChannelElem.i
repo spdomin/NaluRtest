@@ -22,12 +22,13 @@ linear_solvers:
     max_iterations: 50
     kspace: 50
     output_level: 0
+    muelu_xml_file_name: milestone_aspect_ratio.xml
 
 realms:
 
   - name: realm_1
     mesh: waterChannel_mks.g
-    use_edges: yes
+    use_edges: no
 
     equation_systems:
       name: theEqSys
@@ -176,7 +177,7 @@ realms:
             - normal_heat_flux
 
     output:
-      output_data_base_name: heatedWaterChannel.e
+      output_data_base_name: heatedWaterChannelElem.e
       output_frequency: 5
       output_node_set: no
       output_variables:
@@ -199,7 +200,7 @@ realms:
        - reynolds_stress
 
     restart:
-      restart_data_base_name: heatedWaterChannel.rst
+      restart_data_base_name: heatedWaterChannelElem.rst
       output_frequency: 10
 
 Time_Integrators:

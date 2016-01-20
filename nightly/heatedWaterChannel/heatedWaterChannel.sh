@@ -3,14 +3,20 @@
 
 CWD=$(pwd)
 didSimulationDiffAnywhere=0
+didSimulationDiffAnywhereFirst=0
+didSimulationDiffAnywhereSecond=0
+localDiffOne=0.0;
+localDiffTwo=0.0;
 
 # determine tolerance
-testTol=0.0000001
-theGoldNorm=heatedWaterChannel.norm.gold.remote
+testTol=0.000000000001
+theGoldNormEdge=heatedWaterChannelEdge.norm.gold.remote
+theGoldNormElem=heatedWaterChannelElem.norm.gold.remote
 platform=`uname`
 if [ "$platform" == 'Linux' ]; then
     testTol=0.0000000000000001
-    theGoldNorm=heatedWaterChannel.norm.gold
+    theGoldNormEdge=heatedWaterChannelEdge.norm.gold
+    theGoldNormElem=heatedWaterChannelElem.norm.gold
 fi
 
 # set the global diff
@@ -20,9 +26,31 @@ if [ -f $CWD/PASS ]; then
     # already ran this test
     didSimulationDiffAnywhere=0
 else
-    mpiexec --np 4 ../../naluX -i heatedWaterChannel.i -o heatedWaterChannel.log
-    determine_pass_fail $testTol "heatedWaterChannel.log" "heatedWaterChannel.norm" "$theGoldNorm"
-    didSimulationDiffAnywhere="$?"
+    # run the first
+    mpiexec --np 4 ../../naluX -i heatedWaterChannelEdge.i -o heatedWaterChannelEdge.log
+    determine_pass_fail $testTol "heatedWaterChannelEdge.log" "heatedWaterChannelEdge.norm" "$theGoldNormEdge"
+    didSimulationDiffAnywhereFirst="$?"
+    localDiffOne=$GlobalMaxSolutionDiff
+    if [ "$didSimulationDiffAnywhereFirst" -gt 0 ]; then
+        didSimulationDiffAnywhere=1
+    fi
+
+    # run the second
+    mpiexec --np 4 ../../naluX -i heatedWaterChannelElem.i -o heatedWaterChannelElem.log
+    determine_pass_fail $testTol "heatedWaterChannelElem.log" "heatedWaterChannelElem.norm" "$theGoldNormElem"
+    didSimulationDiffAnywhereSecond="$?"
+    localDiffTwo=$GlobalMaxSolutionDiff
+    if [ "$didSimulationDiffAnywhereSecond" -gt 0 ]; then
+        didSimulationDiffAnywhere=1
+    fi
+
+    # check who is greater
+    if [ $(echo " $localDiffOne > $localDiffTwo " | bc) -eq 1 ]; then
+        GlobalMaxSolutionDiff=$localDiffOne
+    else
+        GlobalMaxSolutionDiff=$localDiffTwo
+    fi
+
 fi
 
 # write the file based on final status
@@ -34,11 +62,13 @@ else
 fi
 
 # report it; 30 spaces
-GlobalPerformanceTime=`grep "STKPERF: Total Time" heatedWaterChannel.log  | awk '{print $4}'`
+GlobalPerformanceTimeFirst=`grep "STKPERF: Total Time" heatedWaterChannelEdge.log  | awk '{print $4}'`
+GlobalPerformanceTimeSecond=`grep "STKPERF: Total Time" heatedWaterChannelElem.log  | awk '{print $4}'`
+totalPerfTime=`echo "$GlobalPerformanceTimeFirst + $GlobalPerformanceTimeSecond" | bc `
 if [ $PASS_STATUS -ne 1 ]; then
-    echo -e "..heatedWaterChannel.......... FAILED":" " $GlobalPerformanceTime " s" " max diff: " $GlobalMaxSolutionDiff
+    echo -e "..heatedWaterChannel.......... FAILED":" " $totalPerfTime " s" " max diff: " $GlobalMaxSolutionDiff
 else
-    echo -e "..heatedWaterChannel.......... PASSED":" " $GlobalPerformanceTime " s"
+    echo -e "..heatedWaterChannel.......... PASSED":" " $totalPerfTime " s"
 fi
 
 exit
