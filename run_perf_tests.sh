@@ -47,7 +47,6 @@ fi
 
 cd $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
 cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.i $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
-cp $NaluRtestCWD/xml/milestone.xml $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
 cp $NaluRtestCWD/xml/milestone_aspect_ratio_smooth.xml $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
 cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/*.g.* $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
 cp $NaluRtestCWD/performance/waleElemXflowMixFrac3.5m/waleElemXflowMixFrac3.5m.sh $baseGitHubCWD/runNaluRtest/performance/waleElemXflowMixFrac3.5m
