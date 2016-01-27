@@ -23,6 +23,7 @@ linear_solvers:
     kspace: 100 
     output_level: 0
     recompute_preconditioner: false
+    muelu_xml_file_name: milestone_aspect_ratio_smooth.xml
 
 realms:
 
@@ -122,8 +123,7 @@ realms:
       name: myOptions
       turbulence_model: wale
       shift_cvfem_mdot: yes
-      shift_cvfem_poisson: yes
-      muelu_xml_file_name: milestone.xml
+      shift_cvfem_poisson: no
 
       options:
 
