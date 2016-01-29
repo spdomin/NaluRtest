@@ -30,7 +30,8 @@ transfers:
   - name: xfer_io_fluids
     type: geometric
     realm_pair: [ioRealm, fluidRealm]
-    mesh_part_pair: [block_1, block_1]
+    from_target_name: block_1
+    to_target_name: block_1
     objective: initialization
     transfer_variables:
       - [velocity, velocity]

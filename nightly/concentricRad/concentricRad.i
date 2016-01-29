@@ -16,31 +16,19 @@ linear_solvers:
 
 transfers:
 
-  - name: xfer_thermal_rte_inner
+  - name: xfer_thermal_rte_inner_outer
     type: geometric
     realm_pair: [realmThermal, realmRte]
-    mesh_part_pair: [surface_2, surface_1]
+    from_target_name: [surface_2, surface_3]
+    to_target_name: [surface_1, surface_2]
     transfer_variables:
       - [temperature, temperature_bc]
 
-  - name: xfer_thermal_rte_outer
-    type: geometric
-    realm_pair: [realmThermal, realmRte]
-    mesh_part_pair: [surface_3, surface_2]
-    transfer_variables:
-      - [temperature, temperature_bc]
-
-  - name: xfer_rte_thermal_inner
+  - name: xfer_rte_thermal_inner_outer
     type: geometric
     realm_pair: [realmRte, realmThermal]
-    mesh_part_pair: [surface_1, surface_2]
-    transfer_variables:
-      - [irradiation, irradiation]
-
-  - name: xfer_rte_thermal_outer
-    type: geometric
-    realm_pair: [realmRte, realmThermal]
-    mesh_part_pair: [surface_2, surface_3]
+    from_target_name: [surface_1, surface_2]
+    to_target_name: [surface_2, surface_3]
     transfer_variables:
       - [irradiation, irradiation]
      
@@ -118,7 +106,7 @@ realms:
             convergence_tolerance: 1.e-5
 
     output:
-      output_data_base_name: thermal.e
+      output_data_base_name: thermalNew.e
       output_frequency: 5
       output_node_set: no 
       output_variables:
@@ -190,7 +178,7 @@ realms:
             stefan_boltzmann: 5.6704e-8
 
     output:
-      output_data_base_name: pmr.e
+      output_data_base_name: pmrNew.e
       output_frequency: 5
       output_node_set: no
       output_variables:
