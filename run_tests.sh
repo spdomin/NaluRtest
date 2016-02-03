@@ -650,4 +650,21 @@ cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannelElem.norm.gold* $b
 # run it...  
 ./heatedWaterChannel.sh
 
+#=============================================================================
+# variableDensMMS test (edge and element)
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/variableDensMMS" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/variableDensMMS
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/variableDensMMS
+cp $NaluRtestCWD/nightly/variableDensMMS/*.i $baseGitHubCWD/runNaluRtest/nightly/variableDensMMS
+cp $NaluRtestCWD/nightly/variableDensMMS/*.g $baseGitHubCWD/runNaluRtest/nightly/variableDensMMS
+cp $NaluRtestCWD/xml/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/variableDensMMS
+cp $NaluRtestCWD/nightly/variableDensMMS/variableDensMMS.sh $baseGitHubCWD/runNaluRtest/nightly/variableDensMMS
+cp $NaluRtestCWD/nightly/variableDensMMS/*.norm.gold $baseGitHubCWD/runNaluRtest/nightly/variableDensMMS
+
+# run it...  
+./variableDensMMS.sh
+
 echo "Rtest End"
