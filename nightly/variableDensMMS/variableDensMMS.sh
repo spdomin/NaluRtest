@@ -23,8 +23,8 @@ if [ -f $CWD/PASS ]; then
     didSimulationDiffAnywhere=0
 else
     # run the first case
-    mpiexec --np 2 ../../naluX -i variableDensMixFrac.i -o variableDensMixFrac.log
-    determine_pass_fail $testTol "variableDensMixFrac.log" "variableDensMixFrac.norm" "variableDensMixFrac.norm.gold"
+    mpiexec --np 2 ../../naluX -i variableDensNonUniform.i -o variableDensNonUniform.log
+    determine_pass_fail $testTol "variableDensNonUniform.log" "variableDensNonUniform.norm" "variableDensNonUniform.norm.gold"
     didSimulationDiffAnywhereFirst="$?"
     localDiffOne=$GlobalMaxSolutionDiff
     if [ "$didSimulationDiffAnywhereFirst" -gt 0 ]; then
@@ -58,7 +58,7 @@ else
 fi
 
 # report it; 30 spaces
-GlobalPerformanceTimeFirst=`grep "STKPERF: Total Time" variableDensMixFrac.log  | awk '{print $4}'`
+GlobalPerformanceTimeFirst=`grep "STKPERF: Total Time" variableDensNonUniform.log  | awk '{print $4}'`
 GlobalPerformanceTimeSecond=`grep "STKPERF: Total Time" variableDensNonIso.log  | awk '{print $4}'`
 totalPerfTime=`echo "$GlobalPerformanceTimeFirst + $GlobalPerformanceTimeSecond" | bc `
 if [ $PASS_STATUS -ne 1 ]; then

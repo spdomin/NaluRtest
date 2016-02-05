@@ -156,7 +156,7 @@ realms:
             enthalpy: VariableDensityNonIso
 
         - user_constants:
-            gravity: [-1.0,-0.5,0.25]
+            gravity: [-5.0, 6.0, 7.0]
             reference_density: 1.0
 
     solution_norm:

@@ -71,12 +71,12 @@ realms:
  
         - name: density
           type: mixture_fraction
-          primary_value: 1.0
-          secondary_value: 2.0
+          primary_value: 0.1
+          secondary_value: 1.0
 
         - name: viscosity
           type: constant
-          value: 0.0025
+          value: 0.001
 
     boundary_conditions:
 
@@ -148,7 +148,7 @@ realms:
             mixture_fraction: 0.8
 
         - user_constants:
-            gravity: [-1.0,-1.0,-1.0]
+            gravity: [-5.0, 6.0, 7.0]
             reference_density: 1.0
 
     solution_norm:
@@ -159,15 +159,18 @@ realms:
       target_name: block_1
       dof_user_function_pair:
        - [velocity, VariableDensityVelocity]
+       - [mixture_fraction, VariableDensityMixtureFraction]
 
     output:
-      output_data_base_name: variableDensMixFrac.e
+      output_data_base_name: variableDensNonUniform.e
       output_frequency: 5
       output_node_set: no 
       output_variables:
        - velocity
        - pressure
        - mixture_fraction
+       - density
+       - mixture_fraction_exact
        - velocity_exact
 
 Time_Integrators:
