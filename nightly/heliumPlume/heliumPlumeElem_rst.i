@@ -130,7 +130,7 @@ realms:
       options:
         - hybrid_factor:
             velocity: 0.0
-            turbulent_ke: 1.0
+            turbulent_ke: 0.0
             mixture_fraction: 1.0
 
         - alpha_upw:
@@ -151,7 +151,7 @@ realms:
             continuity: density_time_derivative
 
         - element_source_terms:
-            turbulent_ke: ksgs_buoyant
+            turbulent_ke: [ksgs_buoyant, NSO_4TH_ALT]
 
         - user_constants:
             gravity: [0.0,-981.0,0.0]
