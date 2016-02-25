@@ -13,8 +13,11 @@ baseGitHubCWD=$(pwd)
 # create the directory in which the tests will be run (if it does not exist)
 if [ ! -d "$baseGitHubCWD/runNaluRtest" ]; then
     mkdir $baseGitHubCWD/runNaluRtest
+fi
+
+# now check for nightly
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly" ]; then
     mkdir $baseGitHubCWD/runNaluRtest/nightly
-    mkdir $baseGitHubCWD/runNaluRtest/performance
 fi
 
 # look for file that defines the path to naluX
@@ -57,7 +60,7 @@ cp $NaluRtestCWD/nightly/periodic3dElem/periodic3dElemNp8.sh $baseGitHubCWD/runN
 cp $NaluRtestCWD/nightly/periodic3dElem/periodic3dElemNp8.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/periodic3dElem
 # run it...  
 ./periodic3dElemNp1.sh
-#./periodic3dElemNp4.sh
+./periodic3dElemNp4.sh
 ./periodic3dElemNp8.sh
 
 #=============================================================================
@@ -79,7 +82,7 @@ cp $NaluRtestCWD/nightly/periodic3dEdge/periodic3dEdgeNp8.sh $baseGitHubCWD/runN
 cp $NaluRtestCWD/nightly/periodic3dEdge/periodic3dEdgeNp8.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/periodic3dEdge
 # run it...  
 ./periodic3dEdgeNp1.sh
-#./periodic3dEdgeNp4.sh
+./periodic3dEdgeNp4.sh
 ./periodic3dEdgeNp8.sh
 
 #=============================================================================

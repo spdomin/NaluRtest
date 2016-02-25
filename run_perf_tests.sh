@@ -15,6 +15,9 @@ baseGitHubCWD=$(pwd)
 # create the directory in which the tests will be run (if it does not exist)
 if [ ! -d "$baseGitHubCWD/runNaluRtest" ]; then
     mkdir $baseGitHubCWD/runNaluRtest
+fi
+# now check for performance
+if [ ! -d "$baseGitHubCWD/runNaluRtest/performance" ]; then
     mkdir $baseGitHubCWD/runNaluRtest/performance
 fi
 

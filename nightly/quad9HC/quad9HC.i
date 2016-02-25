@@ -92,6 +92,15 @@ realms:
        - dtdx
        - dqdxCMM
 
+    solution_norm:
+      output_frequency: 1
+      file_name: quad9HC.dat
+      spacing: 12
+      percision: 6
+      target_name: block_1
+      dof_user_function_pair:
+       - [temperature, steady_2d_thermal]
+
 Time_Integrators:
   - StandardTimeIntegrator:
       name: ti_1
