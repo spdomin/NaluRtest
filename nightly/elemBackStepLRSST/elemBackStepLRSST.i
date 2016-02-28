@@ -23,9 +23,31 @@ linear_solvers:
     kspace: 50
     output_level: 0
 
+transfers:
+
+# Fluid to ....
+
+  - name: xfer_fluid_io_volume
+    type: geometric
+    realm_pair: [fluidRealm, ioRealm]
+    mesh_part_pair: [block_1, block_1]
+    objective: input_output
+    transfer_variables:
+      - [minimum_distance_to_wall, minimum_distance_to_wall]
+      - [dudx, dudx]
+
+  - name: xfer_fluid_io_surface
+    type: geometric
+    realm_pair: [fluidRealm, ioRealm]
+    from_target_name: [surface_4, surface_5, surface_6]
+    to_target_name: [surface_4, surface_5, surface_6]
+    objective: input_output
+    transfer_variables:
+      - [yplus, yplus]
+
 realms:
 
-  - name: realm_1
+  - name: fluidRealm
     mesh: backstep_miny.g
     use_edges: no
 
@@ -177,6 +199,36 @@ realms:
       parameters: [0,0,0]
       target_name: [surface_4, surface_5, surface_6]
 
+  - name: ioRealm
+    mesh: backstep_miny.g
+    type: input_output
+
+    field_registration:
+      specifications:
+        - field_name: dudx
+          target_name: block_1
+          field_size: 9
+          field_type: node_rank
+
+        - field_name: minimum_distance_to_wall
+          target_name: block_1
+          field_size: 1
+          field_type: node_rank
+
+        - field_name: yplus
+          target_name: [surface_4, surface_5, surface_6]
+          field_size: 1
+          field_type: node_rank
+
+    output:
+      output_data_base_name: IO_subset.e
+      output_frequency: 2
+      output_node_set: no
+      output_variables:
+       - dudx
+       - yplus
+       - minimum_distance_to_wall
+
 Time_Integrators:
   - StandardTimeIntegrator:
       name: ti_1
@@ -187,4 +239,5 @@ Time_Integrators:
       time_step_count: 0
 
       realms: 
-        - realm_1
+        - fluidRealm
+        - ioRealm
