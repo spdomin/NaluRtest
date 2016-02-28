@@ -145,7 +145,8 @@ realms:
     output:
       output_data_base_name: milestoneRun.e
       output_frequency: 10
-      output_node_set: no 
+      output_node_set: no
+      output_forced_wall_time: 0.01 
       output_variables:
        - velocity
        - pressure
@@ -157,6 +158,7 @@ realms:
     restart:
       restart_data_base_name: milestoneRun_A.rst
       restart_frequency: 25
+      restart_forced_wall_time: 0.01
 
 Time_Integrators:
   - StandardTimeIntegrator:
