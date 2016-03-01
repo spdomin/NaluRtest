@@ -32,6 +32,7 @@ transfers:
     realm_pair: [fluidRealm, ioRealm]
     mesh_part_pair: [block_1, block_1]
     objective: input_output
+    search_tolerance: 5.0e-4
     transfer_variables:
       - [minimum_distance_to_wall, minimum_distance_to_wall]
       - [dudx, dudx]
@@ -42,6 +43,7 @@ transfers:
     from_target_name: [surface_4, surface_5, surface_6]
     to_target_name: [surface_4, surface_5, surface_6]
     objective: input_output
+    search_expansion_factor: 1.45
     transfer_variables:
       - [yplus, yplus]
 

@@ -272,7 +272,7 @@ cp $NaluRtestCWD/nightly/oversetFluids/oversetFluids.norm.gold $baseGitHubCWD/ru
 ./oversetFluids.sh
 
 #=============================================================================
-# oversetFluidsiEdge test
+# oversetFluidsEdge test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/oversetFluidsEdge" ]; then
     mkdir $baseGitHubCWD/runNaluRtest/nightly/oversetFluidsEdge
