@@ -79,6 +79,7 @@ realms:
     mesh: pmrA_mks.g
     use_edges: yes 
     solve_frequency: 10
+    check_for_missing_bcs: yes
 
     equation_systems:
       name: theEqSys
@@ -153,6 +154,7 @@ realms:
   - name: fluidRealm
     mesh: pmrA_mks_R1n.g
     use_edges: yes 
+    check_for_missing_bcs: yes
 
     equation_systems:
       name: theEqSys
@@ -279,7 +281,8 @@ realms:
   - name: thermalRealm
     mesh: jacket_s2.g
     use_edges: no
-   
+    check_for_missing_bcs: yes
+
     boundary_conditions:
 
     - wall_boundary_condition: bc_inner

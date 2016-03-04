@@ -44,6 +44,7 @@ realms:
   - name: realm_1
     mesh: elbow.g
     use_edges: yes 
+    activate_aura: yes
    
     boundary_conditions:
 
