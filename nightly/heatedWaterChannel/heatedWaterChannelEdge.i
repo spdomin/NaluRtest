@@ -175,12 +175,53 @@ realms:
           favre_averaged_variables:
             - normal_heat_flux
 
+    data_probes:
+
+      specifications:
+
+        - name: probe_volume 
+          from_target_part: block_10
+
+          line_of_site_specifications:
+            - name: probeOne 
+              number_of_points: 20
+              tip_coordinates: [0.44, 0.0]
+              tail_coordinates: [0.44, 0.03]
+
+            - name: probeTwo
+              number_of_points: 25
+              tip_coordinates: [0.48, 0.0]
+              tail_coordinates: [0.48, 0.03]
+
+            - name: probeThree
+              number_of_points: 40
+              tip_coordinates: [0.459, 6.78e-2]
+              tail_coordinates: [0.371, 0.0252]
+
+          output_variables:
+            - field_name: velocity
+              field_size: 2
+
+        - name: probe_surface
+          from_target_part: surface_5
+
+          line_of_site_specifications:
+            - name: probefour 
+              number_of_points: 40
+              tip_coordinates: [0.50, 0.0]
+              tail_coordinates: [0.50, 0.03]
+
+          output_variables:
+            - field_name: normal_heat_flux
+              field_size: 1
+
     output:
       output_data_base_name: heatedWaterChannelEdge.e
       output_frequency: 5
       output_node_set: no
       output_variables:
        - velocity
+       - velocity_probe
        - velocity_ra_one
        - velocity_fa_one
        - pressure
