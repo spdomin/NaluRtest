@@ -177,6 +177,8 @@ realms:
 
     data_probes:
 
+      output_frequency: 5
+
       specifications:
 
         - name: probe_volume 
@@ -206,13 +208,13 @@ realms:
           from_target_part: surface_5
 
           line_of_site_specifications:
-            - name: probefour 
+            - name: probeFour 
               number_of_points: 40
               tip_coordinates: [0.50, 0.0]
               tail_coordinates: [0.50, 0.03]
 
           output_variables:
-            - field_name: normal_heat_flux
+            - field_name: temperature
               field_size: 1
 
     output:
@@ -229,6 +231,7 @@ realms:
        - enthalpy_ra_one
        - enthalpy_fa_one
        - temperature
+       - temperature_probe
        - specific_heat
        - thermal_conductivity
        - viscosity
