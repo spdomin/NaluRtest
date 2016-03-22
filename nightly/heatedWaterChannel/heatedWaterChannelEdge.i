@@ -179,6 +179,10 @@ realms:
 
       output_frequency: 5
 
+      search_method: stk_octree
+      search_tolerance: 1.0e-3
+      search_expansion_factor: 2.0
+
       specifications:
 
         - name: probe_volume 
@@ -205,7 +209,7 @@ realms:
               field_size: 2
 
         - name: probe_surface
-          from_target_part: surface_5
+          from_target_part: block_10 
 
           line_of_site_specifications:
             - name: probeFour 
