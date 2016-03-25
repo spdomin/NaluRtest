@@ -644,12 +644,14 @@ fi
 cd $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
 cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannelEdge.i $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
 cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannelElem.i $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
+cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannelEdgeRst.i $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
 cp $NaluRtestCWD/nightly/heatedWaterChannel/*.g.* $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
 cp $NaluRtestCWD/xml/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
 cp $NaluRtestCWD/xml/milestone_aspect_ratio.xml $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
 cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannel.sh $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
 cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannelEdge.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
 cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannelElem.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
+cp $NaluRtestCWD/nightly/heatedWaterChannel/heatedWaterChannelEdgeRst.norm.gold* $baseGitHubCWD/runNaluRtest/nightly/heatedWaterChannel
 # run it...  
 ./heatedWaterChannel.sh
 

@@ -5,18 +5,22 @@ CWD=$(pwd)
 didSimulationDiffAnywhere=0
 didSimulationDiffAnywhereFirst=0
 didSimulationDiffAnywhereSecond=0
+didSimulationDiffAnywhereThird=0
 localDiffOne=0.0;
 localDiffTwo=0.0;
+localDiffThree=0.0;
 
 # determine tolerance
 testTol=0.000000000001
 theGoldNormEdge=heatedWaterChannelEdge.norm.gold.remote
 theGoldNormElem=heatedWaterChannelElem.norm.gold.remote
+theGoldNormEdgeRst=heatedWaterChannelEdgeRst.norm.gold.remote
 platform=`uname`
 if [ "$platform" == 'Linux' ]; then
     testTol=0.0000000000000001
     theGoldNormEdge=heatedWaterChannelEdge.norm.gold
     theGoldNormElem=heatedWaterChannelElem.norm.gold
+    theGoldNormEdgeRst=heatedWaterChannelEdgeRst.norm.gold
 fi
 
 # set the global diff
@@ -44,11 +48,28 @@ else
         didSimulationDiffAnywhere=1
     fi
 
+    # run the third
+    mpiexec --np 4 ../../naluX -i heatedWaterChannelEdgeRst.i -o heatedWaterChannelEdgeRst.log
+    determine_pass_fail $testTol "heatedWaterChannelEdgeRst.log" "heatedWaterChannelEdgeRst.norm" "$theGoldNormEdgeRst"
+    didSimulationDiffAnywhereThird="$?"
+    localDiffThree=$GlobalMaxSolutionDiff
+    if [ "$didSimulationDiffAnywhereThird" -gt 0 ]; then
+        didSimulationDiffAnywhere=1
+    fi
+
     # check who is greater
     if [ $(echo " $localDiffOne > $localDiffTwo " | bc) -eq 1 ]; then
-        GlobalMaxSolutionDiff=$localDiffOne
+        if [ $(echo " $localDiffOne > $localDiffThree " | bc) -eq 1 ]; then
+            GlobalMaxSolutionDiff=$localDiffOne
+        else
+            GlobalMaxSolutionDiff=$localDiffThree
+        fi
     else
-        GlobalMaxSolutionDiff=$localDiffTwo
+        if [ $(echo " $localDiffTwo > $localDiffThree " | bc) -eq 1 ]; then
+            GlobalMaxSolutionDiff=$localDiffTwo
+        else
+            GlobalMaxSolutionDiff=$localDiffThree
+        fi
     fi
 
 fi
@@ -64,7 +85,8 @@ fi
 # report it; 30 spaces
 GlobalPerformanceTimeFirst=`grep "STKPERF: Total Time" heatedWaterChannelEdge.log  | awk '{print $4}'`
 GlobalPerformanceTimeSecond=`grep "STKPERF: Total Time" heatedWaterChannelElem.log  | awk '{print $4}'`
-totalPerfTime=`echo "$GlobalPerformanceTimeFirst + $GlobalPerformanceTimeSecond" | bc `
+GlobalPerformanceTimeThird=`grep "STKPERF: Total Time" heatedWaterChannelEdgeRst.log  | awk '{print $4}'`
+totalPerfTime=`echo "$GlobalPerformanceTimeFirst + $GlobalPerformanceTimeSecond" +  "$GlobalPerformanceTimeThird" | bc `
 if [ $PASS_STATUS -ne 1 ]; then
     echo -e "..heatedWaterChannel.......... FAILED":" " $totalPerfTime " s" " max diff: " $GlobalMaxSolutionDiff
 else

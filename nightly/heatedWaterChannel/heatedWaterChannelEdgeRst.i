@@ -26,7 +26,7 @@ linear_solvers:
 realms:
 
   - name: realm_1
-    mesh: waterChannel_mks.g
+    mesh: heatedWaterChannelEdge.rst
     use_edges: yes
 
     equation_systems:
@@ -222,7 +222,7 @@ realms:
               field_size: 1
 
     output:
-      output_data_base_name: heatedWaterChannelEdge.e
+      output_data_base_name: heatedWaterChannelEdge.e-s001
       output_frequency: 5
       output_node_set: no
       output_variables:
@@ -247,15 +247,16 @@ realms:
        - reynolds_stress
 
     restart:
-      restart_data_base_name: heatedWaterChannelEdge.rst
-      restart_frequency: 10
+      restart_data_base_name: heatedWaterChannelEdge.rst-s001
+      output_frequency: 10
       restart_start: 5
+      restart_time: 100
 
 Time_Integrators:
   - StandardTimeIntegrator:
       name: ti_1
       start_time: 0
-      termination_step_count: 20
+      termination_step_count: 40
       time_step: 1.0e-5
       time_stepping_type: adaptive
       time_step_count: 0
