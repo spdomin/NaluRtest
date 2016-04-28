@@ -672,4 +672,21 @@ cp $NaluRtestCWD/nightly/variableDensMMS/*.norm.gold $baseGitHubCWD/runNaluRtest
 # run it...  
 ./variableDensMMS.sh
 
+#=============================================================================
+# actuatorLine test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/actuatorLine" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/actuatorLine
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/actuatorLine
+cp $NaluRtestCWD/nightly/actuatorLine/actuatorLine.i $baseGitHubCWD/runNaluRtest/nightly/actuatorLine
+cp $NaluRtestCWD/nightly/actuatorLine/*.g $baseGitHubCWD/runNaluRtest/nightly/actuatorLine
+cp $NaluRtestCWD/xml/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/actuatorLine
+cp $NaluRtestCWD/nightly/actuatorLine/actuatorLine.sh $baseGitHubCWD/runNaluRtest/nightly/actuatorLine
+cp $NaluRtestCWD/nightly/actuatorLine/actuatorLine.norm.gold $baseGitHubCWD/runNaluRtest/nightly/actuatorLine
+
+# run it...  
+./actuatorLine.sh
+
 echo "Rtest End"
