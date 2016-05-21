@@ -11,7 +11,7 @@ localDiffTwo=0.0;
 localDiffThree=0.0;
 
 # determine tolerance
-testTol=0.000000000001
+testTol=0.00000005
 theGoldNormEdge=heatedWaterChannelEdge.norm.gold.remote
 theGoldNormElem=heatedWaterChannelElem.norm.gold.remote
 theGoldNormEdgeRst=heatedWaterChannelEdgeRst.norm.gold.remote
