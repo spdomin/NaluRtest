@@ -175,6 +175,8 @@ realms:
             - turbulent_ke
 
           compute_reynolds_stress: yes
+          compute_favre_stress: yes
+          compute_favre_tke: yes
 
     output:
       serialized_io_group_size: 2
@@ -195,6 +197,8 @@ realms:
        - velocity_ra_one
        - velocity_fa_one
        - reynolds_stress
+       - favre_stress
+       - resolved_favre_turbulent_ke
 
     restart:
       restart_data_base_name: heliumPlumeElem_B.rst
