@@ -307,7 +307,7 @@ realms:
     - periodic_boundary_condition: bc_left_right
       target_name: [surface_3, surface_4]
       periodic_user_data:
-        search_tolerance: 1.e-5
+        search_tolerance: 1.e-2
         search_method: boost_rtree
 
     solution_options:
