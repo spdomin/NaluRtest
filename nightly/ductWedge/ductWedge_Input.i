@@ -146,6 +146,7 @@ realms:
     solution_options:
       name: myOptions
       input_variables_from_file_restoration_time: 1.4
+      input_variables_interpolate_in_time: no
 
       options:    
         - input_variables_from_file:
