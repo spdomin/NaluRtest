@@ -689,4 +689,19 @@ cp $NaluRtestCWD/nightly/actuatorLine/actuatorLine.norm.gold $baseGitHubCWD/runN
 # run it...  
 ./actuatorLine.sh
 
+#=============================================================================
+# femHC test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/femHC" ]; then
+mkdir $baseGitHubCWD/runNaluRtest/nightly/femHC
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/femHC
+cp $NaluRtestCWD/nightly/femHC/femHC.i $baseGitHubCWD/runNaluRtest/nightly/femHC
+cp $NaluRtestCWD/mesh/periodic3d.g $baseGitHubCWD/runNaluRtest/nightly/femHC
+cp $NaluRtestCWD/nightly/femHC/femHC.sh $baseGitHubCWD/runNaluRtest/nightly/femHC
+cp $NaluRtestCWD/nightly/femHC/femHC.norm.gold $baseGitHubCWD/runNaluRtest/nightly/femHC
+# run it...
+./femHC.sh
+
 echo "Rtest End"
