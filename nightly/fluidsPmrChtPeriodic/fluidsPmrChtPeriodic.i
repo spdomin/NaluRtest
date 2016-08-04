@@ -150,6 +150,7 @@ realms:
        - radiative_heat_flux
        - div_radiative_heat_flux
        - irradiation
+       - assembled_boundary_area
 
   - name: fluidRealm
     mesh: pmrA_mks_R1n.g
