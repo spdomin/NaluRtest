@@ -582,11 +582,26 @@ fi
 
 cd $baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind
 cp $NaluRtestCWD/nightly/inputFireEdgeUpwind/inputFireEdgeUpwind.i $baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind
-cp $NaluRtestCWD/nightly/inputFireEdgeUpwind/*.e.* $baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind
+cp $NaluRtestCWD/mesh/13K_oneWay.e.* $baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind
 cp $NaluRtestCWD/nightly/inputFireEdgeUpwind/inputFireEdgeUpwind.sh $baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind
 cp $NaluRtestCWD/nightly/inputFireEdgeUpwind/inputFireEdgeUpwind.norm.gold $baseGitHubCWD/runNaluRtest/nightly/inputFireEdgeUpwind
 # run it...  
 ./inputFireEdgeUpwind.sh
+
+#=============================================================================
+# inputFireElem test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/inputFireElem" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/inputFireElem
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/inputFireElem
+cp $NaluRtestCWD/nightly/inputFireElem/inputFireElem.i $baseGitHubCWD/runNaluRtest/nightly/inputFireElem
+cp $NaluRtestCWD/mesh/13K_oneWay.e.* $baseGitHubCWD/runNaluRtest/nightly/inputFireElem
+cp $NaluRtestCWD/nightly/inputFireElem/inputFireElem.sh $baseGitHubCWD/runNaluRtest/nightly/inputFireElem
+cp $NaluRtestCWD/nightly/inputFireElem/inputFireElem.norm.gold $baseGitHubCWD/runNaluRtest/nightly/inputFireElem
+# run it...  
+./inputFireElem.sh
 
 #=============================================================================
 # nonIsoNonUniformEdgeOpenJet test
