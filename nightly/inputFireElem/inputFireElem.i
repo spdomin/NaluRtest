@@ -110,6 +110,12 @@ realms:
 
         - element_source_terms:
             intensity: SUPG       
+
+        - input_variables_from_file:
+            temperature: tnd
+            absorption_coefficient: and
+            radiation_source: empnd
+
     output:
       output_data_base_name: inputFireElemSupg.e
       output_frequency: 1
@@ -133,7 +139,6 @@ realms:
        - div_radiative_heat_flux
        - irradiation
 
-
   - name: ioRealm
     mesh: 13K_oneWay.e
     type: initialization
@@ -153,8 +158,6 @@ realms:
 
         - input_variables_from_file:
             temperature: tnd
-            absorption_coefficient: and
-            radiation_source: empnd
  
     output:
       output_data_base_name: IO.e
