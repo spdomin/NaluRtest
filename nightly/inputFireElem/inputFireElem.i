@@ -108,10 +108,6 @@ realms:
 
       options:
 
-        - input_variables_from_file:
-            temperature: tnd
-            absorption_coefficient: and
-            radiation_source: empnd
         - element_source_terms:
             intensity: SUPG       
     output:
@@ -154,8 +150,11 @@ realms:
       input_variables_from_file_restoration_time: 1000.0
 
       options:    
+
         - input_variables_from_file:
-            temperature: temperature
+            temperature: tnd
+            absorption_coefficient: and
+            radiation_source: empnd
  
     output:
       output_data_base_name: IO.e
