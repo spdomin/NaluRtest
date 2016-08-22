@@ -151,7 +151,7 @@ realms:
 
     solution_options:
       name: myOptions
-#      input_variables_from_file_restoration_time: 1000.0
+      input_variables_from_file_restoration_time: 1000.0
 
       options:    
         - input_variables_from_file:
