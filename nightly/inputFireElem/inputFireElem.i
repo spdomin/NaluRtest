@@ -135,7 +135,7 @@ realms:
        - intensity_35
        - scalar_flux
        - radiative_heat_flux
-       - radiative_source
+       - radiation_source
        - div_radiative_heat_flux
        - irradiation
 
@@ -164,7 +164,7 @@ realms:
       output_frequency: 2
       output_node_set: no
       output_variables:
-       - temperaure_bc
+       - temperature_bc
 
 Time_Integrators:
   - StandardTimeIntegrator:
