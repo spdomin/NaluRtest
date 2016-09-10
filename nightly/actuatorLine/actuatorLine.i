@@ -53,7 +53,7 @@ realms:
         target_name: block_1
         value:
           pressure: 0.0
-          velocity: [0.0,0.0,0.0]
+          velocity: [2.0,0.0,0.0]
 
     material_properties:
       target_name: block_1
@@ -71,7 +71,7 @@ realms:
     - inflow_boundary_condition: bc_1
       target_name: surface_4
       inflow_user_data:
-        velocity: [1.0,0.0,0.0]
+        velocity: [2.0,0.0,0.0]
 
     - open_boundary_condition: bc_2
       target_name: surface_6
@@ -124,40 +124,29 @@ realms:
 
       specifications:
 
-        - turbine_name: machine_one 
-          radius: 1.0
-          omega: 0.0
-          gaussian_decay_radius: 1.5
+        - turbine_name: machine_one
+          radius: 0.5 
+          omega: 1.57 
+          gaussian_decay_radius: 1.0 
           gaussian_decay_target: 0.01
-          coordinates: [-1.0, 0.0, 0.0]
+          tip_coordinates: [2.5, 1.0, 0.0]
+          tail_coordinates: [2.5, -1.0, 0.0]
+          number_of_points: 11 
 
         - turbine_name: machine_two
-          radius: 2.0
-          omega: 0.0
-          gaussian_decay_radius: 2.0
+          radius: 0.5
+          omega: -1.57
+          gaussian_decay_radius: 1.0 
           gaussian_decay_target: 0.01
-          coordinates: [1.0, 0.0, 0.0]
- 
-        - turbine_name: machine_three
-          radius: 1.0
-          omega: 0.0
-          gaussian_decay_radius: 1.25
-          gaussian_decay_target: 0.01
-          coordinates: [0.0, 2.0, 0.0]
- 
-        - turbine_name: machine_four
-          radius: 1.0
-          omega: 0.0
-          gaussian_decay_radius: 1.25
-          gaussian_decay_target: 0.01
-          coordinates: [0.0, -2.0, 0.0]
- 
+          tip_coordinates: [-2.5, 0.0, 1.0]
+          tail_coordinates: [-2.5, 0.0, -1.0]
+          number_of_points: 11
+
     output:
       output_data_base_name: actuatorLine.e
-      output_frequency: 10
+      output_frequency: 5 
       output_node_set: no 
       output_variables:
-       - dual_nodal_volume
        - velocity
        - pressure
        - actuator_line_source
@@ -166,7 +155,7 @@ Time_Integrators:
   - StandardTimeIntegrator:
       name: ti_1
       start_time: 0
-      termination_step_count: 20
+      termination_step_count: 20 
       time_step: 0.01
       time_stepping_type: adaptive
       time_step_count: 0
