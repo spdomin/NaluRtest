@@ -129,8 +129,8 @@ realms:
           omega: 1.57 
           gaussian_decay_radius: 1.0 
           gaussian_decay_target: 0.01
-          tip_coordinates: [2.5, 1.0, 0.0]
-          tail_coordinates: [2.5, -1.0, 0.0]
+          tip_coordinates: [2.5, 2.0, 0.0]
+          tail_coordinates: [2.5, -2.0, 0.0]
           number_of_points: 11 
 
         - turbine_name: machine_two
@@ -138,8 +138,8 @@ realms:
           omega: -1.57
           gaussian_decay_radius: 1.0 
           gaussian_decay_target: 0.01
-          tip_coordinates: [-2.5, 0.0, 1.0]
-          tail_coordinates: [-2.5, 0.0, -1.0]
+          tip_coordinates: [-2.5, 0.0, 2.0]
+          tail_coordinates: [-2.5, 0.0, -2.0]
           number_of_points: 11
 
     output:
