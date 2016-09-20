@@ -177,6 +177,9 @@ realms:
           compute_reynolds_stress: yes
           compute_favre_stress: yes
           compute_favre_tke: yes
+          compute_q_criterion: yes
+          compute_vorticity: yes
+          compute_lambda_ci: yes
 
     output:
       serialized_io_group_size: 2
@@ -199,6 +202,9 @@ realms:
        - reynolds_stress
        - favre_stress
        - resolved_favre_turbulent_ke
+       - vorticity
+       - q_criterion
+       - lambda_ci
 
     restart:
       restart_data_base_name: heliumPlumeElem_B.rst
