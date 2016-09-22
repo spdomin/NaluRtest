@@ -241,6 +241,22 @@ cp $NaluRtestCWD/nightly/dgNonConformal3dFluidsHexTet/dgNonConformal3dFluidsHexT
 ./dgNonConformal3dFluidsHexTet.sh
 
 #=============================================================================
+# dgNonConformalThreeBlade test
+#=============================================================================
+if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/dgNonConformalThreeBlade" ]; then
+    mkdir $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalThreeBlade
+fi
+
+cd $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalThreeBlade
+cp $NaluRtestCWD/nightly/dgNonConformalThreeBlade/dgNonConformalThreeBlade.i $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalThreeBlade
+cp $NaluRtestCWD/mesh/threeBladeMesh.g $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalThreeBlade
+cp $NaluRtestCWD/nightly/dgNonConformalThreeBlade/dgNonConformalThreeBlade.sh $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalThreeBlade
+cp $NaluRtestCWD/xml/milestone.xml $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalThreeBlade
+cp $NaluRtestCWD/nightly/dgNonConformalThreeBlade/dgNonConformalThreeBlade.norm.gold $baseGitHubCWD/runNaluRtest/nightly/dgNonConformalThreeBlade
+# run it...  
+./dgNonConformalThreeBlade.sh
+
+#=============================================================================
 # overset test
 #=============================================================================
 if [ ! -d "$baseGitHubCWD/runNaluRtest/nightly/overset" ]; then
