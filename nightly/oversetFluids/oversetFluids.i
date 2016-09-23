@@ -104,6 +104,15 @@ realms:
     solution_options:
       name: myOptions
 
+      mesh_motion:
+        - name: mmOne
+          target_name: block_1
+          omega: 0.0
+
+        - name: mmTwo
+          target_name: block_2
+          omega: 0.0
+
       options:
 
         - hybrid_factor:
