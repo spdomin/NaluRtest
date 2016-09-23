@@ -202,6 +202,7 @@ realms:
             gauss_labatto_quadrature: no
             algorithm_type: dg
             upwind_advection: no
+            current_normal: yes
 
     output:
       output_data_base_name: dgNonConformalThreeBlade.e
