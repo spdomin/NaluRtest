@@ -15,13 +15,14 @@ linear_solvers:
     output_level: 0
 
   - name: solve_cont
-    type: epetra
+    type: tpetra
     method: gmres
-    preconditioner: ML
+    preconditioner: muelu
     tolerance: 1e-5
     max_iterations: 50
     kspace: 50
     output_level: 0
+    muelu_xml_file_name: milestone_aspect_ratio.xml
 
 transfers:
 
@@ -90,7 +91,6 @@ realms:
     - wall_boundary_condition: bc_cyliner
       target_name: surface_5
       wall_user_data:
-      wall_user_data:
         user_function_name:
          mesh_displacement: sinusoidal
         user_function_parameters:
@@ -151,10 +151,6 @@ realms:
             name: myLowMach
             max_iterations: 1
             convergence_tolerance: 1e-5
-
-    material_properties:
-
-      target_name: block_10
 
     material_properties:
       target_name: block_10

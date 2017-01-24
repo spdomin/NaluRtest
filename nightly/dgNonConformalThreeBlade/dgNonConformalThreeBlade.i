@@ -43,6 +43,9 @@ realms:
         pressure: solve_cont
         velocity: solve_scalar
         mixture_fraction: solve_scalar
+        dpdx: solve_scalar
+        duidx: solve_scalar
+        dzdx: solve_scalar
 
       systems:
         - LowMachEOM:
@@ -102,8 +105,8 @@ realms:
       wall_user_data:
         user_function_name:
          velocity: wind_energy
-        user_function_parameters:
-         velocity: [3.14, -0.3, 0.0]
+        user_function_string_parameters:
+         velocity: [mmFront_ss5]
         mixture_fraction: 1.0
 
     - wall_boundary_condition: bc_back_lower_blade
@@ -111,8 +114,8 @@ realms:
       wall_user_data:
         user_function_name:
          velocity: wind_energy
-        user_function_parameters:
-         velocity: [-1.57, 0.0, -0.125]
+        user_function_string_parameters:
+         velocity: [mmBot_ss6]
         mixture_fraction: 1.0
 
     - wall_boundary_condition: bc_back_higher_blade
@@ -120,8 +123,8 @@ realms:
       wall_user_data:
         user_function_name:
          velocity: wind_energy
-        user_function_parameters:
-         velocity: [6.28, 0.0, 0.125]
+        user_function_string_parameters:
+         velocity: [mmTop_ss7]
         mixture_fraction: 1.0
 
     - non_conformal_boundary_condition: bc_front_in_out
@@ -172,16 +175,19 @@ realms:
         - name: mmFront_ss5
           target_name: [block_2]
           omega: 3.14
+          unit_vector: [0.0,0.0,1.0]
           centroid_coordinates: [-0.3, 0.0]
 
         - name: mmTop_ss7
           target_name: [block_3]
           omega: 6.28
+          unit_vector: [0.0,0.0,1.0]
           centroid_coordinates: [0.0, 0.125]
 
         - name: mmBot_ss6
           target_name: [block_4]
-          omega: -1.57
+          omega: 1.57
+          unit_vector: [0.0,0.0,-1.0]
           centroid_coordinates: [0.0, -0.125]
 
       options:
@@ -195,7 +201,7 @@ realms:
             velocity: 0.0
 
         - element_source_terms:
-            momentum: NSO_KE_2ND
+            momentum: NSO_2ND_KE
             mixture_fraction: NSO_2ND_ALT
 
         - non_conformal:
@@ -203,6 +209,11 @@ realms:
             algorithm_type: dg
             upwind_advection: no
             current_normal: yes
+
+        - consistent_mass_matrix_png:
+            pressure: yes
+            velocity: yes
+            mixture_fraction: yes
 
     output:
       output_data_base_name: dgNonConformalThreeBlade.e
@@ -213,6 +224,11 @@ realms:
        - pressure
        - mixture_fraction
        - mesh_displacement
+
+    restart:
+      restart_data_base_name: dgNonConformalThreeBlade.rst
+      restart_frequency: 25
+      restart_start: 25
 
 Time_Integrators:
   - StandardTimeIntegrator:
